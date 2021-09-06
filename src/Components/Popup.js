@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
-import { makeStyles, Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
 
 const useStyles = makeStyles((theme) => ({
   myClassName: {
     "&:hover": {
-      backgroundColor: "inherit",
+      backgroundColor: "#8fcd5d66",
     },
   },
 }));
-function Popup({ btn, out, isButton }) {
+
+function Popup({ btn, out, isButton, start }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -24,10 +25,20 @@ function Popup({ btn, out, isButton }) {
 
   const handleButton = () => {
     if (isButton) {
-      return <Button onClick={handleClick}>{btn}</Button>;
+      return (
+        <Button
+          className={classes.myClassName}
+          onClick={handleClick}
+          startIcon={start}>
+          {btn}
+        </Button>
+      );
     } else {
       return (
-        <IconButton aria-label="cart" onClick={handleClick}>
+        <IconButton
+          className={classes.myClassName}
+          aria-label="cart"
+          onClick={handleClick}>
           {btn}
         </IconButton>
       );

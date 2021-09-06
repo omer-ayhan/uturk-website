@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React from "react";
 import Popup from "./Popup";
 import ThemeSelector from "./ThemeSelector";
 import Badge from "@material-ui/core/Badge";
@@ -10,9 +10,9 @@ import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
 import telegram from "../images/telegram.png";
 import notify_bell from "../images/notify_bell.png";
-import arrow_down from "../images/arrow-down.png";
 import TR_flag from "../images/TR.png";
 import US_flag from "../images/US.png";
+import arrow_down from "../images/arrow-down.png";
 
 const nav_links = {
   main_links: [
@@ -51,53 +51,52 @@ const useStyles = makeStyles((theme) => ({
 function Navbar() {
   const classes = useStyles();
   return (
-    <>
-      <div className="navbar">
-        <div id="logo">
-          <a href="#logo">
-            <img className="logo-img" src={logo} alt="logo" />
-          </a>
-        </div>
-        <div id="nav-link-group">
-          {nav_links.main_links.map(({ name, link }) => (
-            <a className="nav-link" href={`#${link}`}>
-              {name}
-            </a>
-          ))}
-        </div>
-        <div id="social-group">
-          {nav_links.social_links.map(({ img_link, link }) => (
-            <a className="social-link" href={`#${link}`}>
-              <img className="social-img" src={img_link} alt="social link" />
-            </a>
-          ))}
-        </div>
-        <Popup
-          btn={
-            <StyledBadge badgeContent={1} color="secondary">
-              <img className="notify-logo" src={notify_bell} alt="" />
-            </StyledBadge>
-          }
-          out={"something"}
-          disableHover={false}
-          isButton={false}
-        />
-        <Popup
-          btn={<img src={TR_flag} alt="" />}
-          out={
-            <Button
-              className={classes.myClassName}
-              color="primary"
-              endIcon={<img src={US_flag} alt="" />}>
-              US
-            </Button>
-          }
-          disableHover={true}
-          isButton={true}
-        />
-        <ThemeSelector />
+    <div className="navbar">
+      <div id="logo">
+        <a href="#logo">
+          <img className="logo-img" src={logo} alt="logo" />
+        </a>
       </div>
-    </>
+      <div id="nav-link-group">
+        {nav_links.main_links.map(({ name, link }) => (
+          <a className="nav-link" href={`#${link}`}>
+            {name}
+          </a>
+        ))}
+      </div>
+      <div id="social-group">
+        {nav_links.social_links.map(({ img_link, link }) => (
+          <a className="social-link" href={`#${link}`}>
+            <img className="social-img" src={img_link} alt="social link" />
+          </a>
+        ))}
+      </div>
+      <Popup
+        btn={
+          <StyledBadge badgeContent={1} color="secondary">
+            <img className="notify-logo" src={notify_bell} alt="" />
+          </StyledBadge>
+        }
+        out={"something"}
+        disableHover={false}
+        isButton={false}
+      />
+      <Popup
+        btn={<img src={TR_flag} alt="" />}
+        out={
+          <Button
+            className={classes.myClassName}
+            color="primary"
+            endIcon={<img src={US_flag} alt="" />}>
+            US
+          </Button>
+        }
+        disableHover={true}
+        isButton={true}
+        start={<img src={arrow_down} alt="" />}
+      />
+      <ThemeSelector />
+    </div>
   );
 }
 
