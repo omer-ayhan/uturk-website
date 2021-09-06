@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import Popup from "./Popup";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import Popover from "@material-ui/core/Popover";
+import { Button, makeStyles } from "@material-ui/core";
 import "../css/navbar.css";
 import logo from "../images/uturk_logo.png";
 import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
 import telegram from "../images/telegram.png";
 import notify_bell from "../images/notify_bell.png";
+import arrow_down from "../images/arrow-down.png";
+import TR_flag from "../images/TR.png";
+import US_flag from "../images/US.png";
 
 const nav_links = {
   main_links: [
@@ -32,62 +35,71 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
+const useStyles = makeStyles((theme) => ({
+  myClassName: {
+    color: "#454545",
+    fontSize: "16px",
+    padding: "5px 10px 5px 15px",
+    "&:hover": {
+      backgroundColor: "#8fcd5d2a",
+      color: "#90cd5d",
+    },
+  },
+}));
+
 function Navbar() {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
+  const classes = useStyles();
   return (
-    <div className="navbar">
-      <div id="logo">
-        <a href="#logo">
-          <img className="logo-img" src={logo} alt="logo" />
-        </a>
-      </div>
-      <div id="nav-link-group">
-        {nav_links.main_links.map(({ name, link }) => (
-          <a className="nav-link" href={`#${link}`}>
-            {name}
+    <>
+      <div className="navbar">
+        <div id="logo">
+          <a href="#logo">
+            <img className="logo-img" src={logo} alt="logo" />
           </a>
-        ))}
+        </div>
+        <div id="nav-link-group">
+          {nav_links.main_links.map(({ name, link }) => (
+            <a className="nav-link" href={`#${link}`}>
+              {name}
+            </a>
+          ))}
+        </div>
+        <div id="social-group">
+          {nav_links.social_links.map(({ img_link, link }) => (
+            <a className="social-link" href={`#${link}`}>
+              <img className="social-img" src={img_link} alt="social link" />
+            </a>
+          ))}
+        </div>
+        <Popup
+          btn={
+            <StyledBadge badgeContent={1} color="secondary">
+              <img className="notify-logo" src={notify_bell} alt="" />
+            </StyledBadge>
+          }
+          out={"something"}
+          disableHover={false}
+        />
+        <Popup
+          btn={
+            <Button
+              className={classes.myClassName}
+              startIcon={<img src={arrow_down} alt="" />}>
+              <img src={TR_flag} alt="" />
+            </Button>
+          }
+          out={
+            <Button
+              className={classes.myClassName}
+              color="primary"
+              endIcon={<img src={US_flag} alt="" />}>
+              US
+            </Button>
+          }
+          disableHover={true}
+        />
       </div>
-      <div id="social-group">
-        {nav_links.social_links.map(({ img_link, link }) => (
-          <a className="social-link" href={`#${link}`}>
-            <img className="social-img" src={img_link} alt="social link" />
-          </a>
-        ))}
-      </div>
-      <IconButton aria-label="cart" onClick={handleClick}>
-        <StyledBadge badgeContent={1} color="secondary">
-          <img className="notify-logo" src={notify_bell} alt="" />
-        </StyledBadge>
-      </IconButton>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}>
-        Something
-      </Popover>
-    </div>
+    </>
   );
 }
 
