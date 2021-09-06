@@ -22,7 +22,7 @@ const nav_links = {
   ],
   social_links: [
     { img_link: facebook, link: "d" },
-    { img_link: twitter, link: "e" },
+    { img_link: twitter, link: "https://twitter.com/uturknet" },
     { img_link: telegram, link: "f" },
   ],
 };
@@ -66,7 +66,11 @@ function Navbar() {
       </div>
       <div id="social-group">
         {nav_links.social_links.map(({ img_link, link }) => (
-          <a className="social-link" href={`#${link}`}>
+          <a
+            className="social-link"
+            href={link}
+            target="_blank"
+            rel="noreferrer">
             <img className="social-img" src={img_link} alt="social link" />
           </a>
         ))}
@@ -78,7 +82,6 @@ function Navbar() {
           </StyledBadge>
         }
         out={"something"}
-        disableHover={false}
         isButton={false}
       />
       <Popup
@@ -91,7 +94,6 @@ function Navbar() {
             US
           </Button>
         }
-        disableHover={true}
         isButton={true}
         start={<img src={arrow_down} alt="" />}
       />
