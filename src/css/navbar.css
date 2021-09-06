@@ -4,35 +4,39 @@
   font-family: "Roboto", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #90cd5d;
+}
+
 .navbar {
-  padding: 20px 40px 20px 40px;
-}
-
-#logo {
-  margin: 0;
-  position: relative;
-  width: 100px;
-  display: grid;
-  gap: 7px;
-  grid-template-columns: repeat(2, 1fr);
+  padding: 22px 40px 22px 40px;
+  box-shadow: 10px 3px 20px 7px rgba(0, 0, 0, 0.11);
+  display: flex;
+  gap: 30px;
   align-items: center;
-  justify-content: space-between;
-}
-
-#logo a {
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 
 #logo .logo-img {
-  width: 33px;
+  width: 100px;
   height: auto;
   object-fit: cover;
   object-position: 50% 50%;
 }
 
-#logo h1 {
-  font-size: 1.65rem;
-  color: #90cd5d;
+#nav-link-group {
+  display: flex;
+}
+
+#nav-link-group .nav-link {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+}
+
+#nav-link-group .nav-link:hover {
+  background: #90cd5d;
+  color: #fff;
 }
