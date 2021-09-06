@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Button } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-function Popup({ btn, out, disableHover }) {
+function Popup({ btn, out, isButton }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -22,18 +22,24 @@ function Popup({ btn, out, disableHover }) {
     setAnchorEl(null);
   };
 
+  const handleButton = () => {
+    if (isButton) {
+      return <Button onClick={handleClick}>{btn}</Button>;
+    } else {
+      return (
+        <IconButton aria-label="cart" onClick={handleClick}>
+          {btn}
+        </IconButton>
+      );
+    }
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   return (
     <>
-      <IconButton
-        className={disableHover ? classes.myClassName : undefined}
-        disableRipple={disableHover ? true : false}
-        aria-label="cart"
-        onClick={handleClick}>
-        {btn}
-      </IconButton>
+      {handleButton()}
       <Popover
         id={id}
         open={open}

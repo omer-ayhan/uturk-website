@@ -10,7 +10,7 @@ a {
 }
 
 .navbar {
-  padding: 20px 40px 20px 40px;
+  padding: 18px 40px 18px 40px;
   box-shadow: 10px 3px 20px 7px rgba(0, 0, 0, 0.11);
   display: flex;
   gap: 7px;
@@ -54,4 +54,10 @@ a {
   height: auto;
   object-fit: cover;
   object-position: 50% 50%;
+}
+
+#darkMode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

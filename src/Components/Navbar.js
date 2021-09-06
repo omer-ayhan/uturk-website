@@ -1,5 +1,6 @@
-import React from "react";
+import React, { createRef } from "react";
 import Popup from "./Popup";
+import ThemeSelector from "./ThemeSelector";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
 import { Button, makeStyles } from "@material-ui/core";
@@ -79,15 +80,10 @@ function Navbar() {
           }
           out={"something"}
           disableHover={false}
+          isButton={false}
         />
         <Popup
-          btn={
-            <Button
-              className={classes.myClassName}
-              startIcon={<img src={arrow_down} alt="" />}>
-              <img src={TR_flag} alt="" />
-            </Button>
-          }
+          btn={<img src={TR_flag} alt="" />}
           out={
             <Button
               className={classes.myClassName}
@@ -97,7 +93,9 @@ function Navbar() {
             </Button>
           }
           disableHover={true}
+          isButton={true}
         />
+        <ThemeSelector />
       </div>
     </>
   );
