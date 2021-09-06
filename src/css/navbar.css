@@ -14,6 +14,7 @@ a {
   box-shadow: 10px 3px 20px 7px rgba(0, 0, 0, 0.11);
   display: flex;
   gap: 30px;
+  /* grid-template-columns: 120px 400px 500px 1fr; */
   align-items: center;
 }
 
@@ -26,6 +27,7 @@ a {
 
 #nav-link-group {
   display: flex;
+  gap: 6px;
 }
 
 #nav-link-group .nav-link {
@@ -39,4 +41,17 @@ a {
 #nav-link-group .nav-link:hover {
   background: #90cd5d;
   color: #fff;
+}
+
+#social-group {
+  margin-left: auto;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+#social-group .social-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
