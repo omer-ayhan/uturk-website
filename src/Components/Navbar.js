@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Badge from "@material-ui/core/Badge";
+import { withStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import Popover from "@material-ui/core/Popover";
 import "../css/navbar.css";
 import logo from "../images/uturk_logo.png";
 import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
 import telegram from "../images/telegram.png";
+import notify_bell from "../images/notify_bell.png";
 
 const nav_links = {
   main_links: [
@@ -17,8 +22,30 @@ const nav_links = {
     { img_link: telegram, link: "f" },
   ],
 };
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: 0,
+    top: 5,
+    backgroundColor: "#EC1C24",
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}))(Badge);
 
 function Navbar() {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   return (
     <div className="navbar">
       <div id="logo">
@@ -40,6 +67,26 @@ function Navbar() {
           </a>
         ))}
       </div>
+      <IconButton aria-label="cart" onClick={handleClick}>
+        <StyledBadge badgeContent={1} color="secondary">
+          <img className="notify-logo" src={notify_bell} alt="" />
+        </StyledBadge>
+      </IconButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}>
+        Something
+      </Popover>
     </div>
   );
 }
