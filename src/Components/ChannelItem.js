@@ -1,4 +1,6 @@
 import React from "react";
+import FB from "../images/FB.png";
+import GS from "../images/GS.png";
 
 function ChannelItem() {
   return (
@@ -8,11 +10,11 @@ function ChannelItem() {
         <span>Canlı</span>
       </div>
       <div className="teamsBox">
-        <div className="team-1">
-          <div className="team-1-logo">
-            <img src="" alt="" />
-            <p>FB</p>
+        <div className="team-logo-box">
+          <div className="team-logo">
+            <img src={FB} alt="" />
           </div>
+          <p>FB</p>
         </div>
         <div className="team-status">
           <div className="score">
@@ -22,11 +24,11 @@ function ChannelItem() {
             <b>18:00</b>
           </div>
         </div>
-        <div className="team-2">
-          <div className="team-2-logo">
-            <img src="" alt="" />
-            <p>GS</p>
+        <div className="team-logo-box">
+          <div className="team-logo">
+            <img src={GS} alt="" />
           </div>
+          <p>GS</p>
         </div>
       </div>
     </div>

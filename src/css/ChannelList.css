@@ -45,13 +45,33 @@
 
 .container #channelCard .channelItem .teamsBox {
   position: absolute;
-  top: 60%;
+  padding: 0 20px 0 20px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  top: 63%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background: blue;
+  /* background: blue; */
   width: 80%;
   height: 65%;
+}
+
+.container #channelCard .channelItem .team-logo {
+  padding: 4px;
+  margin-bottom: 10px;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 0 0 0 5px rgba(131, 131, 131, 0.3);
+}
+.container #channelCard .channelItem .team-logo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 @keyframes svg-shadow {
