@@ -1,38 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import { Box, Button, makeStyles } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
-const useStyles = makeStyles((theme) => ({
-  myClassName: {
-    "&:hover": {
-      backgroundColor: "#8fcd5d66",
-    },
-  },
-}));
-
 export default function Popup({ btn, out, isButton, start }) {
-  const classes = useStyles();
-
   const handleButton = (popupState) => {
     if (isButton) {
       return (
-        <Button
-          className={classes.myClassName}
-          {...bindTrigger(popupState)}
-          startIcon={start}>
+        <Button {...bindTrigger(popupState)} startIcon={start}>
           {btn}
         </Button>
       );
     } else {
       return (
-        <IconButton
-          variant="contained"
-          className={classes.myClassName}
-          aria-label="cart"
-          {...bindTrigger(popupState)}>
+        <IconButton aria-label="cart" {...bindTrigger(popupState)}>
           {btn}
         </IconButton>
       );

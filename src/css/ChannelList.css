@@ -21,6 +21,17 @@
   border-radius: 8px;
 }
 
+.container #channelCard .channelItem .disabledScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(191, 191, 191, 0.43);
+  border-radius: 8px;
+  z-index: 100;
+}
+
 .container #channelCard .channelItem .logo_container {
   position: absolute;
   top: 5px;
@@ -33,6 +44,7 @@
   height: 27px;
   background: rgba(179, 179, 179, 0.4);
   border-radius: 16px;
+  z-index: 900;
 }
 .container #channelCard .channelItem .logo_live {
   position: relative;
