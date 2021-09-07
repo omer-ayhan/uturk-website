@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import { Button, makeStyles } from "@material-ui/core";
+import { Box, Button, makeStyles } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
 const useStyles = makeStyles((theme) => ({
   myClassName: {
@@ -11,24 +13,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Popup({ btn, out, isButton, start }) {
+export default function Popup({ btn, out, isButton, start }) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleButton = () => {
+  const handleButton = (popupState) => {
     if (isButton) {
       return (
         <Button
           className={classes.myClassName}
-          onClick={handleClick}
+          {...bindTrigger(popupState)}
           startIcon={start}>
           {btn}
         </Button>
@@ -36,38 +29,39 @@ function Popup({ btn, out, isButton, start }) {
     } else {
       return (
         <IconButton
+          variant="contained"
           className={classes.myClassName}
           aria-label="cart"
-          onClick={handleClick}>
+          {...bindTrigger(popupState)}>
           {btn}
         </IconButton>
       );
     }
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
   return (
-    <>
-      {handleButton()}
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}>
-        {out}
-      </Popover>
-    </>
+    <PopupState variant="popover" popupId="demo-popup-popover">
+      {(popupState) => (
+        <>
+          {handleButton(popupState)}
+          <Popover
+            {...bindPopover(popupState)}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}>
+            <Box>{out}</Box>
+          </Popover>
+        </>
+      )}
+    </PopupState>
   );
 }
 
-export default Popup;
+// Popup.propTypes={
+//   btn:
+// }

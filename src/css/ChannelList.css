@@ -2,3 +2,66 @@
   width: 100%;
   height: 530px;
 }
+
+.container #channelCard .MuiBox-root {
+  height: 385px;
+  overflow: auto !important;
+}
+
+.container #channelCard .channelItem {
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  height: 145px;
+  background: rgba(191, 191, 191, 0.3);
+  border-radius: 8px;
+}
+
+.container #channelCard .channelItem .logo_container {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: flex;
+  gap: 11px;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 30px;
+  background: rgba(179, 179, 179, 0.4);
+  border-radius: 16px;
+}
+.container #channelCard .channelItem .logo_live {
+  width: 13px;
+  height: 13px;
+  border-radius: 20px;
+  background: #fa1226;
+  animation: svg-shadow 1.5s ease-in-out infinite alternate;
+}
+
+.container #channelCard .channelItem .logo_container span {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.container #channelCard .channelItem .teamsBox {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: blue;
+  width: 80%;
+  height: 65%;
+}
+
+@keyframes svg-shadow {
+  from {
+    box-shadow: 0 0 0 2px rgba(241, 33, 50, 0.3),
+      0 0 0 3px rgba(241, 33, 50, 0.3), 0 0 0 4px rgba(241, 33, 50, 0.3);
+  }
+
+  to {
+    box-shadow: 0 0 0 5px rgba(241, 33, 50, 0.3),
+      0 0 0 6px rgba(241, 33, 50, 0.3), 0 0 0 6.5px rgba(241, 33, 50, 0.3);
+  }
+}

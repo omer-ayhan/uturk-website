@@ -39,3 +39,20 @@
 .MuiTab-textColorPrimary.Mui-selected {
   color: #fafafa;
 }
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #949494;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 0px;
+  box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+}
