@@ -29,3 +29,13 @@
   /* box-shadow: 0 3px 15px 4px rgb(0 0 0 / 0.2); */
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 13px 4px;
 }
+
+/* .parentDiv > div:nth-child(2) > div:nth-child(1):not([type="button"]) {
+  display: none;
+}
+.parentDiv > div:nth-child(2) > div:nth-child(3):not([type="button"]) {
+  display: none;
+} */
+.MuiTab-textColorPrimary.Mui-selected {
+  color: #fafafa;
+}

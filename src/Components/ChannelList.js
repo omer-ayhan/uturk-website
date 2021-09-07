@@ -15,6 +15,7 @@ import "../css/ChannelList.css";
 import hamburger from "../images/hamburger.png";
 import chevron_down from "../images/chevron-down.png";
 import filter from "../images/filter.png";
+import ChannelTabs from "./ChannelTabs";
 
 function ChannelList() {
   const [value, setValue] = useState("inactive");
@@ -76,6 +77,7 @@ function ChannelList() {
           </Typography>
         }
       />
+      <ChannelTabs />
     </Card>
   );
 }

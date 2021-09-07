@@ -6,7 +6,7 @@ function VideoBox() {
     <Card id="videoBox">
       <CardMedia
         component="iframe"
-        image="http://153.92.209.109/"
+        image="http://git.player24.xyz/cloudbozguncu/god.html"
         height="500"
         allowFullScreen="allowfullscreen"
       />
