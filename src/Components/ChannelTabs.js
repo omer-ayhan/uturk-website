@@ -17,7 +17,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}>
       {value === index && (
-        <Box p={3}>
+        <Box p={2}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -69,7 +69,7 @@ export default function ChannelTabs() {
           {["7/24", "Canlı Maç", "Sohbet"].map((e, index) => (
             <Tab
               style={{
-                minWidth: "118px",
+                minWidth: "120px",
                 fontWeight: "bold",
                 color: value === index ? "#90CD5D" : "#000",
               }}

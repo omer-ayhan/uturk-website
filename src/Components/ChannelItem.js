@@ -1,37 +1,52 @@
 import React from "react";
+import { Button, Typography } from "@material-ui/core";
 import FB from "../images/FB.png";
 import GS from "../images/GS.png";
 
-function ChannelItem() {
+function ChannelItem({ isLive }) {
   return (
-    <div className="channelItem">
-      <div className="logo_container">
-        <div className="logo_live"></div>
-        <span>Canlı</span>
+    <Button fullWidth={true}>
+      <div className="channelItem">
+        <div className="logo_container">
+          <div className="logo_live"></div>
+          <Typography variant="subititle2" align="center" color="white">
+            Canlı
+          </Typography>
+        </div>
+        <div className="teamsBox">
+          <div className="team-logo-box">
+            <div className="team-logo">
+              <img src={FB} alt="right team" />
+            </div>
+            <p>
+              <Typography variant="h6" align="center">
+                <b>FB</b>
+              </Typography>
+            </p>
+          </div>
+          <div className="team-status">
+            <div className="score">
+              <Typography variant="h3" align="center">
+                <b>-</b>
+              </Typography>
+            </div>
+            <div className="start-time">
+              <Typography variant="subtitle1" align="center" color="white">
+                18:00
+              </Typography>
+            </div>
+          </div>
+          <div className="team-logo-box">
+            <div className="team-logo">
+              <img src={GS} alt="left team" />
+            </div>
+            <Typography variant="h6" align="center">
+              <b>GS</b>
+            </Typography>
+          </div>
+        </div>
       </div>
-      <div className="teamsBox">
-        <div className="team-logo-box">
-          <div className="team-logo">
-            <img src={FB} alt="" />
-          </div>
-          <p>FB</p>
-        </div>
-        <div className="team-status">
-          <div className="score">
-            <b>2 - 1</b>
-          </div>
-          <div className="start-time">
-            <b>18:00</b>
-          </div>
-        </div>
-        <div className="team-logo-box">
-          <div className="team-logo">
-            <img src={GS} alt="" />
-          </div>
-          <p>GS</p>
-        </div>
-      </div>
-    </div>
+    </Button>
   );
 }
 
