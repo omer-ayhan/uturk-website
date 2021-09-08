@@ -1,7 +1,12 @@
+import { Box } from "@material-ui/core";
 import React from "react";
 
 function AdvertiseBox() {
-  return <div className="adCard"></div>;
+  return (
+    <Box p="50px 0" bgcolor="black" color="white" textAlign="center">
+      <h3>Advertisement</h3>
+    </Box>
+  );
 }
 
 export default AdvertiseBox;

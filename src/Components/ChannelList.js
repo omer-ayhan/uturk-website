@@ -72,7 +72,7 @@ function ChannelList() {
           </div>
         }
         title={
-          <Typography gutterBottom variant="h6" component="h6" align="center">
+          <Typography gutterBottom variant="h6" component="h6">
             Futbol
           </Typography>
         }

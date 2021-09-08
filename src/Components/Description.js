@@ -14,10 +14,12 @@ import share from "../images/share.png";
 import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
 import telegram from "../images/telegram.png";
+import mail from "../images/mail.png";
+import AdvertiseBox from "./AdvertiseBox";
 
 function Description() {
   return (
-    <Card id="descriptionBox" style={{ boxShadow: "none" }}>
+    <Card style={{ boxShadow: "none" }}>
       <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
           <Typography variant="h5">
@@ -28,7 +30,7 @@ function Description() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Box display="flex" flexDirection="row-reverse" alignItems="center">
-            <Box m={1}>
+            <Box ml="9px">
               <Popup
                 btn={<img src={share} alt="" />}
                 out={
@@ -65,7 +67,14 @@ function Description() {
             </Box>
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={5}></Grid>
+        <Grid container item direction={"row-reverse"} xs={12} sm={5}>
+          <Box mb="8px" fontWeight="fontWeightMedium">
+            Sponsorluk, Şikayet, İstek:
+          </Box>
+          <Box fontWeight="fontWeightMedium">
+            <img src={mail} alt="mail" /> uturknet@gmail.com
+          </Box>
+        </Grid>
         <Grid item xs={10} sm={5}>
           <Typography variant="h6">
             <Box fontWeight="fontWeightMedium">
@@ -76,12 +85,19 @@ function Description() {
                 "Canlı Maç",
                 "Lig TV",
               ].map((e) => (
-                <Box display="inline">
-                  <Chip style={{ margin: "0 9px 9px 0" }} label={e} />
+                <Box m="0 9px 9px 0" display="inline-block">
+                  <Chip label={e} />
                 </Box>
               ))}
             </Box>
           </Typography>
+        </Grid>
+        <Grid item xs={10} sm={5}></Grid>
+        <Grid item xs={14} sm={12}>
+          <AdvertiseBox />
+        </Grid>
+        <Grid item xs={14} sm={12}>
+          <AdvertiseBox />
         </Grid>
       </Grid>
     </Card>
