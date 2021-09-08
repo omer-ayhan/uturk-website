@@ -16,10 +16,10 @@ function App() {
       <div className="container">
         <Box px="80px" mb="40px">
           <Grid container direction={"row"} spacing={4} align={"start"}>
-            <Grid item xs={14} sm={8}>
+            <Grid item xs={12} sm={8}>
               <VideoBox />
             </Grid>
-            <Grid item xs={4} sm={4}>
+            <Grid item xs={12} sm={4}>
               <ChannelList />
             </Grid>
             <Grid item xs={14} sm={8}>

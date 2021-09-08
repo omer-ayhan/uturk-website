@@ -3,7 +3,7 @@ import React from "react";
 
 function AdvertiseBox() {
   return (
-    <Box p="50px 0" bgcolor="black" color="white" textAlign="center">
+    <Box p="50px 0" color="white" textAlign="center">
       <h3>Advertisement</h3>
     </Box>
   );

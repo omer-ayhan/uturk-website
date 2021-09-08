@@ -10,7 +10,7 @@ function TwitterBox() {
         avatar={<img src={hamburger} alt="" />}
         title={
           <Typography gutterBottom variant="h6" component="h6">
-            Twitter Feed
+            Twitter Akışı
           </Typography>
         }
       />
