@@ -69,7 +69,8 @@ export default function ChannelTabs() {
           {["7/24", "Canlı Maç", "Sohbet"].map((e, index) => (
             <Tab
               style={{
-                minWidth: "120px",
+                minWidth: "126px",
+                fontSize: ".95rem",
                 fontWeight: "bold",
                 color: value === index ? "#90CD5D" : "#000",
               }}

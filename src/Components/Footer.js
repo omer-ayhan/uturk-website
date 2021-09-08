@@ -25,6 +25,7 @@ function Footer() {
                   color: "rgba(69, 69, 69, 1)",
                   textAlign: "center",
                   margin: "0 10px",
+                  textDecoration: "none",
                 }}
                 href="#"
                 rel="noopener">
