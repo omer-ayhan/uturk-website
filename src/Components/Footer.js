@@ -1,10 +1,13 @@
 import React from "react";
 import { Box, Grid, Link, Typography } from "@material-ui/core";
-import logo from "../images/uturk_logo.png";
+import { useStyles, images } from "./MainStyle";
 
 function Footer() {
+  const classes = useStyles();
+  console.log(classes);
   return (
     <Box
+      className={classes.footerParent}
       p="16px 0 0px 0"
       width="100%"
       height="130px"
@@ -34,33 +37,24 @@ function Footer() {
             ))}
           </Box>
         </Grid>
-        <Grid container item xs={6} sm={12}>
-          <Box
-            width="100%"
-            p="0px"
-            display="flex"
-            direction="row-reverse"
-            alignItems="flex-end">
-            <Box pl="10px">
-              <Typography
-                gutterBottom
-                variant="button"
-                component="span"
-                fontWeight="fontWeightBold"
-                align="center">
-                Copyright © Utürk 2021
-              </Typography>
-            </Box>
-            <Box flexGrow={0.8}>
-              <span id="logo">
-                <Link href="#logo">
-                  <img className="logo-img" src={logo} alt="logo" />
-                </Link>
-              </span>
-            </Box>
-          </Box>
+        <Grid item xs={6} sm={8}>
+          <span id="logo">
+            <Link href="#logo">
+              <img id="logo-img" src={images.logo} alt="logo" />
+            </Link>
+          </span>
         </Grid>
       </Grid>
+      <Box className={classes.footerChild}>
+        <Typography
+          gutterBottom
+          variant="button"
+          component="span"
+          fontWeight="fontWeightBold"
+          align="center">
+          Copyright © Utürk 2021
+        </Typography>
+      </Box>
     </Box>
   );
 }
