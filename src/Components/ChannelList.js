@@ -11,14 +11,17 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import Popup from "./Popup";
-import "../css/ChannelList.css";
-import hamburger from "../images/hamburger.png";
-import chevron_down from "../images/chevron-down.png";
-import filter from "../images/filter.png";
 import ChannelTabs from "./ChannelTabs";
+import { images } from "./MainStyle";
+import "../css/ChannelList.css";
 
 function ChannelList() {
   const [value, setValue] = useState("inactive");
+  const [chevron_down, hamburger, filter] = [
+    images.chevron_down,
+    images.hamburger,
+    images.filter,
+  ];
 
   const handleChange = (event) => {
     setValue(event.target.value);

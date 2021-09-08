@@ -4,7 +4,7 @@ import { useStyles, images } from "./MainStyle";
 
 function Footer() {
   const classes = useStyles();
-  console.log(classes);
+  const logo = images.logo;
   return (
     <Box
       className={classes.footerParent}
@@ -40,7 +40,7 @@ function Footer() {
         <Grid item xs={6} sm={8}>
           <span id="logo">
             <Link href="#logo">
-              <img id="logo-img" src={images.logo} alt="logo" />
+              <img id="logo-img" src={logo} alt="logo" />
             </Link>
           </span>
         </Grid>

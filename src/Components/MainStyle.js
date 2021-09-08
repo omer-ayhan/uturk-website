@@ -5,14 +5,40 @@ import telegram from "../images/telegram.png";
 import logo from "../images/uturk_logo.png";
 import dark from "../images/dark.png";
 import light from "../images/light.png";
+import FB from "../images/FB.png";
+import GS from "../images/GS.png";
+import locked from "../images/locked.png";
+import hamburger from "../images/hamburger.png";
+import chevron_down from "../images/chevron-down.png";
+import filter from "../images/filter.png";
+import mail from "../images/mail.png";
+import share from "../images/share.png";
+import notify_bell from "../images/notify_bell.png";
+import TR_flag from "../images/TR.png";
+import US_flag from "../images/US.png";
+import arrow_down from "../images/arrow-down.png";
+import live from "../images/live.svg";
 
 const images = {
   facebook: facebook,
   twitter: twitter,
-  telegram: twitter,
+  telegram: telegram,
   logo: logo,
   dark: dark,
   light: light,
+  FB: FB,
+  GS: GS,
+  locked: locked,
+  hamburger: hamburger,
+  chevron_down: chevron_down,
+  filter: filter,
+  mail: mail,
+  share: share,
+  notify_bell: notify_bell,
+  TR_flag: TR_flag,
+  US_flag: US_flag,
+  arrow_down: arrow_down,
+  live: live,
 };
 
 const StyledBadge = withStyles((theme) => ({
@@ -58,6 +84,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const stylesMain = {
+  channelItem: {
+    disabledScreen: {
+      background: "transparent",
+      justifyContent: "flex-start",
+    },
+  },
+};
+
 const themeMain = createTheme({
   overrides: {
     MuiSwitch: {
@@ -79,4 +114,4 @@ const themeMain = createTheme({
   },
 });
 
-export { StyledBadge, nav_links, useStyles, images, themeMain };
+export { StyledBadge, nav_links, useStyles, images, themeMain, stylesMain };

@@ -5,6 +5,7 @@ import { themeMain, images } from "./MainStyle";
 
 function ThemeSelector() {
   const [checked, setChecked] = React.useState(false);
+  const [light, dark] = [images.light, images.dark];
 
   const toggleChecked = () => {
     setChecked((prev) => !prev);
@@ -12,11 +13,7 @@ function ThemeSelector() {
   return (
     <ThemeProvider theme={themeMain}>
       <div id="darkMode">
-        <img
-          className="theme-img"
-          src={checked ? images.light : images.dark}
-          alt=""
-        />
+        <img className="theme-img" src={checked ? light : dark} alt="" />
         <Switch size="small" checked={checked} onChange={toggleChecked} />
       </div>
     </ThemeProvider>

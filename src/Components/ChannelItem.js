@@ -1,16 +1,24 @@
 import React from "react";
 import { Button, Typography } from "@material-ui/core";
-import FB from "../images/FB.png";
-import GS from "../images/GS.png";
-import locked from "../images/locked.png";
+import { images, stylesMain } from "./MainStyle";
 
 function ChannelItem({ isLive }) {
+  const [locked, FB, GS, live] = [
+    images.locked,
+    images.FB,
+    images.GS,
+    images.live,
+  ];
+
   return (
     <Button fullWidth={true} disabled={!isLive}>
       <div className="channelItem">
         {isLive ? (
           <div className="logo_container">
-            <div className="logo_live"></div>
+            {/* <div className="logo_live"></div> */}
+            <object className="logo_live" type="image/svg+xml" data={live}>
+              svg-animation
+            </object>
             <Typography variant="subititle2" align="center">
               Canlı
             </Typography>
@@ -20,10 +28,7 @@ function ChannelItem({ isLive }) {
             <div className="disabledScreen"></div>
             <div
               className="logo_container"
-              style={{
-                background: "transparent",
-                justifyContent: "flex-start",
-              }}>
+              style={stylesMain.channelItem.disabledScreen}>
               <img src={locked} alt="" />
             </div>
           </>

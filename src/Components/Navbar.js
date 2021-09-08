@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "./Popup";
 import ThemeSelector from "./ThemeSelector";
-import { StyledBadge, nav_links, useStyles } from "./MainStyle";
+import { StyledBadge, nav_links, useStyles, images } from "./MainStyle";
 import {
   AppBar,
   Box,
@@ -11,14 +11,16 @@ import {
   Typography,
 } from "@material-ui/core";
 import "../css/navbar.css";
-import logo from "../images/uturk_logo.png";
-import notify_bell from "../images/notify_bell.png";
-import TR_flag from "../images/TR.png";
-import US_flag from "../images/US.png";
-import arrow_down from "../images/arrow-down.png";
 
 function Navbar() {
   const classes = useStyles();
+  const [notify_bell, arrow_down, US_flag, TR_flag, logo] = [
+    images.notify_bell,
+    images.arrow_down,
+    images.US_flag,
+    images.TR_flag,
+    images.logo,
+  ];
   return (
     <AppBar style={{ background: "#fff" }} position="static">
       <Box p="15px">

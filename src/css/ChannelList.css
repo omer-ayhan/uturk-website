@@ -37,24 +37,24 @@
   top: 5px;
   left: 5px;
   display: flex;
-  gap: 9px;
-  justify-content: center;
+  /* gap: 9px; */
+  justify-content: flex-start;
   align-items: center;
-  width: 78px;
+  width: 87px;
   height: 27px;
   background: rgba(179, 179, 179, 0.4);
   border-radius: 16px;
   z-index: 900;
 }
 .container #channelCard .channelItem .logo_live {
-  position: relative;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
+  /* position: relative; */
+  width: 40px;
+  height: 40px;
+  /* border-radius: 50%;
   background: #f02233;
-  color: #fa1226;
+  color: #fa1226; */
 }
-.container #channelCard .channelItem .logo_live::after {
+/* .container #channelCard .channelItem .logo_live::after {
   content: "";
   position: absolute;
   top: -1px;
@@ -64,9 +64,10 @@
   border-radius: 50%;
   animation: ripple 1s infinite ease-in-out;
   border: 1.2px solid #ff2c3d;
-}
+} */
 
 .container #channelCard .channelItem .logo_container span {
+  margin-left: -5px;
   font-weight: bold;
   font-size: 0.9rem;
 }

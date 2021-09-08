@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Card, CardHeader, Typography } from "@material-ui/core";
-import hamburger from "../images/hamburger.png";
+import { images } from "./MainStyle";
 
 function TwitterBox() {
+  const hamburger = images.hamburger;
   return (
     <Card>
       <CardHeader

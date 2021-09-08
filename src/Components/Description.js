@@ -9,14 +9,17 @@ import {
   Typography,
 } from "@material-ui/core";
 import Popup from "./Popup";
-import share from "../images/share.png";
-import facebook from "../images/facebook.png";
-import twitter from "../images/twitter.png";
-import telegram from "../images/telegram.png";
-import mail from "../images/mail.png";
 import AdvertiseBox from "./AdvertiseBox";
+import { images } from "./MainStyle";
 
 function Description() {
+  const [facebook, twitter, telegram, share, mail] = [
+    images.facebook,
+    images.twitter,
+    images.telegram,
+    images.share,
+    images.mail,
+  ];
   return (
     <Box>
       <Grid container direction={"row"} spacing={2} alignItems="center">
