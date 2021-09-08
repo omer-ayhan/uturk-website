@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Link, Typography } from "@material-ui/core";
-import { useStyles, images } from "./MainStyle";
+import { useStyles, images, stylesMain } from "./MainStyle";
 
 function Footer() {
   const classes = useStyles();
@@ -24,12 +24,7 @@ function Footer() {
             {["Yardım", "Yasal Uyarı", "İletişim"].map((e) => (
               <Link
                 variant="h6"
-                style={{
-                  color: "rgba(69, 69, 69, 1)",
-                  textAlign: "center",
-                  margin: "0 10px",
-                  textDecoration: "none",
-                }}
+                style={{ ...stylesMain.linkDark, margin: "0 10px" }}
                 href="#"
                 rel="noopener">
                 {e}

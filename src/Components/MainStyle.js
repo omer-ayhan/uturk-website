@@ -82,6 +82,19 @@ const useStyles = makeStyles((theme) => ({
     bottom: "5px",
     left: "10px",
   },
+  navLink: {
+    textDecoration: "none",
+    textAlign: "center",
+    color: "#90CD5D",
+    padding: "10px",
+    marginLeft: "5px",
+    borderRadius: "8px",
+    transition: "background-color 0.3s",
+    "&:hover": {
+      background: "#90cd5d",
+      color: "#fff",
+    },
+  },
 }));
 
 const stylesMain = {
@@ -90,6 +103,26 @@ const stylesMain = {
       background: "transparent",
       justifyContent: "flex-start",
     },
+  },
+  linkNav: {},
+  linkWhite: {
+    textDecoration: "none",
+    textAlign: "center",
+    color: "#fff",
+  },
+  linkDark: {
+    textDecoration: "none",
+    textAlign: "center",
+    color: "#454545",
+  },
+  bgLight: {
+    backgroundColor: "#fff",
+  },
+  bgDark: {
+    backgroundColor: "#fff",
+  },
+  borderGray: {
+    borderBottom: "3px solid #e5e5e5",
   },
 };
 

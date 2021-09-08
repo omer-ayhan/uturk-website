@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Card, CardHeader, Typography } from "@material-ui/core";
-import { images } from "./MainStyle";
+import { images, stylesMain } from "./MainStyle";
 
 function TwitterBox() {
   const hamburger = images.hamburger;
   return (
     <Card>
       <CardHeader
-        style={{ borderBottom: "3px solid #e5e5e5" }}
+        style={stylesMain.borderGray}
         avatar={<img src={hamburger} alt="" />}
         title={
           <Typography gutterBottom variant="h6" component="h6">

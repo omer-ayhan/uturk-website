@@ -31,7 +31,7 @@ a {
   gap: 6px;
 }
 
-#nav-link-group .nav-link {
+.container #nav-link {
   font-size: 18px;
   font-weight: bold;
   padding: 10px;
@@ -39,7 +39,7 @@ a {
   border-radius: 8px;
 }
 
-#nav-link-group .nav-link:hover {
+#nav-link:hover {
   background: #90cd5d;
   color: #fff;
 }
@@ -50,18 +50,9 @@ a {
   gap: 15px;
   align-items: center;
 }
-#social-group .social-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: 50% 50%;
-}
 
 #darkMode {
   position: absolute;
   top: 0;
   right: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

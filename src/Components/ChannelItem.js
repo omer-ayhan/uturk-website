@@ -15,7 +15,6 @@ function ChannelItem({ isLive }) {
       <div className="channelItem">
         {isLive ? (
           <div className="logo_container">
-            {/* <div className="logo_live"></div> */}
             <object className="logo_live" type="image/svg+xml" data={live}>
               svg-animation
             </object>
@@ -51,8 +50,8 @@ function ChannelItem({ isLive }) {
               </Typography>
             </div>
             <div className="start-time">
-              <Typography variant="subtitle1" align="center" color="white">
-                18:00
+              <Typography variant="body1" align="center" color="white">
+                <b>18:00</b>
               </Typography>
             </div>
           </div>

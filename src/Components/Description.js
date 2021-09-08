@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import Popup from "./Popup";
 import AdvertiseBox from "./AdvertiseBox";
-import { images } from "./MainStyle";
+import { images, stylesMain } from "./MainStyle";
 
 function Description() {
   const [facebook, twitter, telegram, share, mail] = [
@@ -54,7 +54,7 @@ function Description() {
               fontWeight="fontWeightMedium"
               bgcolor="rgba(119, 190, 60, 1)"
               borderRadius="30px">
-              <Typography variant="button" style={{ color: "#fff" }}>
+              <Typography variant="button" style={stylesMain.linkWhite}>
                 Paylaş Bize Destek Ol
               </Typography>
             </Box>
