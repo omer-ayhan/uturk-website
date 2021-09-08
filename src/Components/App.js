@@ -6,6 +6,7 @@ import VideoBox from "./VideoBox";
 import Description from "./Description";
 import TwitterBox from "./TwitterBox";
 import { Box, Grid } from "@material-ui/core";
+import Footer from "./Footer";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Navbar />
       <AdvertiseBox />
       <div className="container">
-        <Box px="80px" mb="50px">
+        <Box px="80px" mb="40px">
           <Grid container direction={"row"} spacing={4} align={"start"}>
             <Grid item xs={14} sm={8}>
               <VideoBox />
@@ -30,6 +31,7 @@ function App() {
           </Grid>
         </Box>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  Card,
   Chip,
   Grid,
   IconButton,
@@ -19,7 +18,7 @@ import AdvertiseBox from "./AdvertiseBox";
 
 function Description() {
   return (
-    <Card style={{ boxShadow: "none" }}>
+    <Box>
       <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
           <Typography variant="h5">
@@ -77,7 +76,7 @@ function Description() {
         </Grid>
         <Grid item xs={10} sm={5}>
           <Typography variant="h6">
-            <Box fontWeight="fontWeightMedium">
+            <Box fontWeight="fontWeightBold">
               {[
                 "Canlı",
                 "Bein Sport",
@@ -100,7 +99,7 @@ function Description() {
           <AdvertiseBox />
         </Grid>
       </Grid>
-    </Card>
+    </Box>
   );
 }
 
