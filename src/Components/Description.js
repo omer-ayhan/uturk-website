@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Card,
+  Chip,
   Grid,
   IconButton,
   List,
@@ -17,7 +18,7 @@ import telegram from "../images/telegram.png";
 function Description() {
   return (
     <Card id="descriptionBox" style={{ boxShadow: "none" }}>
-      <Grid container direction={"row"} spacing={24} alignItems="center">
+      <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
           <Typography variant="h5">
             <Box fontWeight="fontWeightMedium">
@@ -33,15 +34,11 @@ function Description() {
                 out={
                   <List component="nav" aria-label="secondary mailbox folders">
                     <ListItem>
-                      <IconButton>
-                        <img src={facebook} alt="" />
-                      </IconButton>
-                      <IconButton>
-                        <img src={twitter} alt="" />
-                      </IconButton>
-                      <IconButton>
-                        <img src={telegram} alt="" />
-                      </IconButton>
+                      {[facebook, twitter, telegram].map((e) => (
+                        <IconButton>
+                          <img src={e} alt="" />
+                        </IconButton>
+                      ))}
                     </ListItem>
                   </List>
                 }
@@ -65,6 +62,24 @@ function Description() {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
               voluptates perspiciatis libero, ratione hic quasi accusantium
               molestias deleniti magni reprehenderit eius.
+            </Box>
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={5}></Grid>
+        <Grid item xs={10} sm={5}>
+          <Typography variant="h6">
+            <Box fontWeight="fontWeightMedium">
+              {[
+                "Canlı",
+                "Bein Sport",
+                "Maç Yayınları",
+                "Canlı Maç",
+                "Lig TV",
+              ].map((e) => (
+                <Box display="inline">
+                  <Chip style={{ margin: "0 9px 9px 0" }} label={e} />
+                </Box>
+              ))}
             </Box>
           </Typography>
         </Grid>
