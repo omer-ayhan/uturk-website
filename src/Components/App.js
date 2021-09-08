@@ -3,6 +3,7 @@ import AdvertiseBox from "../Components/AdvertiseBox";
 import ChannelList from "../Components/ChannelList";
 import Navbar from "./Navbar";
 import VideoBox from "./VideoBox";
+import Description from "./Description";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="container">
         <VideoBox />
         <ChannelList />
+        <Description />
       </div>
     </div>
   );

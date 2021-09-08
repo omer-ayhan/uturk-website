@@ -11,7 +11,7 @@ function ChannelItem({ isLive }) {
         {isLive ? (
           <div className="logo_container">
             <div className="logo_live"></div>
-            <Typography variant="subititle2" align="center" color="white">
+            <Typography variant="subititle2" align="center">
               Canlı
             </Typography>
           </div>
