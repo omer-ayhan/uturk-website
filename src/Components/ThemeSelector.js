@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Switch } from "@material-ui/core";
-import { images } from "./MainStyle";
+import { images, useStyles } from "./MainStyle";
 
 function ThemeSelector() {
+  const classes = useStyles();
   const [checked, setChecked] = React.useState(false);
   const [light, dark] = [images.light, images.dark];
 
@@ -11,7 +12,7 @@ function ThemeSelector() {
   };
   return (
     <Box
-      id="darkMode"
+      className={classes.darkMode}
       display="flex"
       alignItems="center"
       justifyContent="center">

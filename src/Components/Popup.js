@@ -45,6 +45,9 @@ export default function Popup({ btn, out, isButton, start }) {
   );
 }
 
-// Popup.propTypes={
-//   btn:
-// }
+Popup.propTypes = {
+  btn: PropTypes.element,
+  out: PropTypes.node,
+  isButton: PropTypes.bool,
+  start: PropTypes.node,
+};

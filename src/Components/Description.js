@@ -24,11 +24,7 @@ function Description() {
     <Box>
       <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
-          <Typography variant="h5">
-            <Box fontWeight="fontWeightMedium">
-              Galatasaray - Fenerbahçe Maçı
-            </Box>
-          </Typography>
+          <Typography variant="h5">Galatasaray - Fenerbahçe Maçı</Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Box display="flex" flexDirection="row-reverse" alignItems="center">
@@ -60,13 +56,11 @@ function Description() {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={13} sm={7}>
+        <Grid item xs={12} sm={7}>
           <Typography variant="body1">
-            <Box fontWeight="fontWeightMedium">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-              voluptates perspiciatis libero, ratione hic quasi accusantium
-              molestias deleniti magni reprehenderit eius.
-            </Box>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            voluptates perspiciatis libero, ratione hic quasi accusantium
+            molestias deleniti magni reprehenderit eius.
           </Typography>
         </Grid>
         <Grid container item direction={"row-reverse"} xs={12} sm={5}>
@@ -78,27 +72,22 @@ function Description() {
           </Box>
         </Grid>
         <Grid item xs={10} sm={5}>
-          <Typography variant="h6">
-            <Box fontWeight="fontWeightBold">
-              {[
-                "Canlı",
-                "Bein Sport",
-                "Maç Yayınları",
-                "Canlı Maç",
-                "Lig TV",
-              ].map((e) => (
-                <Box m="0 9px 9px 0" display="inline-block">
-                  <Chip label={e} />
-                </Box>
-              ))}
-            </Box>
-          </Typography>
+          {["Canlı", "Bein Sport", "Maç Yayınları", "Canlı Maç", "Lig TV"].map(
+            (e) => (
+              <Box
+                m="0 9px 9px 0"
+                display="inline-block"
+                fontWeight="fontWeightBold">
+                <Chip label={e} />
+              </Box>
+            )
+          )}
         </Grid>
         <Grid item xs={10} sm={5}></Grid>
-        <Grid item xs={14} sm={12}>
+        <Grid item xs={12} sm={12}>
           <AdvertiseBox />
         </Grid>
-        <Grid item xs={14} sm={12}>
+        <Grid item xs={12} sm={12}>
           <AdvertiseBox />
         </Grid>
       </Grid>

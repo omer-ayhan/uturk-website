@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Button, Typography } from "@material-ui/core";
 import { images, stylesMain } from "./MainStyle";
 
@@ -18,7 +19,7 @@ function ChannelItem({ isLive }) {
             <object className="logo_live" type="image/svg+xml" data={live}>
               svg-animation
             </object>
-            <Typography variant="subititle2" align="center">
+            <Typography variant="subtitle2" align="center">
               Canlı
             </Typography>
           </div>
@@ -37,11 +38,9 @@ function ChannelItem({ isLive }) {
             <div className="team-logo">
               <img src={FB} alt="right team" />
             </div>
-            <p>
-              <Typography variant="h6" align="center">
-                <b>FB</b>
-              </Typography>
-            </p>
+            <Typography variant="h6" align="center">
+              <b>FB</b>
+            </Typography>
           </div>
           <div className="team-status">
             <div className="score">
@@ -50,7 +49,7 @@ function ChannelItem({ isLive }) {
               </Typography>
             </div>
             <div className="start-time">
-              <Typography variant="body1" align="center" color="white">
+              <Typography variant="body1" align="center">
                 <b>18:00</b>
               </Typography>
             </div>
@@ -68,5 +67,9 @@ function ChannelItem({ isLive }) {
     </Button>
   );
 }
+
+ChannelItem.propTypes = {
+  isLive: PropTypes.bool,
+};
 
 export default ChannelItem;

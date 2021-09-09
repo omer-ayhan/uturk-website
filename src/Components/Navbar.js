@@ -12,7 +12,6 @@ import {
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
-import "../css/navbar.css";
 
 function HideOnScroll(props) {
   const { children, window } = props;

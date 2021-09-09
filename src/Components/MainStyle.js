@@ -111,6 +111,11 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     borderTop: "3px solid #e5e5e5",
   },
+  darkMode: {
+    position: "absolute",
+    top: 0,
+    right: "40px",
+  },
 }));
 
 const stylesMain = {
@@ -158,6 +163,14 @@ const themeMain = createTheme({
   palette: {
     primary: {
       main: "#90CD5D",
+    },
+  },
+  typography: {
+    body1: {
+      fontWeight: 500,
+    },
+    h5: {
+      fontWeight: 500,
     },
   },
 });

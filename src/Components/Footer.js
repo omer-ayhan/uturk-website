@@ -23,7 +23,6 @@ function Footer() {
           <Box mb="50px">
             {["Yardım", "Yasal Uyarı", "İletişim"].map((e) => (
               <Link
-                variant="h6"
                 style={{ ...stylesMain.linkDark, margin: "0 10px" }}
                 href="#"
                 rel="noopener">
