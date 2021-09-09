@@ -7,7 +7,7 @@ function VideoBox() {
       <Box p="15px" height="500px">
         <CardMedia
           component="iframe"
-          image="https://www.youtube.com/embed/xuwIbQZkvu0"
+          image="https://www.youtube.com/embed/SV-P4GDmdTs"
           allowFullScreen="allowfullscreen"
           height="100%"
         />

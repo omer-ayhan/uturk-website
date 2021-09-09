@@ -18,6 +18,7 @@ import TR_flag from "../images/TR.png";
 import US_flag from "../images/US.png";
 import arrow_down from "../images/arrow-down.png";
 import live from "../images/live.svg";
+import viewer from "../images/viewer.png";
 
 const images = {
   facebook: facebook,
@@ -39,6 +40,7 @@ const images = {
   US_flag: US_flag,
   arrow_down: arrow_down,
   live: live,
+  viewer: viewer,
 };
 
 const StyledBadge = withStyles((theme) => ({
@@ -85,7 +87,6 @@ const useStyles = makeStyles((theme) => ({
   navLink: {
     textDecoration: "none",
     textAlign: "center",
-    color: "#90CD5D",
     padding: "10px",
     marginLeft: "5px",
     borderRadius: "8px",
@@ -125,7 +126,6 @@ const stylesMain = {
       justifyContent: "flex-start",
     },
   },
-  linkNav: {},
   linkWhite: {
     textDecoration: "none",
     textAlign: "center",

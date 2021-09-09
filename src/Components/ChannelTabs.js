@@ -11,8 +11,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
       {...other}>
       {value === index && (
         <Box p="2px 8px">
@@ -31,8 +31,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    id: `tab-${index}`,
+    "aria-controls": `tabpanel-${index}`,
   };
 }
 
@@ -54,7 +54,7 @@ export default function ChannelTabs() {
           centered={true}
           value={value}
           onChange={handleChange}
-          aria-label="simple tabs example">
+          aria-label="menu tabs">
           {["7/24", "Canlı Maç", "Sohbet"].map((e, index) => (
             <Tab
               style={{

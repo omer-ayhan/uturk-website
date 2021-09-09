@@ -7,16 +7,15 @@ function ScrollTop(props) {
   const { children, window } = props;
   const classes = useStyles();
   const trigger = useScrollTrigger({
-    target: window ? true : undefined,
+    target: window ? window() : undefined,
     disableHysteresis: true,
-    threshold: 150,
+    threshold: 100,
   });
 
   const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
-      "#top"
+      "#back-to-top-anchor"
     );
-
     if (anchor) {
       anchor.scrollIntoView({ behavior: "smooth", block: "center" });
     }

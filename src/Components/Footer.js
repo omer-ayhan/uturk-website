@@ -26,7 +26,9 @@ function Footer() {
                 style={{ ...stylesMain.linkDark, margin: "0 10px" }}
                 href="#"
                 rel="noopener">
-                {e}
+                <Typography variant="h6" component="span">
+                  {e}
+                </Typography>
               </Link>
             ))}
           </Box>

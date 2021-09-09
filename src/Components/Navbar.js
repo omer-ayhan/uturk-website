@@ -51,6 +51,7 @@ function Navbar(props) {
                 <Box ml="30px">
                   {nav_links.main_links.map(({ name, link }) => (
                     <Link
+                      color="primary"
                       className={classes.navLink}
                       href={`#${link}`}
                       underline="none">

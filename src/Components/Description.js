@@ -11,7 +11,6 @@ import {
 import Popup from "./Popup";
 import AdvertiseBox from "./AdvertiseBox";
 import { images, stylesMain } from "./MainStyle";
-
 function Description() {
   const [facebook, twitter, telegram, share, mail] = [
     images.facebook,
@@ -26,6 +25,7 @@ function Description() {
         <Grid item xs={12} sm={6}>
           <Typography variant="h5">Galatasaray - Fenerbahçe Maçı</Typography>
         </Grid>
+
         <Grid item xs={12} sm={6}>
           <Box display="flex" flexDirection="row-reverse" alignItems="center">
             <Box ml="9px">
@@ -56,21 +56,15 @@ function Description() {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={7}>
+
+        {/* <Grid item xs={12} sm={7}>
           <Typography variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
             voluptates perspiciatis libero, ratione hic quasi accusantium
             molestias deleniti magni reprehenderit eius.
           </Typography>
-        </Grid>
-        <Grid container item direction={"row-reverse"} xs={12} sm={5}>
-          <Box mb="8px" fontWeight="fontWeightMedium">
-            Sponsorluk, Şikayet, İstek:
-          </Box>
-          <Box fontWeight="fontWeightMedium">
-            <img src={mail} alt="mail" /> uturknet@gmail.com
-          </Box>
-        </Grid>
+        </Grid> */}
+
         <Grid item xs={10} sm={5}>
           {["Canlı", "Bein Sport", "Maç Yayınları", "Canlı Maç", "Lig TV"].map(
             (e) => (
@@ -83,7 +77,23 @@ function Description() {
             )
           )}
         </Grid>
-        <Grid item xs={10} sm={5}></Grid>
+        <Grid
+          container
+          item
+          direction={"column"}
+          xs={12}
+          sm={7}
+          alignItems="flex-end">
+          <Box>
+            <Box mb="10px" fontWeight="fontWeightMedium">
+              Sponsorluk, Şikayet, İstek:
+            </Box>
+            <Box fontWeight="fontWeightMedium">
+              <img src={mail} alt="mail" /> uturknet@gmail.com
+            </Box>
+          </Box>
+        </Grid>
+
         <Grid item xs={12} sm={12}>
           <AdvertiseBox />
         </Grid>

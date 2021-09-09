@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={themeMain}>
         <Navbar />
-        <AdvertiseBox top="top" />
+        <AdvertiseBox id="back-to-top-anchor" />
         <div className="container">
           <Box px="80px" mb="40px">
             <Grid container direction={"row"} spacing={4} align={"start"}>

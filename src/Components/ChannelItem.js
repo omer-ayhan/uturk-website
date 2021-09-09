@@ -19,7 +19,7 @@ function ChannelItem({ isLive }) {
             <object className="logo_live" type="image/svg+xml" data={live}>
               svg-animation
             </object>
-            <Typography variant="subtitle2" align="center">
+            <Typography variant="button" align="center">
               Canlı
             </Typography>
           </div>

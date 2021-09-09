@@ -45,14 +45,14 @@ function ChannelList() {
                     <ListItem button>
                       <FormControlLabel
                         value="inactive"
-                        control={<Radio />}
+                        control={<Radio color="primary" />}
                         label="Başlayan Yayınlar"
                       />
                     </ListItem>
                     <ListItem button>
                       <FormControlLabel
                         value="active"
-                        control={<Radio />}
+                        control={<Radio color="primary" />}
                         label="Bekleyen Yayınlar"
                       />
                     </ListItem>
