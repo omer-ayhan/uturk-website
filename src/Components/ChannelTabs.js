@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ChannelItem from "./ChannelItem";
-import { makeStyles } from "@material-ui/core/styles";
-import { Tabs, Tab, AppBar } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
+import { useStyles } from "./MainStyle";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,15 +36,6 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: "#fff",
-    boxShadow: "none",
-    borderTop: "3px solid #e5e5e5",
-  },
-}));
-
 export default function ChannelTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -57,7 +46,7 @@ export default function ChannelTabs() {
 
   return (
     <div>
-      <AppBar className={classes.root} position="static">
+      <AppBar className={classes.tabs} position="static">
         <Tabs
           TabIndicatorProps={{
             style: { background: "#90CD5D" },

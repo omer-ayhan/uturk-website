@@ -95,6 +95,22 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
     },
   },
+  appBar: {
+    boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
+    background: "#fff",
+  },
+  topBtn: {
+    position: "fixed",
+    color: "#90CD5D",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
+  tabs: {
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    boxShadow: "none",
+    borderTop: "3px solid #e5e5e5",
+  },
 }));
 
 const stylesMain = {
@@ -114,12 +130,6 @@ const stylesMain = {
     textDecoration: "none",
     textAlign: "center",
     color: "#454545",
-  },
-  bgLight: {
-    backgroundColor: "#fff",
-  },
-  bgDark: {
-    backgroundColor: "#fff",
   },
   borderGray: {
     borderBottom: "3px solid #e5e5e5",
@@ -143,6 +153,11 @@ const themeMain = createTheme({
           backgroundColor: "#90CD5D",
         },
       },
+    },
+  },
+  palette: {
+    primary: {
+      main: "#90CD5D",
     },
   },
 });

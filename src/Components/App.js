@@ -5,17 +5,17 @@ import Navbar from "./Navbar";
 import VideoBox from "./VideoBox";
 import Description from "./Description";
 import TwitterBox from "./TwitterBox";
-import { Box, Grid } from "@material-ui/core";
+import { Box, Grid, ThemeProvider } from "@material-ui/core";
 import Footer from "./Footer";
-import { ThemeProvider } from "@material-ui/core/styles";
 import { themeMain } from "./MainStyle";
+import BackToTop from "./BackToTop";
 
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={themeMain}>
         <Navbar />
-        <AdvertiseBox />
+        <AdvertiseBox top="top" />
         <div className="container">
           <Box px="80px" mb="40px">
             <Grid container direction={"row"} spacing={4} align={"start"}>
@@ -35,6 +35,7 @@ function App() {
           </Box>
         </div>
         <Footer />
+        <BackToTop />
       </ThemeProvider>
     </div>
   );
