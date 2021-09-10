@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
 import MainStyle from "./MainStyle";
-// import { useStyles } from "./MainStyle";
+import { useSelector } from "react-redux";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,6 +38,7 @@ function a11yProps(index) {
 }
 
 export default function ChannelTabs() {
+  const checked = useSelector((state) => state.theme.checkTheme.value);
   const [useStyles] = MainStyle();
   const classes = useStyles();
 
@@ -46,7 +47,6 @@ export default function ChannelTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <>
       <AppBar className={classes.tabs} position="static">
@@ -64,7 +64,8 @@ export default function ChannelTabs() {
                 minWidth: "126px",
                 fontSize: ".95rem",
                 fontWeight: "bold",
-                color: value === index ? "#90CD5D" : "#000",
+                color:
+                  value === index ? "#90CD5D" : checked ? "#fff" : "#313131",
               }}
               label={e}
               {...a11yProps(index)}

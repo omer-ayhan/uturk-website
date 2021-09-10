@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, createTheme, makeStyles, withStyles } from "@material-ui/core";
+import { Badge, makeStyles, withStyles } from "@material-ui/core";
 import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
 import telegram from "../images/telegram.png";
@@ -22,44 +22,8 @@ import live from "../images/live.svg";
 import viewer from "../images/viewer.png";
 import { useSelector } from "react-redux";
 
-const themeObject = {
-  overrides: {
-    MuiSwitch: {
-      colorSecondary: {
-        "&$checked": {
-          // Controls checked color for the thumb
-          color: "#90CD5D",
-        },
-      },
-      track: {
-        // Controls default (unchecked) color for the track
-        "$checked$checked + &": {
-          // Controls checked color for the track
-          opacity: 0.7,
-          backgroundColor: "#90CD5D",
-        },
-      },
-    },
-  },
-  palette: {
-    primary: {
-      main: "#90CD5D",
-    },
-    type: "light",
-  },
-  typography: {
-    body1: {
-      fontWeight: 500,
-    },
-    h5: {
-      fontWeight: 500,
-    },
-  },
-};
-
 function MainStyle() {
   const checked = useSelector((state) => state.theme.checkTheme.value);
-  const [theme, setTheme] = React.useState(themeObject);
   const useStyles = makeStyles((theme) => ({
     popup: {
       color: "#454545",
@@ -72,6 +36,7 @@ function MainStyle() {
     },
     footerParent: {
       position: "relative",
+      background: checked ? "#4B4B4B" : "#e8e8e8",
     },
     footerChild: {
       position: "absolute",
@@ -90,6 +55,9 @@ function MainStyle() {
         color: "#fff",
       },
     },
+    textTheme: {
+      color: checked ? "#fff" : "#525252",
+    },
     appBar: {
       boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
       background: checked ? "#1a1a1a" : "#fff",
@@ -102,9 +70,13 @@ function MainStyle() {
     },
     tabs: {
       flexGrow: 1,
-      backgroundColor: "#fff",
+      background: checked ? "#1a1a1a" : "#fff",
       boxShadow: "none",
-      borderTop: "3px solid #e5e5e5",
+      borderTop: `3px solid ${checked ? "#6F6F6F" : "#e5e5e5"}`,
+    },
+    twitterBox: {
+      background: checked ? "#1a1a1a" : "#fff",
+      borderBottom: `3px solid ${checked ? "#6F6F6F" : "#e5e5e5"}`,
     },
     darkMode: {
       position: "absolute",
@@ -112,11 +84,18 @@ function MainStyle() {
       right: "40px",
     },
   }));
-
-  return [useStyles, theme];
+  const StyledBadge = withStyles((theme) => ({
+    badge: {
+      right: 0,
+      top: 5,
+      backgroundColor: "#EC1C24",
+      border: `2px solid ${checked ? "#1a1a1a" : "#fff"}`,
+      padding: "0 4px",
+    },
+  }))(Badge);
+  return [useStyles, StyledBadge];
 }
 export default MainStyle;
-const themeMain = createTheme(themeObject);
 const images = {
   facebook: facebook,
   twitter: twitter,
@@ -139,16 +118,6 @@ const images = {
   live: live,
   viewer: viewer,
 };
-
-const StyledBadge = withStyles((theme) => ({
-  badge: {
-    right: 0,
-    top: 5,
-    backgroundColor: "#EC1C24",
-    border: `2px solid #fff`,
-    padding: "0 4px",
-  },
-}))(Badge);
 
 const nav_links = {
   main_links: [
@@ -180,10 +149,14 @@ const stylesMain = {
     textAlign: "center",
     color: "#454545",
   },
+  linkMain: {
+    textDecoration: "none",
+    textAlign: "center",
+  },
   borderGray: {
     borderBottom: "3px solid #e5e5e5",
   },
   lockedBtn: { position: "absolute", top: "5px", left: "5px" },
 };
 
-export { StyledBadge, nav_links, MainStyle, images, stylesMain, themeMain };
+export { nav_links, MainStyle, images, stylesMain };

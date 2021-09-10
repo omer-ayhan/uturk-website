@@ -7,10 +7,51 @@ import Description from "./Description";
 import TwitterBox from "./TwitterBox";
 import { Box, createTheme, Grid, ThemeProvider } from "@material-ui/core";
 import Footer from "./Footer";
-import { themeMain } from "./MainStyle";
 import BackToTop from "./BackToTop";
+import { useSelector } from "react-redux";
 
 function App() {
+  const checked = useSelector((state) => state.theme.checkTheme.value);
+
+  const themeMain = createTheme({
+    overrides: {
+      MuiSwitch: {
+        colorSecondary: {
+          "&$checked": {
+            // Controls checked color for the thumb
+            color: "#90CD5D",
+          },
+        },
+        track: {
+          // Controls default (unchecked) color for the track
+          "$checked$checked + &": {
+            // Controls checked color for the track
+            opacity: 0.7,
+            backgroundColor: "#90CD5D",
+          },
+        },
+      },
+    },
+    palette: {
+      primary: {
+        main: "#90CD5D",
+      },
+      type: checked ? "dark" : "light",
+      background: {
+        paper: checked ? "#1a1a1a" : "#fff",
+      },
+    },
+    typography: {
+      body1: {
+        fontWeight: 500,
+      },
+      h5: {
+        fontWeight: 500,
+      },
+    },
+  });
+
+  console.log(themeMain.palette.type);
   return (
     <ThemeProvider theme={themeMain}>
       <Navbar />
@@ -27,13 +68,13 @@ function App() {
             <Grid item xs={12} sm={8}>
               <Description />
             </Grid>
-            <Grid item xs={4} sm={4}>
+            <Grid item xs={12} sm={4}>
               <TwitterBox />
             </Grid>
           </Grid>
         </Box>
       </div>
-      {/* <Footer /> */}
+      <Footer />
       <BackToTop />
     </ThemeProvider>
   );

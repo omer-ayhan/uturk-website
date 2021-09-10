@@ -13,7 +13,6 @@ function Footer() {
       p="16px 0 0px 0"
       width="100%"
       height="130px"
-      bgcolor="#E8E8E8"
       align="center">
       <Grid
         container
@@ -25,7 +24,8 @@ function Footer() {
           <Box mb="50px">
             {["Yardım", "Yasal Uyarı", "İletişim"].map((e) => (
               <Link
-                style={{ ...stylesMain.linkDark, margin: "0 10px" }}
+                className={classes.textTheme}
+                style={{ ...stylesMain.linkMain, margin: "0 10px" }}
                 href="#"
                 rel="noopener">
                 <Typography variant="h6" component="span">
@@ -43,6 +43,7 @@ function Footer() {
       </Grid>
       <Box className={classes.footerChild}>
         <Typography
+          className={classes.textTheme}
           gutterBottom
           variant="button"
           component="span"

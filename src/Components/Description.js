@@ -10,8 +10,10 @@ import {
 } from "@material-ui/core";
 import Popup from "./Popup";
 import AdvertiseBox from "./AdvertiseBox";
-import { images, stylesMain } from "./MainStyle";
+import MainStyle, { images, stylesMain } from "./MainStyle";
 function Description() {
+  const [useStyles] = MainStyle();
+  const classes = useStyles();
   const [facebook, twitter, telegram, share, mail] = [
     images.facebook,
     images.twitter,
@@ -23,7 +25,9 @@ function Description() {
     <>
       <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
-          <Typography variant="h5">Galatasaray - Fenerbahçe Maçı</Typography>
+          <Typography className={classes.textTheme} variant="h5">
+            Galatasaray - Fenerbahçe Maçı
+          </Typography>
         </Grid>
 
         <Grid item xs={12} sm={6}>
@@ -85,11 +89,15 @@ function Description() {
           sm={7}
           alignItems="flex-end">
           <Box>
-            <Box mb="10px" fontWeight="fontWeightMedium">
+            <Box
+              className={classes.textTheme}
+              mb="10px"
+              fontWeight="fontWeightMedium">
               Sponsorluk, Şikayet, İstek:
             </Box>
             <Box fontWeight="fontWeightMedium">
-              <img src={mail} alt="mail" /> uturknet@gmail.com
+              <img src={mail} alt="mail" />{" "}
+              <span className={classes.textTheme}>uturknet@gmail.com</span>
             </Box>
           </Box>
         </Grid>
