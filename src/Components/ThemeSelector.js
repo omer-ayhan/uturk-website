@@ -7,7 +7,7 @@ import MainStyle, { images } from "./MainStyle";
 function ThemeSelector() {
   const [useStyle] = MainStyle();
   const classes = useStyle();
-  const checked = useSelector((state) => state.theme.checkTheme.value);
+  const checked = useSelector((state) => state.nav.value);
   const dispatch = useDispatch();
   const [light, dark] = [images.light, images.dark];
   document.body.style.backgroundColor = checked ? "#313131" : "#fff";

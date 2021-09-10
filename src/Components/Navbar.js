@@ -12,6 +12,9 @@ import {
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
+import { langs } from "../data/navSlices";
+import { changeLang } from "../data/navSlices";
+import { useDispatch, useSelector } from "react-redux";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -28,14 +31,14 @@ function HideOnScroll(props) {
 }
 
 function Navbar(props) {
+  const flagDef = useSelector((state) => state.nav.flag);
+  const dispatch = useDispatch();
   const [useStyles, StyledBadge, stylesMain] = MainStyle();
 
   const classes = useStyles();
-  const [notify_bell, arrow_down, US_flag, TR_flag, logo] = [
+  const [notify_bell, arrow_down, logo] = [
     images.notify_bell,
     images.arrow_down,
-    images.US_flag,
-    images.TR_flag,
     images.logo,
   ];
 
@@ -97,16 +100,19 @@ function Navbar(props) {
                 </Box>
                 <Box ml="8px">
                   <Popup
-                    btn={<img src={TR_flag} alt="" />}
-                    out={
-                      <Button
-                        className={classes.popup}
-                        color="primary"
-                        style={stylesMain.textTheme}
-                        endIcon={<img src={US_flag} alt="" />}>
-                        US
-                      </Button>
-                    }
+                    btn={<img src={flagDef} alt="" />}
+                    out={langs.map((lang) => (
+                      <Box>
+                        <Button
+                          className={classes.popup}
+                          onClick={() => dispatch(changeLang(lang.flag))}
+                          color="primary"
+                          style={stylesMain.textTheme}
+                          endIcon={<img src={lang.flag} alt="" />}>
+                          {lang.label}
+                        </Button>
+                      </Box>
+                    ))}
                     isButton={true}
                     start={<img src={arrow_down} alt="" />}
                   />

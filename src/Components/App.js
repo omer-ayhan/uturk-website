@@ -11,7 +11,7 @@ import BackToTop from "./BackToTop";
 import { useSelector } from "react-redux";
 
 function App() {
-  const checked = useSelector((state) => state.theme.checkTheme.value);
+  const checked = useSelector((state) => state.nav.value);
 
   const themeMain = createTheme({
     overrides: {

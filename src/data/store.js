@@ -13,6 +13,6 @@ const persisted = persistReducer(persistConfig, navReducer);
 
 export default configureStore({
   reducer: {
-    theme: persisted,
+    nav: persisted,
   },
 });

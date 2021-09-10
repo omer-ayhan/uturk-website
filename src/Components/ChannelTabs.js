@@ -38,7 +38,7 @@ function a11yProps(index) {
 }
 
 export default function ChannelTabs() {
-  const checked = useSelector((state) => state.theme.checkTheme.value);
+  const checked = useSelector((state) => state.nav.value);
   const [useStyles] = MainStyle();
   const classes = useStyles();
 
