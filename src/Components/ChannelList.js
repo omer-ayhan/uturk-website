@@ -12,10 +12,12 @@ import {
 } from "@material-ui/core";
 import Popup from "./Popup";
 import ChannelTabs from "./ChannelTabs";
-import { images } from "./MainStyle";
+import MainStyle, { images } from "./MainStyle";
 import "../css/ChannelList.css";
 
 function ChannelList() {
+  const [useStyles] = MainStyle();
+  const classes = useStyles();
   const [value, setValue] = useState("inactive");
   const [chevron_down, hamburger, filter] = [
     images.chevron_down,
@@ -28,7 +30,7 @@ function ChannelList() {
     console.log(value);
   };
   return (
-    <Card id="channelCard">
+    <Card id="channelCard" className={classes.papers}>
       <CardHeader
         avatar={<img src={hamburger} alt="" />}
         action={

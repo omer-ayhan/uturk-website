@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Grid, Link, Typography } from "@material-ui/core";
-import MainStyle, { images, stylesMain } from "./MainStyle";
+import MainStyle, { images } from "./MainStyle";
 
 function Footer() {
-  const [useStyles] = MainStyle();
+  const [useStyles, stylesMain] = MainStyle();
 
   const classes = useStyles();
   const logo = images.logo;

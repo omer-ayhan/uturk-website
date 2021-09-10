@@ -37,9 +37,6 @@ function App() {
         main: "#90CD5D",
       },
       type: checked ? "dark" : "light",
-      background: {
-        paper: checked ? "#1a1a1a" : "#fff",
-      },
     },
     typography: {
       body1: {

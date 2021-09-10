@@ -15,7 +15,10 @@ import {
 
 function HideOnScroll(props) {
   const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? true : undefined });
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    threshold: 10,
+  });
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -25,7 +28,8 @@ function HideOnScroll(props) {
 }
 
 function Navbar(props) {
-  const [useStyles, StyledBadge] = MainStyle();
+  const [useStyles, StyledBadge, stylesMain] = MainStyle();
+
   const classes = useStyles();
   const [notify_bell, arrow_down, US_flag, TR_flag, logo] = [
     images.notify_bell,
@@ -98,6 +102,7 @@ function Navbar(props) {
                       <Button
                         className={classes.popup}
                         color="primary"
+                        style={stylesMain.textTheme}
                         endIcon={<img src={US_flag} alt="" />}>
                         US
                       </Button>

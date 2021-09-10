@@ -1,4 +1,3 @@
-import React from "react";
 import { Badge, makeStyles, withStyles } from "@material-ui/core";
 import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
@@ -58,10 +57,24 @@ function MainStyle() {
     textTheme: {
       color: checked ? "#fff" : "#525252",
     },
-    appBar: {
-      boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
-      background: checked ? "#1a1a1a" : "#fff",
-    },
+    appBar: checked
+      ? {
+          boxShadow: "10px 3px 20px 7px rgba(180, 180, 180, 0.11)",
+          background: "#1a1a1a",
+        }
+      : {
+          boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
+          background: "#fff",
+        },
+    papers: checked
+      ? {
+          boxShadow: "10px 3px 20px 7px rgba(180, 180, 180, 0.11)",
+          background: "#1a1a1a",
+        }
+      : {
+          boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
+          background: "#fff",
+        },
     topBtn: {
       position: "fixed",
       color: "#90CD5D",
@@ -93,9 +106,40 @@ function MainStyle() {
       padding: "0 4px",
     },
   }))(Badge);
-  return [useStyles, StyledBadge];
+  const stylesMain = {
+    channelItem: {
+      disabledScreen: {
+        background: "transparent",
+        justifyContent: "flex-start",
+      },
+    },
+    linkWhite: {
+      textDecoration: "none",
+      textAlign: "center",
+      color: "#fff",
+    },
+    textTheme: {
+      color: checked ? "#fff" : "#525252",
+    },
+    linkDark: {
+      textDecoration: "none",
+      textAlign: "center",
+      color: "#454545",
+    },
+    linkMain: {
+      textDecoration: "none",
+      textAlign: "center",
+    },
+    borderGray: {
+      borderBottom: "3px solid #e5e5e5",
+    },
+    lockedBtn: { position: "absolute", top: "10px", left: "10px" },
+  };
+
+  return [useStyles, StyledBadge, stylesMain];
 }
 export default MainStyle;
+
 const images = {
   facebook: facebook,
   twitter: twitter,
@@ -132,31 +176,4 @@ const nav_links = {
   ],
 };
 
-const stylesMain = {
-  channelItem: {
-    disabledScreen: {
-      background: "transparent",
-      justifyContent: "flex-start",
-    },
-  },
-  linkWhite: {
-    textDecoration: "none",
-    textAlign: "center",
-    color: "#fff",
-  },
-  linkDark: {
-    textDecoration: "none",
-    textAlign: "center",
-    color: "#454545",
-  },
-  linkMain: {
-    textDecoration: "none",
-    textAlign: "center",
-  },
-  borderGray: {
-    borderBottom: "3px solid #e5e5e5",
-  },
-  lockedBtn: { position: "absolute", top: "5px", left: "5px" },
-};
-
-export { nav_links, MainStyle, images, stylesMain };
+export { nav_links, MainStyle, images };

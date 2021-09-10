@@ -1,13 +1,16 @@
-import { Box, Card, CardMedia } from "@material-ui/core";
 import React from "react";
+import { Box, Card, CardMedia } from "@material-ui/core";
+import MainStyle from "./MainStyle";
 
 function VideoBox() {
+  const [useStyles] = MainStyle();
+  const classes = useStyles();
   return (
-    <Card>
+    <Card className={classes.papers}>
       <Box p="15px" height="500px">
         <CardMedia
           component="iframe"
-          image="https://www.youtube.com/embed/SV-P4GDmdTs"
+          image="https://www.youtube.com/embed/8XqU6HmicCw"
           allowFullScreen="allowfullscreen"
           height="100%"
         />

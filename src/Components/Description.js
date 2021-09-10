@@ -10,9 +10,9 @@ import {
 } from "@material-ui/core";
 import Popup from "./Popup";
 import AdvertiseBox from "./AdvertiseBox";
-import MainStyle, { images, stylesMain } from "./MainStyle";
+import MainStyle, { images } from "./MainStyle";
 function Description() {
-  const [useStyles] = MainStyle();
+  const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
   const [facebook, twitter, telegram, share, mail] = [
     images.facebook,
@@ -60,14 +60,6 @@ function Description() {
             </Box>
           </Box>
         </Grid>
-
-        {/* <Grid item xs={12} sm={7}>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-            voluptates perspiciatis libero, ratione hic quasi accusantium
-            molestias deleniti magni reprehenderit eius.
-          </Typography>
-        </Grid> */}
 
         <Grid item xs={10} sm={5}>
           {["Canlı", "Bein Sport", "Maç Yayınları", "Canlı Maç", "Lig TV"].map(

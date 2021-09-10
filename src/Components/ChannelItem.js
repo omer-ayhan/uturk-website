@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Typography } from "@material-ui/core";
-import { images, stylesMain } from "./MainStyle";
+import MainStyle, { images } from "./MainStyle";
 
 function ChannelItem({ isLive }) {
+  const [, , stylesMain] = MainStyle();
+
   const [locked, FB, GS, live] = [
     images.locked,
     images.FB,
@@ -25,7 +27,7 @@ function ChannelItem({ isLive }) {
           </div>
         ) : (
           <div className="disabledScreen">
-            <img src={locked} style={stylesMain.lockedBtn} alt="" />
+            <img style={stylesMain.lockedBtn} src={locked} alt="" />
           </div>
         )}
         <div className="teamsBox">
