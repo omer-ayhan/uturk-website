@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "./Popup";
 import ThemeSelector from "./ThemeSelector";
-import { StyledBadge, nav_links, useStyles, images } from "./MainStyle";
+import MainStyle, { StyledBadge, nav_links, images } from "./MainStyle";
 import {
   AppBar,
   Box,
@@ -25,6 +25,7 @@ function HideOnScroll(props) {
 }
 
 function Navbar(props) {
+  const [useStyles] = MainStyle();
   const classes = useStyles();
   const [notify_bell, arrow_down, US_flag, TR_flag, logo] = [
     images.notify_bell,

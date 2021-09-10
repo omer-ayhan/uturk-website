@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
-import { useStyles } from "./MainStyle";
+import MainStyle from "./MainStyle";
+// import { useStyles } from "./MainStyle";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,7 +38,9 @@ function a11yProps(index) {
 }
 
 export default function ChannelTabs() {
+  const [useStyles] = MainStyle();
   const classes = useStyles();
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -45,7 +48,7 @@ export default function ChannelTabs() {
   };
 
   return (
-    <div>
+    <>
       <AppBar className={classes.tabs} position="static">
         <Tabs
           TabIndicatorProps={{
@@ -84,6 +87,6 @@ export default function ChannelTabs() {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
-    </div>
+    </>
   );
 }

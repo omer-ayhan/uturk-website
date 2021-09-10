@@ -24,14 +24,9 @@ function ChannelItem({ isLive }) {
             </Typography>
           </div>
         ) : (
-          <>
-            <div className="disabledScreen"></div>
-            <div
-              className="logo_container"
-              style={stylesMain.channelItem.disabledScreen}>
-              <img src={locked} alt="" />
-            </div>
-          </>
+          <div className="disabledScreen">
+            <img src={locked} style={stylesMain.lockedBtn} alt="" />
+          </div>
         )}
         <div className="teamsBox">
           <div className="team-logo-box">

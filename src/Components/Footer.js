@@ -1,8 +1,10 @@
 import React from "react";
 import { Box, Grid, Link, Typography } from "@material-ui/core";
-import { useStyles, images, stylesMain } from "./MainStyle";
+import MainStyle, { images, stylesMain } from "./MainStyle";
 
 function Footer() {
+  const [useStyles] = MainStyle();
+
   const classes = useStyles();
   const logo = images.logo;
   return (
@@ -34,11 +36,9 @@ function Footer() {
           </Box>
         </Grid>
         <Grid item xs={6} sm={8}>
-          <span id="logo">
-            <Link href="#logo">
-              <img id="logo-img" src={logo} alt="logo" />
-            </Link>
-          </span>
+          <Link href="#logo">
+            <img id="logo-img" src={logo} alt="logo" />
+          </Link>
         </Grid>
       </Grid>
       <Box className={classes.footerChild}>

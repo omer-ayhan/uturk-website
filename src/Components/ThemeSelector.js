@@ -1,14 +1,19 @@
 import React from "react";
 import { Box, Switch } from "@material-ui/core";
-import { images, useStyles } from "./MainStyle";
+import { useSelector, useDispatch } from "react-redux";
+import { changeTheme } from "../data/navSlices";
+import MainStyle, { images } from "./MainStyle";
 
 function ThemeSelector() {
-  const classes = useStyles();
-  const [checked, setChecked] = React.useState(false);
+  const [useStyle] = MainStyle();
+  const classes = useStyle();
+  const checked = useSelector((state) => state.theme.checkTheme.value);
+  const dispatch = useDispatch();
   const [light, dark] = [images.light, images.dark];
+  document.body.style.backgroundColor = checked ? "#313131" : "#fff";
 
   const toggleChecked = () => {
-    setChecked((prev) => !prev);
+    dispatch(changeTheme());
   };
   return (
     <Box

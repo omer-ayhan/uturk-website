@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import { Box, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
@@ -37,7 +37,7 @@ export default function Popup({ btn, out, isButton, start }) {
               vertical: "top",
               horizontal: "center",
             }}>
-            <Box>{out}</Box>
+            {out}
           </Popover>
         </>
       )}

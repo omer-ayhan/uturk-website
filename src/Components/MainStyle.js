@@ -1,3 +1,4 @@
+import React from "react";
 import { Badge, createTheme, makeStyles, withStyles } from "@material-ui/core";
 import facebook from "../images/facebook.png";
 import twitter from "../images/twitter.png";
@@ -19,7 +20,103 @@ import US_flag from "../images/US.png";
 import arrow_down from "../images/arrow-down.png";
 import live from "../images/live.svg";
 import viewer from "../images/viewer.png";
+import { useSelector } from "react-redux";
 
+const themeObject = {
+  overrides: {
+    MuiSwitch: {
+      colorSecondary: {
+        "&$checked": {
+          // Controls checked color for the thumb
+          color: "#90CD5D",
+        },
+      },
+      track: {
+        // Controls default (unchecked) color for the track
+        "$checked$checked + &": {
+          // Controls checked color for the track
+          opacity: 0.7,
+          backgroundColor: "#90CD5D",
+        },
+      },
+    },
+  },
+  palette: {
+    primary: {
+      main: "#90CD5D",
+    },
+    type: "light",
+  },
+  typography: {
+    body1: {
+      fontWeight: 500,
+    },
+    h5: {
+      fontWeight: 500,
+    },
+  },
+};
+
+function MainStyle() {
+  const checked = useSelector((state) => state.theme.checkTheme.value);
+  const [theme, setTheme] = React.useState(themeObject);
+  const useStyles = makeStyles((theme) => ({
+    popup: {
+      color: "#454545",
+      fontSize: "16px",
+      padding: "5px 10px 5px 15px",
+      "&:hover": {
+        backgroundColor: "#8fcd5d2a",
+        color: "#90cd5d",
+      },
+    },
+    footerParent: {
+      position: "relative",
+    },
+    footerChild: {
+      position: "absolute",
+      bottom: "5px",
+      left: "10px",
+    },
+    navLink: {
+      textDecoration: "none",
+      textAlign: "center",
+      padding: "10px",
+      marginLeft: "5px",
+      borderRadius: "8px",
+      transition: "background-color 0.3s",
+      "&:hover": {
+        background: "#90cd5d",
+        color: "#fff",
+      },
+    },
+    appBar: {
+      boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
+      background: checked ? "#1a1a1a" : "#fff",
+    },
+    topBtn: {
+      position: "fixed",
+      color: "#90CD5D",
+      bottom: "10px",
+      right: "10px",
+    },
+    tabs: {
+      flexGrow: 1,
+      backgroundColor: "#fff",
+      boxShadow: "none",
+      borderTop: "3px solid #e5e5e5",
+    },
+    darkMode: {
+      position: "absolute",
+      top: 0,
+      right: "40px",
+    },
+  }));
+
+  return [useStyles, theme];
+}
+export default MainStyle;
+const themeMain = createTheme(themeObject);
 const images = {
   facebook: facebook,
   twitter: twitter,
@@ -66,59 +163,6 @@ const nav_links = {
   ],
 };
 
-const useStyles = makeStyles((theme) => ({
-  popup: {
-    color: "#454545",
-    fontSize: "16px",
-    padding: "5px 10px 5px 15px",
-    "&:hover": {
-      backgroundColor: "#8fcd5d2a",
-      color: "#90cd5d",
-    },
-  },
-  footerParent: {
-    position: "relative",
-  },
-  footerChild: {
-    position: "absolute",
-    bottom: "5px",
-    left: "10px",
-  },
-  navLink: {
-    textDecoration: "none",
-    textAlign: "center",
-    padding: "10px",
-    marginLeft: "5px",
-    borderRadius: "8px",
-    transition: "background-color 0.3s",
-    "&:hover": {
-      background: "#90cd5d",
-      color: "#fff",
-    },
-  },
-  appBar: {
-    boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
-    background: "#fff",
-  },
-  topBtn: {
-    position: "fixed",
-    color: "#90CD5D",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
-  tabs: {
-    flexGrow: 1,
-    backgroundColor: "#fff",
-    boxShadow: "none",
-    borderTop: "3px solid #e5e5e5",
-  },
-  darkMode: {
-    position: "absolute",
-    top: 0,
-    right: "40px",
-  },
-}));
-
 const stylesMain = {
   channelItem: {
     disabledScreen: {
@@ -139,40 +183,7 @@ const stylesMain = {
   borderGray: {
     borderBottom: "3px solid #e5e5e5",
   },
+  lockedBtn: { position: "absolute", top: "5px", left: "5px" },
 };
 
-const themeMain = createTheme({
-  overrides: {
-    MuiSwitch: {
-      colorSecondary: {
-        "&$checked": {
-          // Controls checked color for the thumb
-          color: "#90CD5D",
-        },
-      },
-      track: {
-        // Controls default (unchecked) color for the track
-        "$checked$checked + &": {
-          // Controls checked color for the track
-          opacity: 0.7,
-          backgroundColor: "#90CD5D",
-        },
-      },
-    },
-  },
-  palette: {
-    primary: {
-      main: "#90CD5D",
-    },
-  },
-  typography: {
-    body1: {
-      fontWeight: 500,
-    },
-    h5: {
-      fontWeight: 500,
-    },
-  },
-});
-
-export { StyledBadge, nav_links, useStyles, images, themeMain, stylesMain };
+export { StyledBadge, nav_links, MainStyle, images, stylesMain, themeMain };

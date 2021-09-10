@@ -1,8 +1,10 @@
 import React from "react";
 import { Zoom, Fab, useScrollTrigger } from "@material-ui/core";
-import { images, useStyles } from "./MainStyle";
+import MainStyle, { images } from "./MainStyle";
 
 export default function BackToTop() {
+  const [useStyles] = MainStyle();
+  const classes = useStyles();
   const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
       "#back-to-top-anchor"
@@ -10,7 +12,7 @@ export default function BackToTop() {
     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  const classes = useStyles();
+  // const classes = useStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 100,

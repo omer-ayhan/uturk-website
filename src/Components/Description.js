@@ -20,7 +20,7 @@ function Description() {
     images.mail,
   ];
   return (
-    <Box>
+    <>
       <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
           <Typography variant="h5">Galatasaray - Fenerbahçe Maçı</Typography>
@@ -101,7 +101,7 @@ function Description() {
           <AdvertiseBox />
         </Grid>
       </Grid>
-    </Box>
+    </>
   );
 }
 
