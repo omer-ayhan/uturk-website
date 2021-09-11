@@ -38,8 +38,8 @@ function Description() {
                 out={
                   <List component="nav" aria-label="secondary mailbox folders">
                     <ListItem>
-                      {[facebook, twitter, telegram].map((e) => (
-                        <IconButton>
+                      {[facebook, twitter, telegram].map((e, index) => (
+                        <IconButton key={index}>
                           <img src={e} alt="" />
                         </IconButton>
                       ))}
@@ -63,12 +63,13 @@ function Description() {
 
         <Grid item xs={10} sm={5}>
           {["Canlı", "Bein Sport", "Maç Yayınları", "Canlı Maç", "Lig TV"].map(
-            (e) => (
+            (e, index) => (
               <Box
+                key={index}
                 m="0 9px 9px 0"
                 display="inline-block"
                 fontWeight="fontWeightBold">
-                <Chip label={e} />
+                <Chip label={e} key={index} />
               </Box>
             )
           )}

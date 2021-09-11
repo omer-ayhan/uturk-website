@@ -27,8 +27,8 @@ function ChannelList() {
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.log(value);
   };
+  console.log(value);
   return (
     <Card id="channelCard" className={classes.papers}>
       <CardHeader
@@ -82,6 +82,9 @@ function ChannelList() {
               out={
                 <List component="nav" aria-label="secondary mailbox folders">
                   <ListItem button>
+                    <ListItemText primary="Futbol" />
+                  </ListItem>
+                  <ListItem button>
                     <ListItemText primary="Basketbol" />
                   </ListItem>
                 </List>
@@ -96,7 +99,7 @@ function ChannelList() {
           </Typography>
         }
       />
-      <ChannelTabs />
+      <ChannelTabs filter={value} />
     </Card>
   );
 }

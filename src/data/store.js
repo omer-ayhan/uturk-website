@@ -10,6 +10,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import navReducer from "./navSlices";
+import channelReducer from "./channelSlices";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const persisted = persistReducer(persistConfig, navReducer);
 export default configureStore({
   reducer: {
     nav: persisted,
+    channel: channelReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -51,7 +51,6 @@ function App() {
     },
   });
 
-  console.log(themeMain.palette.type);
   return (
     <ThemeProvider theme={themeMain}>
       <Navbar />

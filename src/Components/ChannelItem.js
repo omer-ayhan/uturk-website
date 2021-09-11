@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Typography } from "@material-ui/core";
-import { images } from "./MainStyle";
+import { useDispatch } from "react-redux";
+import { changeLink } from "../data/channelSlices";
 
-function ChannelItem() {
-  const FB = images.FB;
+function ChannelItem({ image, name, link }) {
+  const dispatch = useDispatch();
+
   return (
-    <Button fullWidth={true}>
+    <Button fullWidth={true} onClick={() => dispatch(changeLink(link))}>
       <div className="channelItem" style={{ height: "40px", padding: "20px" }}>
         <div
           className="teamsBox"
@@ -15,10 +17,10 @@ function ChannelItem() {
             gap: "20px",
           }}>
           <div className="team-logo" style={{ width: "40px", height: "40px" }}>
-            <img src={FB} alt="channel logo" />
+            <img src={image} alt="channel logo" />
           </div>
           <Typography variant="subtitle2" align="center">
-            <b>Bein Sports</b>
+            <b>{name}</b>
           </Typography>
         </div>
       </div>

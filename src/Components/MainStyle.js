@@ -19,6 +19,8 @@ import US_flag from "../images/US.png";
 import arrow_down from "../images/arrow-down.png";
 import live from "../images/live.svg";
 import viewer from "../images/viewer.png";
+import Bein from "../images/Bein.png";
+import Smart from "../images/Smart.png";
 import { useSelector } from "react-redux";
 
 function MainStyle() {
@@ -161,6 +163,8 @@ const images = {
   arrow_down: arrow_down,
   live: live,
   viewer: viewer,
+  Bein: Bein,
+  Smart: Smart,
 };
 
 const nav_links = {

@@ -5,6 +5,7 @@ import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
 import MainStyle from "./MainStyle";
 import { useSelector } from "react-redux";
+import { channel, event } from "../data/channelSlices";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ChannelTabs() {
+export default function ChannelTabs({ filter }) {
   const checked = useSelector((state) => state.nav.theme);
   const [useStyles] = MainStyle();
   const classes = useStyles();
@@ -47,6 +48,52 @@ export default function ChannelTabs() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const filterChannels = () => {
+    if (filter === "live") {
+      return event
+        .filter((e) => e.isLive === true)
+        .map((e, index) => (
+          <EventItem
+            key={index}
+            isLive={e.isLive}
+            image_team1={e.team_logo1}
+            image_team2={e.team_logo2}
+            name_team1={e.team_name1}
+            name_team2={e.team_name2}
+            start={e.start}
+            link={e.link}
+          />
+        ));
+    } else if (filter === "offline") {
+      return event
+        .filter((e) => e.isLive === false)
+        .map((e, index) => (
+          <EventItem
+            key={index}
+            isLive={e.isLive}
+            image_team1={e.team_logo1}
+            image_team2={e.team_logo2}
+            name_team1={e.team_name1}
+            name_team2={e.team_name2}
+            start={e.start}
+            link={e.link}
+          />
+        ));
+    } else {
+      return event.map((e, index) => (
+        <EventItem
+          key={index}
+          isLive={e.isLive}
+          image_team1={e.team_logo1}
+          image_team2={e.team_logo2}
+          name_team1={e.team_name1}
+          name_team2={e.team_name2}
+          start={e.start}
+          link={e.link}
+        />
+      ));
+    }
   };
   return (
     <>
@@ -61,6 +108,7 @@ export default function ChannelTabs() {
           aria-label="menu tabs">
           {["7/24", "Canlı Maç", "Sohbet"].map((e, index) => (
             <Tab
+              key={index}
               style={{
                 minWidth: "126px",
                 fontSize: ".95rem",
@@ -75,17 +123,12 @@ export default function ChannelTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <ChannelItem />
-        <ChannelItem />
+        {channel.map((e, index) => (
+          <ChannelItem key={index} image={e.logo} name={e.name} link={e.link} />
+        ))}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <EventItem isLive={true} />
-        <EventItem isLive={false} />
-        <EventItem isLive={false} />
-        <EventItem isLive={false} />
-        <EventItem isLive={false} />
-        <EventItem isLive={false} />
-        <EventItem isLive={false} />
+        {filterChannels()}
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

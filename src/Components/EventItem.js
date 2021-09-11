@@ -2,19 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Typography } from "@material-ui/core";
 import MainStyle, { images } from "./MainStyle";
+import { useDispatch } from "react-redux";
+import { changeLink } from "../data/channelSlices";
 
-function EventItem({ isLive }) {
+function EventItem({
+  isLive,
+  image_team1,
+  image_team2,
+  name_team1,
+  name_team2,
+  start,
+  link,
+}) {
+  const dispatch = useDispatch();
   const [, , stylesMain] = MainStyle();
 
-  const [locked, FB, GS, live] = [
-    images.locked,
-    images.FB,
-    images.GS,
-    images.live,
-  ];
+  const [locked, live] = [images.locked, images.live];
 
   return (
-    <Button fullWidth={true} disabled={!isLive}>
+    <Button
+      fullWidth={true}
+      disabled={!isLive}
+      onClick={() => dispatch(changeLink(link))}>
       <div className="channelItem">
         {isLive ? (
           <div className="logo_container">
@@ -33,10 +42,10 @@ function EventItem({ isLive }) {
         <div className="teamsBox">
           <div className="team-logo-box">
             <div className="team-logo">
-              <img src={FB} alt="right team" />
+              <img src={image_team1} alt="right team" />
             </div>
             <Typography variant="h6" align="center">
-              <b>FB</b>
+              <b>{name_team1}</b>
             </Typography>
           </div>
           <div className="team-status">
@@ -47,16 +56,16 @@ function EventItem({ isLive }) {
             </div>
             <div className="start-time">
               <Typography variant="body1" align="center">
-                <b>18:00</b>
+                <b>{start}</b>
               </Typography>
             </div>
           </div>
           <div className="team-logo-box">
             <div className="team-logo">
-              <img src={GS} alt="left team" />
+              <img src={image_team2} alt="left team" />
             </div>
             <Typography variant="h6" align="center">
-              <b>GS</b>
+              <b>{name_team2}</b>
             </Typography>
           </div>
         </div>

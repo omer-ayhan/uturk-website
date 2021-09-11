@@ -21,7 +21,7 @@ export const navSlices = createSlice({
       state.theme = !state.theme;
     },
     updateNotify: (state) => {
-      state.reset = !state.reset;
+      state.reset = true;
     },
   },
 });

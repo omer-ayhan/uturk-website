@@ -13,7 +13,7 @@ import {
   useScrollTrigger,
 } from "@material-ui/core";
 import { langs } from "../data/navSlices";
-import { changeLang } from "../data/navSlices";
+import { changeLang, updateNotify } from "../data/navSlices";
 import { useDispatch, useSelector } from "react-redux";
 
 function HideOnScroll(props) {
@@ -31,7 +31,7 @@ function HideOnScroll(props) {
 }
 
 function Navbar(props) {
-  const flagDef = useSelector((state) => state.nav);
+  const navDef = useSelector((state) => state.nav);
   const dispatch = useDispatch();
   const [useStyles, StyledBadge, stylesMain] = MainStyle();
 
@@ -57,8 +57,9 @@ function Navbar(props) {
                   <img id="logo-img" src={logo} alt="logo" />
                 </Link>
                 <Box ml="30px">
-                  {nav_links.main_links.map(({ name, link }) => (
+                  {nav_links.main_links.map(({ name, link }, index) => (
                     <Link
+                      key={index}
                       color="primary"
                       className={classes.navLink}
                       href={`#${link}`}
@@ -72,8 +73,9 @@ function Navbar(props) {
               </Box>
               <Box display="flex" alignItems="center">
                 <Box>
-                  {nav_links.social_links.map(({ img_link, link }) => (
+                  {nav_links.social_links.map(({ img_link, link }, index) => (
                     <Link
+                      key={index}
                       style={{ marginLeft: "13px" }}
                       href={link}
                       target="_blank"
@@ -90,8 +92,15 @@ function Navbar(props) {
                 <Box ml="8px">
                   <Popup
                     btn={
-                      <StyledBadge badgeContent={1} color="secondary">
-                        <img className="notify-logo" src={notify_bell} alt="" />
+                      <StyledBadge
+                        badgeContent={navDef.reset ? 0 : 1}
+                        color="secondary">
+                        <img
+                          onClick={() => dispatch(updateNotify())}
+                          className="notify-logo"
+                          src={notify_bell}
+                          alt=""
+                        />
                       </StyledBadge>
                     }
                     out={"something"}
@@ -100,15 +109,16 @@ function Navbar(props) {
                 </Box>
                 <Box ml="8px">
                   <Popup
-                    btn={<img src={flagDef.flag} alt="" />}
-                    out={langs.map((lang) => (
-                      <Box>
+                    btn={<img src={navDef.flag} alt="" />}
+                    out={langs.map((lang, index) => (
+                      <Box key={index}>
                         <Button
+                          key={index}
                           className={classes.popup}
                           onClick={() => dispatch(changeLang(lang.flag))}
                           color="primary"
                           style={stylesMain.textTheme}
-                          endIcon={<img src={lang.flag} alt="" />}>
+                          endIcon={<img key={index} src={lang.flag} alt="" />}>
                           {lang.label}
                         </Button>
                       </Box>

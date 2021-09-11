@@ -22,13 +22,14 @@ function Footer() {
         justifyContent="center">
         <Grid item xs={6} sm={8}>
           <Box mb="50px">
-            {["Yardım", "Yasal Uyarı", "İletişim"].map((e) => (
+            {["Yardım", "Yasal Uyarı", "İletişim"].map((e, index) => (
               <Link
+                key={index}
                 className={classes.textTheme}
                 style={{ ...stylesMain.linkMain, margin: "0 10px" }}
                 href="#"
                 rel="noopener">
-                <Typography variant="h6" component="span">
+                <Typography key={index} variant="h6" component="span">
                   {e}
                 </Typography>
               </Link>
