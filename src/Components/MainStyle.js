@@ -22,7 +22,7 @@ import viewer from "../images/viewer.png";
 import { useSelector } from "react-redux";
 
 function MainStyle() {
-  const checked = useSelector((state) => state.nav.value);
+  const checked = useSelector((state) => state.nav.theme);
   const useStyles = makeStyles((theme) => ({
     popup: {
       color: "#454545",

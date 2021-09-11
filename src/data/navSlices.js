@@ -2,28 +2,32 @@ import { createSlice } from "@reduxjs/toolkit";
 import { images } from "../Components/MainStyle";
 
 const langs = [
-  { label: "TR", flag: images.TR_flag },
-  { label: "EN", flag: images.US_flag },
+  { label: "tr", flag: images.TR_flag },
+  { label: "en", flag: images.US_flag },
 ];
 
 export const navSlices = createSlice({
   name: "nav",
   initialState: {
     flag: langs[0].flag,
-    value: false,
+    theme: true,
+    reset: false,
   },
   reducers: {
     changeLang: (state, action) => {
-      state.flag = action.payload;
+      if (state.flag !== action.payload) state.flag = action.payload;
     },
     changeTheme: (state) => {
-      state.value = !state.value;
+      state.theme = !state.theme;
+    },
+    updateNotify: (state) => {
+      state.reset = !state.reset;
     },
   },
 });
 
 export { langs };
 
-export const { changeTheme, changeLang } = navSlices.actions;
+export const { changeTheme, changeLang, updateNotify } = navSlices.actions;
 
 export default navSlices.reducer;

@@ -31,7 +31,7 @@ function HideOnScroll(props) {
 }
 
 function Navbar(props) {
-  const flagDef = useSelector((state) => state.nav.flag);
+  const flagDef = useSelector((state) => state.nav);
   const dispatch = useDispatch();
   const [useStyles, StyledBadge, stylesMain] = MainStyle();
 
@@ -100,7 +100,7 @@ function Navbar(props) {
                 </Box>
                 <Box ml="8px">
                   <Popup
-                    btn={<img src={flagDef} alt="" />}
+                    btn={<img src={flagDef.flag} alt="" />}
                     out={langs.map((lang) => (
                       <Box>
                         <Button

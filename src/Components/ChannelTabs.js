@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import EventItem from "./EventItem";
 import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
 import MainStyle from "./MainStyle";
@@ -38,7 +39,7 @@ function a11yProps(index) {
 }
 
 export default function ChannelTabs() {
-  const checked = useSelector((state) => state.nav.value);
+  const checked = useSelector((state) => state.nav.theme);
   const [useStyles] = MainStyle();
   const classes = useStyles();
 
@@ -74,16 +75,17 @@ export default function ChannelTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <ChannelItem isLive={true} />
-        <ChannelItem isLive={false} />
-        <ChannelItem isLive={false} />
-        <ChannelItem isLive={false} />
-        <ChannelItem isLive={false} />
-        <ChannelItem isLive={false} />
+        <ChannelItem />
+        <ChannelItem />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ChannelItem isLive={true} />
-        <ChannelItem isLive={false} />
+        <EventItem isLive={true} />
+        <EventItem isLive={false} />
+        <EventItem isLive={false} />
+        <EventItem isLive={false} />
+        <EventItem isLive={false} />
+        <EventItem isLive={false} />
+        <EventItem isLive={false} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

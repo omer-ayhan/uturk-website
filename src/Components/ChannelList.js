@@ -18,7 +18,7 @@ import "../css/ChannelList.css";
 function ChannelList() {
   const [useStyles] = MainStyle();
   const classes = useStyles();
-  const [value, setValue] = useState("inactive");
+  const [value, setValue] = useState("all");
   const [chevron_down, hamburger, filter] = [
     images.chevron_down,
     images.hamburger,
@@ -46,14 +46,27 @@ function ChannelList() {
                     onChange={handleChange}>
                     <ListItem button>
                       <FormControlLabel
-                        value="inactive"
+                        style={{ width: "100%" }}
+                        color="primary"
+                        value="all"
+                        control={<Radio color="primary" />}
+                        label="Hepsi"
+                      />
+                    </ListItem>
+                    <ListItem button>
+                      <FormControlLabel
+                        style={{ width: "100%" }}
+                        color="primary"
+                        value="live"
                         control={<Radio color="primary" />}
                         label="Başlayan Yayınlar"
                       />
                     </ListItem>
                     <ListItem button>
                       <FormControlLabel
-                        value="active"
+                        style={{ width: "100%" }}
+                        color="primary"
+                        value="offline"
                         control={<Radio color="primary" />}
                         label="Bekleyen Yayınlar"
                       />
@@ -62,6 +75,7 @@ function ChannelList() {
                 </List>
               }
               isButton={false}
+              isRadio={true}
             />
             <Popup
               btn={<img src={chevron_down} alt="" />}

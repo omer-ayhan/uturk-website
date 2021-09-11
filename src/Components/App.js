@@ -11,7 +11,7 @@ import BackToTop from "./BackToTop";
 import { useSelector } from "react-redux";
 
 function App() {
-  const checked = useSelector((state) => state.nav.value);
+  const checked = useSelector((state) => state.nav.theme);
 
   const themeMain = createTheme({
     overrides: {
@@ -44,6 +44,9 @@ function App() {
       },
       h5: {
         fontWeight: 500,
+      },
+      subtitle2: {
+        fontSize: "1.1rem",
       },
     },
   });

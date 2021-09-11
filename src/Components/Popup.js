@@ -1,21 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import { Button } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
-import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
-export default function Popup({ btn, out, isButton, start }) {
-  const handleButton = (popupState) => {
+export default function Popup({ btn, out, isButton, start, isRadio }) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const id = "simple-popover";
+  const handleButton = () => {
     if (isButton) {
       return (
-        <Button {...bindTrigger(popupState)} startIcon={start}>
+        <Button aria-describedby={id} onClick={handleClick} startIcon={start}>
           {btn}
         </Button>
       );
     } else {
       return (
-        <IconButton aria-label="cart" {...bindTrigger(popupState)}>
+        <IconButton
+          aria-label="icon"
+          aria-describedby={id}
+          onClick={handleClick}>
           {btn}
         </IconButton>
       );
@@ -23,25 +36,24 @@ export default function Popup({ btn, out, isButton, start }) {
   };
 
   return (
-    <PopupState variant="popover" popupId="demo-popup-popover">
-      {(popupState) => (
-        <>
-          {handleButton(popupState)}
-          <Popover
-            {...bindPopover(popupState)}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}>
-            {out}
-          </Popover>
-        </>
-      )}
-    </PopupState>
+    <>
+      {handleButton()}
+      <Popover
+        id={id}
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}>
+        <Box onClick={isRadio ? undefined : handleClose}>{out}</Box>
+      </Popover>
+    </>
   );
 }
 
@@ -49,5 +61,6 @@ Popup.propTypes = {
   btn: PropTypes.element,
   out: PropTypes.node,
   isButton: PropTypes.bool,
+  isRadio: PropTypes.bool,
   start: PropTypes.node,
 };
