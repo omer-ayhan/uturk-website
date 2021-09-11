@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, Link, Typography } from "@material-ui/core";
-import MainStyle, { images } from "./MainStyle";
+import MainStyle, { images, nav_links } from "./MainStyle";
+import { Link as RouterLink } from "react-router-dom";
 
 function Footer() {
   const [useStyles, stylesMain] = MainStyle();
@@ -22,22 +23,23 @@ function Footer() {
         justifyContent="center">
         <Grid item xs={6} sm={8}>
           <Box mb="50px">
-            {["Yardım", "Yasal Uyarı", "İletişim"].map((e, index) => (
+            {nav_links.main_links.slice(1).map(({ name, link }, index) => (
               <Link
                 key={index}
+                component={RouterLink}
                 className={classes.textTheme}
                 style={{ ...stylesMain.linkMain, margin: "0 10px" }}
-                href="#"
+                to={link}
                 rel="noopener">
                 <Typography key={index} variant="h6" component="span">
-                  {e}
+                  {name}
                 </Typography>
               </Link>
             ))}
           </Box>
         </Grid>
         <Grid item xs={6} sm={8}>
-          <Link href="#logo">
+          <Link component={RouterLink} to="/">
             <img id="logo-img" src={logo} alt="logo" />
           </Link>
         </Grid>

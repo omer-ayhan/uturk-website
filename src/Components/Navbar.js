@@ -2,6 +2,7 @@ import React from "react";
 import Popup from "./Popup";
 import ThemeSelector from "./ThemeSelector";
 import MainStyle, { nav_links, images } from "./MainStyle";
+import { Link as RouterLink } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -20,7 +21,7 @@ function HideOnScroll(props) {
   const { children, window } = props;
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
-    threshold: 0,
+    threshold: 10,
   });
   return (
     <Slide appear={true} direction="down" in={!trigger}>
@@ -52,16 +53,17 @@ function Navbar(props) {
               alignItems="center"
               justifyContent="space-between">
               <Box display="flex" alignItems="center">
-                <Link href="#logo">
+                <RouterLink to="/">
                   <img id="logo-img" src={logo} alt="logo" />
-                </Link>
+                </RouterLink>
                 <Box ml="30px">
                   {nav_links.main_links.map(({ name, link }, index) => (
                     <Link
                       key={index}
+                      component={RouterLink}
                       color="primary"
                       className={classes.navLink}
-                      href={`#${link}`}
+                      to={link}
                       underline="none">
                       <Typography variant="h6" component="span">
                         {name}

@@ -36,7 +36,10 @@ function MainStyle() {
       },
     },
     footerParent: {
-      position: "relative",
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      right: 0,
       background: checked ? "#4B4B4B" : "#e8e8e8",
     },
     footerChild: {
@@ -169,9 +172,10 @@ const images = {
 
 const nav_links = {
   main_links: [
-    { name: "Ana Sayfa", link: "a" },
-    { name: "Yardım", link: "b" },
-    { name: "Hakkımızda", link: "c" },
+    { name: "Ana Sayfa", link: "/" },
+    { name: "Yardım", link: "/yardım" },
+    { name: "Hakkımızda", link: "/hakkımızda" },
+    { name: "İletişim", link: "/iletisim" },
   ],
   social_links: [
     { img_link: facebook, link: "d" },

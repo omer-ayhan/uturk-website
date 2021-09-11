@@ -68,8 +68,9 @@ export const channelSlices = createSlice({
         state.iframe = action.payload.link;
       if (state.title !== action.payload.title)
         state.title = action.payload.title;
-      if (state.iframe !== action.payload.tags)
+      if (JSON.stringify(state.tags) !== JSON.stringify(action.payload.tags)) {
         state.tags = action.payload.tags;
+      }
     },
   },
 });

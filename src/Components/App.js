@@ -1,4 +1,5 @@
 import "../css/App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AdvertiseBox from "../Components/AdvertiseBox";
 import ChannelList from "../Components/ChannelList";
 import Navbar from "./Navbar";
@@ -9,6 +10,9 @@ import { Box, createTheme, Grid, ThemeProvider } from "@material-ui/core";
 import Footer from "./Footer";
 import BackToTop from "./BackToTop";
 import { useSelector } from "react-redux";
+import YardımPage from "./YardımPage";
+import HakkımızdaPage from "./HakkımızdaPage";
+import IletisimPage from "./IletisimPage";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
@@ -52,30 +56,41 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={themeMain}>
-      <Navbar />
-      <AdvertiseBox id="back-to-top-anchor" />
-      <div className="container">
-        <Box px="80px" mb="40px">
-          <Grid container direction={"row"} spacing={4} align={"start"}>
-            <Grid item xs={12} sm={8}>
-              <VideoBox />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <ChannelList />
-            </Grid>
-            <Grid item xs={12} sm={8}>
-              <Description />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TwitterBox />
-            </Grid>
-          </Grid>
-        </Box>
-      </div>
-      <Footer />
-      <BackToTop />
-    </ThemeProvider>
+    <div className="app">
+      <Router>
+        <Switch>
+          <ThemeProvider theme={themeMain}>
+            <Navbar />
+            <AdvertiseBox id="back-to-top-anchor" />
+            <Route exact path="/">
+              <div className="container">
+                <Box px="80px" mb="40px">
+                  <Grid container direction={"row"} spacing={4} align={"start"}>
+                    <Grid item xs={12} sm={8}>
+                      <VideoBox />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                      <ChannelList />
+                    </Grid>
+                    <Grid item xs={12} sm={8}>
+                      <Description />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                      <TwitterBox />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </div>
+            </Route>
+            <Route exact path="/yardım" component={YardımPage}></Route>
+            <Route exact path="/hakkımızda" component={HakkımızdaPage}></Route>
+            <Route exact path="/iletisim" component={IletisimPage}></Route>
+            <Footer />
+            <BackToTop />
+          </ThemeProvider>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
