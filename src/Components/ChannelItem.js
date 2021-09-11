@@ -3,11 +3,15 @@ import { Button, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { changeLink } from "../data/channelSlices";
 
-function ChannelItem({ image, name, link }) {
+function ChannelItem({ image, name, link, title, tags }) {
   const dispatch = useDispatch();
 
   return (
-    <Button fullWidth={true} onClick={() => dispatch(changeLink(link))}>
+    <Button
+      fullWidth={true}
+      onClick={() =>
+        dispatch(changeLink({ link: link, title: title, tags: tags }))
+      }>
       <div className="channelItem" style={{ height: "40px", padding: "20px" }}>
         <div
           className="teamsBox"

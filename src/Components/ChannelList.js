@@ -5,7 +5,6 @@ import {
   Typography,
   List,
   ListItem,
-  ListItemText,
   Radio,
   RadioGroup,
   FormControlLabel,
@@ -19,6 +18,7 @@ function ChannelList() {
   const [useStyles] = MainStyle();
   const classes = useStyles();
   const [value, setValue] = useState("all");
+  const [cat, setCat] = useState("Futbol");
   const [chevron_down, hamburger, filter] = [
     images.chevron_down,
     images.hamburger,
@@ -81,11 +81,15 @@ function ChannelList() {
               btn={<img src={chevron_down} alt="" />}
               out={
                 <List component="nav" aria-label="secondary mailbox folders">
-                  <ListItem button>
-                    <ListItemText primary="Futbol" />
+                  <ListItem onClick={() => setCat("Futbol")} button>
+                    <Typography variant="h6" component="h6">
+                      Futbol
+                    </Typography>
                   </ListItem>
-                  <ListItem button>
-                    <ListItemText primary="Basketbol" />
+                  <ListItem onClick={() => setCat("Basketbol")} button>
+                    <Typography variant="h6" component="h6">
+                      Basketbol
+                    </Typography>
                   </ListItem>
                 </List>
               }
@@ -95,11 +99,11 @@ function ChannelList() {
         }
         title={
           <Typography gutterBottom variant="h6" component="h6">
-            Futbol
+            {cat}
           </Typography>
         }
       />
-      <ChannelTabs filter={value} />
+      <ChannelTabs filter={value} cat={cat} />
     </Card>
   );
 }

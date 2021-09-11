@@ -13,6 +13,8 @@ function EventItem({
   name_team2,
   start,
   link,
+  title,
+  tags,
 }) {
   const dispatch = useDispatch();
   const [, , stylesMain] = MainStyle();
@@ -23,7 +25,9 @@ function EventItem({
     <Button
       fullWidth={true}
       disabled={!isLive}
-      onClick={() => dispatch(changeLink(link))}>
+      onClick={() =>
+        dispatch(changeLink({ link: link, title: title, tags: tags }))
+      }>
       <div className="channelItem">
         {isLive ? (
           <div className="logo_container">

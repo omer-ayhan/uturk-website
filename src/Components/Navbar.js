@@ -20,11 +20,10 @@ function HideOnScroll(props) {
   const { children, window } = props;
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
-    threshold: 10,
+    threshold: 0,
   });
-
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={true} direction="down" in={!trigger}>
       {children}
     </Slide>
   );

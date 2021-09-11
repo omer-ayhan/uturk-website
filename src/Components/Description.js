@@ -11,7 +11,10 @@ import {
 import Popup from "./Popup";
 import AdvertiseBox from "./AdvertiseBox";
 import MainStyle, { images } from "./MainStyle";
+import { useSelector } from "react-redux";
+
 function Description() {
+  const desc = useSelector((state) => state.channel);
   const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
   const [facebook, twitter, telegram, share, mail] = [
@@ -26,7 +29,7 @@ function Description() {
       <Grid container direction={"row"} spacing={2} alignItems="center">
         <Grid item xs={12} sm={6}>
           <Typography className={classes.textTheme} variant="h5">
-            Galatasaray - Fenerbahçe Maçı
+            {desc.title}
           </Typography>
         </Grid>
 
@@ -62,17 +65,15 @@ function Description() {
         </Grid>
 
         <Grid item xs={10} sm={5}>
-          {["Canlı", "Bein Sport", "Maç Yayınları", "Canlı Maç", "Lig TV"].map(
-            (e, index) => (
-              <Box
-                key={index}
-                m="0 9px 9px 0"
-                display="inline-block"
-                fontWeight="fontWeightBold">
-                <Chip label={e} key={index} />
-              </Box>
-            )
-          )}
+          {desc.tags.map((e, index) => (
+            <Box
+              key={index}
+              m="0 9px 9px 0"
+              display="inline-block"
+              fontWeight="fontWeightBold">
+              <Chip label={e} key={index} />
+            </Box>
+          ))}
         </Grid>
         <Grid
           container

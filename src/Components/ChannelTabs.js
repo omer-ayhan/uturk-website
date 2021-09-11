@@ -5,7 +5,7 @@ import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
 import MainStyle from "./MainStyle";
 import { useSelector } from "react-redux";
-import { channel, event } from "../data/channelSlices";
+import { channels, events } from "../data/channelSlices";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ChannelTabs({ filter }) {
+export default function ChannelTabs({ filter, cat }) {
   const checked = useSelector((state) => state.nav.theme);
   const [useStyles] = MainStyle();
   const classes = useStyles();
@@ -50,8 +50,14 @@ export default function ChannelTabs({ filter }) {
     setValue(newValue);
   };
   const filterChannels = () => {
+    let match;
+    if (cat === "Futbol") {
+      match = events.football;
+    } else if (cat === "Basketbol") {
+      match = events.basketball;
+    }
     if (filter === "live") {
-      return event
+      return match
         .filter((e) => e.isLive === true)
         .map((e, index) => (
           <EventItem
@@ -63,10 +69,12 @@ export default function ChannelTabs({ filter }) {
             name_team2={e.team_name2}
             start={e.start}
             link={e.link}
+            title={e.title}
+            tags={e.tags}
           />
         ));
     } else if (filter === "offline") {
-      return event
+      return match
         .filter((e) => e.isLive === false)
         .map((e, index) => (
           <EventItem
@@ -78,10 +86,12 @@ export default function ChannelTabs({ filter }) {
             name_team2={e.team_name2}
             start={e.start}
             link={e.link}
+            title={e.title}
+            tags={e.tags}
           />
         ));
     } else {
-      return event.map((e, index) => (
+      return match.map((e, index) => (
         <EventItem
           key={index}
           isLive={e.isLive}
@@ -91,6 +101,8 @@ export default function ChannelTabs({ filter }) {
           name_team2={e.team_name2}
           start={e.start}
           link={e.link}
+          title={e.title}
+          tags={e.tags}
         />
       ));
     }
@@ -123,8 +135,15 @@ export default function ChannelTabs({ filter }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {channel.map((e, index) => (
-          <ChannelItem key={index} image={e.logo} name={e.name} link={e.link} />
+        {channels.map((e, index) => (
+          <ChannelItem
+            key={index}
+            image={e.logo}
+            name={e.name}
+            link={e.link}
+            title={e.title}
+            tags={e.tags}
+          />
         ))}
       </TabPanel>
       <TabPanel value={value} index={1}>
