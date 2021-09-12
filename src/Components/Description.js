@@ -10,14 +10,14 @@ import {
 } from "@material-ui/core";
 import Popup from "./Popup";
 import AdvertiseBox from "./AdvertiseBox";
-import MainStyle, { images } from "./MainStyle";
+import MainStyle, { images, nav_links } from "./MainStyle";
 import { useSelector } from "react-redux";
 
 function Description() {
   const desc = useSelector((state) => state.channel);
   const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
-  const [facebook, twitter, telegram, share, mail] = [
+  const [share, mail] = [
     images.facebook,
     images.twitter,
     images.telegram,
@@ -41,9 +41,9 @@ function Description() {
                 out={
                   <List component="nav" aria-label="secondary mailbox folders">
                     <ListItem>
-                      {[facebook, twitter, telegram].map((e, index) => (
+                      {nav_links.social_links.slice(1).map((e, index) => (
                         <IconButton key={index}>
-                          <img src={e} alt="" />
+                          <img src={e.img_link} alt="" />
                         </IconButton>
                       ))}
                     </ListItem>

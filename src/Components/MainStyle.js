@@ -60,7 +60,7 @@ function MainStyle() {
       },
     },
     textTheme: {
-      color: checked ? "#fff" : "#525252",
+      color: checked ? "#fff" : "#333333",
     },
     appBar: checked
       ? {
@@ -124,7 +124,7 @@ function MainStyle() {
       color: "#fff",
     },
     textTheme: {
-      color: checked ? "#fff" : "#525252",
+      color: checked ? "#fff" : "#333333",
     },
     linkDark: {
       textDecoration: "none",
@@ -178,9 +178,18 @@ const nav_links = {
     { name: "İletişim", link: "/iletisim" },
   ],
   social_links: [
-    { img_link: facebook, link: "d" },
-    { img_link: twitter, link: "https://twitter.com/uturknet" },
-    { img_link: telegram, link: "f" },
+    {
+      img_link: mail,
+      link: "mailto:uturknet@gmail.com",
+      name: "uturknet@gmail.com",
+    },
+    { img_link: facebook, link: "d", name: "Facebook" },
+    {
+      img_link: twitter,
+      link: "https://twitter.com/uturknet",
+      name: "Twitter",
+    },
+    { img_link: telegram, link: "f", name: "Telegram" },
   ],
 };
 

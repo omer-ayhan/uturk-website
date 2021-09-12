@@ -74,21 +74,23 @@ function Navbar(props) {
               </Box>
               <Box display="flex" alignItems="center">
                 <Box>
-                  {nav_links.social_links.map(({ img_link, link }, index) => (
-                    <Link
-                      key={index}
-                      style={{ marginLeft: "13px" }}
-                      href={link}
-                      target="_blank"
-                      rel="noreferrer"
-                      underline="none">
-                      <img
-                        className="social-img"
-                        src={img_link}
-                        alt="social link"
-                      />
-                    </Link>
-                  ))}
+                  {nav_links.social_links
+                    .slice(1)
+                    .map(({ img_link, link }, index) => (
+                      <Link
+                        key={index}
+                        style={{ marginLeft: "13px" }}
+                        href={link}
+                        target="_blank"
+                        rel="noreferrer"
+                        underline="none">
+                        <img
+                          className="social-img"
+                          src={img_link}
+                          alt="social link"
+                        />
+                      </Link>
+                    ))}
                 </Box>
                 <Box ml="8px">
                   <Popup
