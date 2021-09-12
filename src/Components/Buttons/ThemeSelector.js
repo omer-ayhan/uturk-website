@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Switch } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { changeTheme } from "../data/navSlices";
-import MainStyle, { images } from "./MainStyle";
+import { changeTheme } from "../../data/navSlices";
+import MainStyle, { images } from "../MainStyle";
 
 function ThemeSelector() {
   const [useStyle] = MainStyle();

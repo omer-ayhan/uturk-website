@@ -1,6 +1,6 @@
 import React from "react";
 import { Zoom, Fab, useScrollTrigger } from "@material-ui/core";
-import MainStyle, { images } from "./MainStyle";
+import MainStyle, { images } from "../MainStyle";
 
 export default function BackToTop() {
   const [useStyles] = MainStyle();

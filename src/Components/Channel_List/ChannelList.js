@@ -9,10 +9,10 @@ import {
   RadioGroup,
   FormControlLabel,
 } from "@material-ui/core";
-import Popup from "./Popup";
+import Popup from "../Buttons/Popup";
 import ChannelTabs from "./ChannelTabs";
-import MainStyle, { images } from "./MainStyle";
-import "../css/ChannelList.css";
+import MainStyle, { images } from "../MainStyle";
+import "../../css/ChannelList.css";
 
 function ChannelList() {
   const [useStyles] = MainStyle();

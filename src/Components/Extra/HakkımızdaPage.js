@@ -1,7 +1,7 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
 import AdvertiseBox from "./AdvertiseBox";
-import MainStyle from "./MainStyle";
+import MainStyle from "../MainStyle";
 
 function HakkımızdaPage() {
   const [, , stylesMain] = MainStyle();

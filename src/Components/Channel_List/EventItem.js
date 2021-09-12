@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Typography } from "@material-ui/core";
-import MainStyle, { images } from "./MainStyle";
+import MainStyle, { images } from "../MainStyle";
 import { useDispatch } from "react-redux";
-import { changeLink } from "../data/channelSlices";
+import { changeLink } from "../../data/channelSlices";
 
 function EventItem({
   isLive,

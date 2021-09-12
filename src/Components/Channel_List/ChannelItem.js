@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { changeLink } from "../data/channelSlices";
+import { changeLink } from "../../data/channelSlices";
 
 function ChannelItem({ image, name, link, title, tags }) {
   const dispatch = useDispatch();

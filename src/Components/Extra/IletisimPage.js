@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Link } from "@material-ui/core";
-import { nav_links } from "./MainStyle";
+import { nav_links } from "../MainStyle";
 import AdvertiseBox from "./AdvertiseBox";
 
 function IletisimPage() {

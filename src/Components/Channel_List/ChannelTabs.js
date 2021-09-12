@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import EventItem from "./EventItem";
 import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
-import MainStyle from "./MainStyle";
+import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
-import { channels, events } from "../data/channelSlices";
+import { channels, events } from "../../data/channelSlices";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

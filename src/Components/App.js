@@ -1,18 +1,18 @@
 import "../css/App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AdvertiseBox from "../Components/AdvertiseBox";
-import ChannelList from "../Components/ChannelList";
-import Navbar from "./Navbar";
+import AdvertiseBox from "./Extra/AdvertiseBox";
+import ChannelList from "./Channel_List/ChannelList";
+import Navbar from "./Nav/Navbar";
 import VideoBox from "./VideoBox";
 import Description from "./Description";
 import TwitterBox from "./TwitterBox";
 import { Box, createTheme, Grid, ThemeProvider } from "@material-ui/core";
 import Footer from "./Footer";
-import BackToTop from "./BackToTop";
+import BackToTop from "./Buttons/BackToTop";
 import { useSelector } from "react-redux";
-import YardımPage from "./YardımPage";
-import HakkımızdaPage from "./HakkımızdaPage";
-import IletisimPage from "./IletisimPage";
+import YardımPage from "./Extra/YardımPage";
+import HakkımızdaPage from "./Extra/HakkımızdaPage";
+import IletisimPage from "./Extra/IletisimPage";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);

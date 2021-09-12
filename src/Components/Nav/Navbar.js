@@ -1,7 +1,7 @@
 import React from "react";
-import Popup from "./Popup";
-import ThemeSelector from "./ThemeSelector";
-import MainStyle, { nav_links, images } from "./MainStyle";
+import Popup from "../Buttons/Popup";
+import ThemeSelector from "../Buttons/ThemeSelector";
+import MainStyle, { nav_links, images } from "../MainStyle";
 import { Link as RouterLink } from "react-router-dom";
 import {
   AppBar,
@@ -13,8 +13,7 @@ import {
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
-import { langs } from "../data/navSlices";
-import { changeLang, updateNotify } from "../data/navSlices";
+import { langs,changeLang, updateNotify } from "../../data/navSlices";
 import { useDispatch, useSelector } from "react-redux";
 
 function HideOnScroll(props) {

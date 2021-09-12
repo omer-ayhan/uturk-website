@@ -8,8 +8,8 @@ import {
   ListItem,
   Typography,
 } from "@material-ui/core";
-import Popup from "./Popup";
-import AdvertiseBox from "./AdvertiseBox";
+import Popup from "./Buttons/Popup";
+import AdvertiseBox from "./Extra/AdvertiseBox";
 import MainStyle, { images, nav_links } from "./MainStyle";
 import { useSelector } from "react-redux";
 
