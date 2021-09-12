@@ -16,7 +16,7 @@ function ChannelItem({ image, name, link, title, tags }) {
         <div
           className="teamsBox"
           style={{
-            paddingBottom: "7px",
+            paddingBottom: "8px",
             justifyContent: "flex-start",
             gap: "20px",
           }}>

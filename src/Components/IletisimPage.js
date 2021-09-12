@@ -25,7 +25,11 @@ function IletisimPage() {
             <span>
               <img src={img_link} alt="contact" />
             </span>
-            <Link href={link} rel="noopener noreferrer" underline="none">
+            <Link
+              target="_blank"
+              href={link}
+              rel="noopener noreferrer"
+              underline="none">
               <Typography
                 color="primary"
                 variant="h6"

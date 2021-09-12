@@ -17,13 +17,7 @@ function Description() {
   const desc = useSelector((state) => state.channel);
   const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
-  const [share, mail] = [
-    images.facebook,
-    images.twitter,
-    images.telegram,
-    images.share,
-    images.mail,
-  ];
+  const [share, mail] = [images.share, images.mail];
   return (
     <>
       <Grid container direction={"row"} spacing={2} alignItems="center">
