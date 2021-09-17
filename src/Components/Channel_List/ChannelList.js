@@ -18,7 +18,8 @@ function ChannelList() {
   const [useStyles] = MainStyle();
   const classes = useStyles();
   const [value, setValue] = useState("all");
-  const [cat, setCat] = useState("Futbol");
+  const [cat, setCat] = useState("football");
+  const [title, setTitle] = useState("Futbol");
   const [chevron_down, hamburger, filter] = [
     images.chevron_down,
     images.hamburger,
@@ -28,7 +29,6 @@ function ChannelList() {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  console.log(value);
   return (
     <Card id="channelCard" className={classes.papers}>
       <CardHeader
@@ -81,12 +81,22 @@ function ChannelList() {
               btn={<img src={chevron_down} alt="" />}
               out={
                 <List component="nav" aria-label="secondary mailbox folders">
-                  <ListItem onClick={() => setCat("Futbol")} button>
+                  <ListItem
+                    onClick={() => {
+                      setCat("football");
+                      setTitle("Futbol");
+                    }}
+                    button>
                     <Typography variant="h6" component="h6">
                       Futbol
                     </Typography>
                   </ListItem>
-                  <ListItem onClick={() => setCat("Basketbol")} button>
+                  <ListItem
+                    onClick={() => {
+                      setCat("basketball");
+                      setTitle("Basketbol");
+                    }}
+                    button>
                     <Typography variant="h6" component="h6">
                       Basketbol
                     </Typography>
@@ -99,7 +109,7 @@ function ChannelList() {
         }
         title={
           <Typography gutterBottom variant="h6" component="h6">
-            {cat}
+            {title}
           </Typography>
         }
       />

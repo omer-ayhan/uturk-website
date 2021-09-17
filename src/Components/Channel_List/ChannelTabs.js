@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import EventItem from "./EventItem";
 import ChannelItem from "./ChannelItem";
 import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
 import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
-import { channels, events } from "../../data/channelSlices";
+import { db } from "../../firebaseConf";
+import { channels } from "../../data/channelSlices";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,73 +41,110 @@ function a11yProps(index) {
 }
 
 export default function ChannelTabs({ filter, cat }) {
+  let snapshot = db.collection(cat);
+  let perm = db.collection("permanent");
   const checked = useSelector((state) => state.nav.theme);
   const [useStyles] = MainStyle();
-  const classes = useStyles();
-
+  const [data, setData] = useState(null);
+  const [changed, setChanged] = useState(false);
   const [value, setValue] = React.useState(0);
+  const classes = useStyles();
+  const unsubscribe = snapshot.onSnapshot((snapshot) => {
+    let changes = snapshot.docChanges();
+    changes.forEach((change) => {
+      if (change.type === "modified") {
+        setData(null);
+        setChanged(true);
+      }
+    });
+  });
+
+  useEffect(() => {
+    const getChannels = [];
+    const preview = snapshot.onSnapshot((snapshot) => {
+      if (snapshot.size < 1) {
+        setData(null);
+        return;
+      }
+      snapshot.forEach((doc) =>
+        getChannels.push({ ...doc.data(), id: doc.id })
+      );
+      setData(getChannels);
+    });
+    return () => {
+      unsubscribe();
+      preview();
+      setChanged(false);
+    };
+  }, [cat, changed]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const filterChannels = () => {
-    let match;
-    if (cat === "Futbol") {
-      match = events.football;
-    } else if (cat === "Basketbol") {
-      match = events.basketball;
-    }
-    if (filter === "live") {
-      return match
-        .filter((e) => e.isLive === true)
-        .map((e, index) => (
+    if (data !== null) {
+      if (filter === "live") {
+        return data
+          .filter((e) => e.isLive === true)
+          .map((e) => (
+            <EventItem
+              key={e.id}
+              isLive={e.isLive}
+              image_team1={e.logo1}
+              image_team2={e.logo2}
+              name_team1={e.team_name1}
+              name_team2={e.team_name2}
+              start={e.start_time}
+              link={e.stream_url}
+              title={e.stream_title}
+              tags={e.tags}
+            />
+          ));
+      } else if (filter === "offline") {
+        return data
+          .filter((e) => e.isLive === false)
+          .map((e) => (
+            <EventItem
+              key={e.id}
+              isLive={e.isLive}
+              image_team1={e.logo1}
+              image_team2={e.logo2}
+              name_team1={e.team_name1}
+              name_team2={e.team_name2}
+              start={e.start_time}
+              link={e.stream_url}
+              title={e.stream_title}
+              tags={e.tags}
+            />
+          ));
+      } else {
+        return data.map((e) => (
           <EventItem
-            key={index}
+            key={e.id}
             isLive={e.isLive}
-            image_team1={e.team_logo1}
-            image_team2={e.team_logo2}
+            image_team1={e.logo1}
+            image_team2={e.logo2}
             name_team1={e.team_name1}
             name_team2={e.team_name2}
-            start={e.start}
-            link={e.link}
-            title={e.title}
+            start={e.start_time}
+            link={e.stream_url}
+            title={e.stream_title}
             tags={e.tags}
           />
         ));
-    } else if (filter === "offline") {
-      return match
-        .filter((e) => e.isLive === false)
-        .map((e, index) => (
-          <EventItem
-            key={index}
-            isLive={e.isLive}
-            image_team1={e.team_logo1}
-            image_team2={e.team_logo2}
-            name_team1={e.team_name1}
-            name_team2={e.team_name2}
-            start={e.start}
-            link={e.link}
-            title={e.title}
-            tags={e.tags}
-          />
-        ));
-    } else {
-      return match.map((e, index) => (
-        <EventItem
-          key={index}
-          isLive={e.isLive}
-          image_team1={e.team_logo1}
-          image_team2={e.team_logo2}
-          name_team1={e.team_name1}
-          name_team2={e.team_name2}
-          start={e.start}
-          link={e.link}
-          title={e.title}
-          tags={e.tags}
-        />
-      ));
-    }
+      }
+    } else
+      return (
+        <Box fontWeight="fontWeightBold" textAlign="center">
+          <Typography variant="h5" component="div">
+            No Data
+          </Typography>
+        </Box>
+      );
   };
+
+  const showPermanent = () => {};
+
   return (
     <>
       <AppBar className={classes.tabs} position="static">
@@ -135,16 +173,7 @@ export default function ChannelTabs({ filter, cat }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {channels.map((e, index) => (
-          <ChannelItem
-            key={index}
-            image={e.logo}
-            name={e.name}
-            link={e.link}
-            title={e.title}
-            tags={e.tags}
-          />
-        ))}
+        {showPermanent()}
       </TabPanel>
       <TabPanel value={value} index={1}>
         {filterChannels()}
