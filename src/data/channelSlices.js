@@ -16,15 +16,6 @@ const channels = [
   },
 ];
 
-snapshot
-  .orderBy("timestamp", "desc")
-  .limit(1)
-  .onSnapshot((snapshot) => {
-    snapshot?.forEach((doc) => getChannels.push(doc.data()));
-    firstData = getChannels[0];
-    console.log(firstData.stream_url);
-  });
-
 export const channelSlices = createSlice({
   name: "channel",
   initialState: {

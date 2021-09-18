@@ -113,7 +113,7 @@ function ChannelList() {
           </Typography>
         }
       />
-      <ChannelTabs filter={value} cat={cat} />
+      <ChannelTabs filter={value} cat={cat} setCat={setCat} />
     </Card>
   );
 }

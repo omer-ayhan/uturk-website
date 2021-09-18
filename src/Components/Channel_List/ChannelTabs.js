@@ -6,7 +6,6 @@ import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
 import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
 import { db } from "../../firebaseConf";
-import { channels } from "../../data/channelSlices";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,51 +41,68 @@ function a11yProps(index) {
 
 export default function ChannelTabs({ filter, cat }) {
   let snapshot = db.collection(cat);
-  let perm = db.collection("permanent");
   const checked = useSelector((state) => state.nav.theme);
   const [useStyles] = MainStyle();
   const [data, setData] = useState(null);
-  const [changed, setChanged] = useState(false);
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
-  const unsubscribe = snapshot.onSnapshot((snapshot) => {
-    let changes = snapshot.docChanges();
-    changes.forEach((change) => {
-      if (change.type === "modified") {
-        setData(null);
-        setChanged(true);
-      }
-    });
-  });
 
   useEffect(() => {
-    const getChannels = [];
-    const preview = snapshot.onSnapshot((snapshot) => {
-      if (snapshot.size < 1) {
-        setData(null);
-        return;
-      }
-      snapshot.forEach((doc) =>
-        getChannels.push({ ...doc.data(), id: doc.id })
+    const unsubscribe = snapshot.onSnapshot((snapshot) => {
+      let channels = [];
+      setData(null);
+      snapshot.docs.map((doc, index) =>
+        channels.push({ ...doc.data(), id: doc.id })
       );
-      setData(getChannels);
+      setData([...channels]);
     });
     return () => {
       unsubscribe();
-      preview();
-      setChanged(false);
     };
-  }, [cat, changed]);
+  }, [cat]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const filterChannels = () => {
     if (data !== null) {
-      if (filter === "live") {
-        return data
-          .filter((e) => e.isLive === true)
-          .map((e) => (
+      if (cat !== "permanent") {
+        if (filter === "live") {
+          return data
+            .filter((e) => e.isLive === true)
+            .map((e) => (
+              <EventItem
+                key={e.id}
+                isLive={e.isLive}
+                image_team1={e.logo1}
+                image_team2={e.logo2}
+                name_team1={e.team_name1}
+                name_team2={e.team_name2}
+                start={e.start_time}
+                link={e.stream_url}
+                title={e.stream_title}
+                tags={e.tags}
+              />
+            ));
+        } else if (filter === "offline") {
+          return data
+            .filter((e) => e.isLive === false)
+            .map((e) => (
+              <EventItem
+                key={e.id}
+                isLive={e.isLive}
+                image_team1={e.logo1}
+                image_team2={e.logo2}
+                name_team1={e.team_name1}
+                name_team2={e.team_name2}
+                start={e.start_time}
+                link={e.stream_url}
+                title={e.stream_title}
+                tags={e.tags}
+              />
+            ));
+        } else {
+          return data.map((e) => (
             <EventItem
               key={e.id}
               isLive={e.isLive}
@@ -100,38 +116,9 @@ export default function ChannelTabs({ filter, cat }) {
               tags={e.tags}
             />
           ));
-      } else if (filter === "offline") {
-        return data
-          .filter((e) => e.isLive === false)
-          .map((e) => (
-            <EventItem
-              key={e.id}
-              isLive={e.isLive}
-              image_team1={e.logo1}
-              image_team2={e.logo2}
-              name_team1={e.team_name1}
-              name_team2={e.team_name2}
-              start={e.start_time}
-              link={e.stream_url}
-              title={e.stream_title}
-              tags={e.tags}
-            />
-          ));
+        }
       } else {
-        return data.map((e) => (
-          <EventItem
-            key={e.id}
-            isLive={e.isLive}
-            image_team1={e.logo1}
-            image_team2={e.logo2}
-            name_team1={e.team_name1}
-            name_team2={e.team_name2}
-            start={e.start_time}
-            link={e.stream_url}
-            title={e.stream_title}
-            tags={e.tags}
-          />
-        ));
+        return "hello";
       }
     } else
       return (
@@ -142,8 +129,6 @@ export default function ChannelTabs({ filter, cat }) {
         </Box>
       );
   };
-
-  const showPermanent = () => {};
 
   return (
     <>
@@ -173,7 +158,7 @@ export default function ChannelTabs({ filter, cat }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {showPermanent()}
+        <ChannelItem cat={cat} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         {filterChannels()}
