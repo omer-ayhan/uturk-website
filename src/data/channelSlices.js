@@ -1,27 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { images } from "../Components/MainStyle";
-import { db } from "../firebaseConf";
-
-let snapshot = db.collection("permanent");
-const getChannels = [];
-let firstData;
-
-const channels = [
-  {
-    name: "Bein Sports",
-    logo: images.Bein,
-    link: "https://www.youtube.com/embed/UyvFiG1K0W0",
-    title: "Bein TV Canlı",
-    tags: ["Canlı", "Bein Sport", "Maç Yayınları", "Canlı Maç", "Lig TV"],
-  },
-];
 
 export const channelSlices = createSlice({
   name: "channel",
   initialState: {
-    iframe: channels[0].link,
-    title: channels[0].title,
-    tags: channels[0].tags,
+    iframe: "",
+    title: "",
+    tags: [],
   },
   reducers: {
     changeLink: (state, action) => {
@@ -35,8 +19,6 @@ export const channelSlices = createSlice({
     },
   },
 });
-
-export { channels };
 
 export const { changeLink } = channelSlices.actions;
 

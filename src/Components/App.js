@@ -9,13 +9,39 @@ import TwitterBox from "./TwitterBox";
 import { Box, createTheme, Grid, ThemeProvider } from "@material-ui/core";
 import Footer from "./Footer";
 import BackToTop from "./Buttons/BackToTop";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import YardımPage from "./Extra/YardımPage";
 import HakkımızdaPage from "./Extra/HakkımızdaPage";
 import IletisimPage from "./Extra/IletisimPage";
+import React from "react";
+import { changeLink } from "../data/channelSlices";
+import { db } from "../firebaseConf";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const unsubscribe = db
+      .collection("permanent")
+      .orderBy("timestamp", "desc")
+      .limit(1)
+      .onSnapshot((snapshot) => {
+        snapshot.docs.map((doc, index) =>
+          dispatch(
+            changeLink({
+              link: doc.data().stream_url,
+              title: doc.data().stream_title,
+              tags: doc.data().tags,
+            })
+          )
+        );
+        console.log("mount");
+      });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const themeMain = createTheme({
     overrides: {
