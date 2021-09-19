@@ -21,7 +21,6 @@ import { updateNotify } from "../data/navSlices";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
-  const notify = useSelector((state) => state.nav);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -54,11 +53,7 @@ function App() {
         snapshot.docs.forEach((snapshot) => {
           changes.push({ ...snapshot.data(), id: snapshot.id });
         });
-        // console.log(snapshot.size);
-        // console.log(changes);
         if (changes.length > 0) {
-          // delete changes[0].timestamp;
-          // console.log("changes", changes);
           dispatch(
             updateNotify({
               size: snapshot.size,

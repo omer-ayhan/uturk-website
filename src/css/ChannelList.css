@@ -5,7 +5,8 @@
 
 .container #channelCard .MuiBox-root {
   height: 385px;
-  overflow: auto !important;
+  overflow-x: hidden;
+  overflow-y: scroll !important;
 }
 
 .container #channelCard .MuiCardHeader-root {

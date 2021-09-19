@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { changeLink } from "../../data/channelSlices";
-// import { removeNotify, updateNotify } from "../../data/navSlices";
 import { db } from "../../firebaseConf";
 
 function ChannelItem() {
@@ -20,11 +19,6 @@ function ChannelItem() {
           channels.push({ ...doc.data(), id: doc.id })
         );
         setData([...channels]);
-        // snapshot.docChanges().forEach((change) => {
-        //   if (change.type === "removed") {
-        //     dispatch(removeNotify());
-        //   }
-        // });
       });
     return () => {
       unsubscribe();
