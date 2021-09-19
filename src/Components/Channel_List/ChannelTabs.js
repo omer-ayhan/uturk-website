@@ -147,7 +147,7 @@ function ChannelTabs({ filter, cat }) {
             <Tab
               key={index}
               style={{
-                minWidth: "126px",
+                minWidth: "95px",
                 fontSize: ".95rem",
                 fontWeight: "bold",
                 color:

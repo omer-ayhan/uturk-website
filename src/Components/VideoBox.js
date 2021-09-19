@@ -8,8 +8,8 @@ function VideoBox() {
   const [useStyles] = MainStyle();
   const classes = useStyles();
   return (
-    <Card className={classes.papers}>
-      <Box p="15px" height="500px">
+    <Card className={`${classes.papers}`}>
+      <Box className={`${classes.papersVideo}`} p="10px" height="500px">
         <CardMedia
           component="iframe"
           image={channel.iframe}

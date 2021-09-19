@@ -21,7 +21,7 @@ function Footer() {
         spacing={0}
         alignItems="center"
         justifyContent="center">
-        <Grid item xs={6} sm={8}>
+        <Grid className={classes.footerLinkResp} item sm={8}>
           <Box mb="50px">
             {nav_links.main_links.slice(1).map(({ name, link }, index) => (
               <Link
@@ -38,7 +38,7 @@ function Footer() {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={6} sm={8}>
+        <Grid item xs={12} sm={8}>
           <Link component={RouterLink} to="/">
             <img id="logo-img" src={logo} alt="logo" />
           </Link>

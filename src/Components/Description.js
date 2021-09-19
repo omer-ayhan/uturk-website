@@ -21,13 +21,13 @@ function Description() {
   return (
     <>
       <Grid container direction={"row"} spacing={2} alignItems="center">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <Typography className={classes.textTheme} variant="h5">
             {desc.title}
           </Typography>
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <Box display="flex" flexDirection="row-reverse" alignItems="center">
             <Box ml="9px">
               <Popup
@@ -47,6 +47,7 @@ function Description() {
               />
             </Box>
             <Box
+              className={classes.footerLinkResp}
               p={0.6}
               fontWeight="fontWeightMedium"
               bgcolor="rgba(119, 190, 60, 1)"
@@ -58,7 +59,7 @@ function Description() {
           </Box>
         </Grid>
 
-        <Grid item xs={10} sm={5}>
+        <Grid item xs={6} sm={5}>
           {desc.tags.map((e, index) => (
             <Box
               key={index}
@@ -73,7 +74,7 @@ function Description() {
           container
           item
           direction={"column"}
-          xs={12}
+          xs={6}
           sm={7}
           alignItems="flex-end">
           <Box>

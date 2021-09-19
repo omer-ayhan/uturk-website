@@ -48,6 +48,93 @@ function MainStyle() {
         color: "#90cd5d",
       },
     },
+    showAd: {
+      [theme.breakpoints.up(1255)]: {
+        display: "none",
+      },
+    },
+    footerLinkResp: {
+      display: "none",
+      [theme.breakpoints.up("sm")]: {
+        display: "block",
+      },
+    },
+    showBreak: {
+      [theme.breakpoints.up("xs")]: {
+        display: "none",
+      },
+      [theme.breakpoints.up("xl")]: {
+        display: "block",
+      },
+    },
+    respMainWrap: {
+      [theme.breakpoints.up("xs")]: {
+        padding: "0 7px 0 7px",
+      },
+      [theme.breakpoints.up("sm")]: {
+        padding: "0 60px 0 60px",
+      },
+      [theme.breakpoints.up("md")]: {
+        padding: "0 50px 0 50px",
+      },
+      // [theme.breakpoints.up("lg")]: {
+      //   padding: "0 60px 0 60px",
+      // },
+    },
+    papersVideo: {
+      [theme.breakpoints.up("xs")]: {
+        height: "250px",
+      },
+      [theme.breakpoints.up("sm")]: {
+        height: "440px",
+      },
+      [theme.breakpoints.up("md")]: {
+        height: "460px",
+      },
+      [theme.breakpoints.up("lg")]: {
+        height: "560px",
+      },
+      [theme.breakpoints.up("xl")]: {
+        height: "590px",
+      },
+    },
+    papersChannels: {
+      [theme.breakpoints.up("xs")]: {
+        height: "500px",
+      },
+      // [theme.breakpoints.up("sm")]: {
+      //   height: "480px",
+      // },
+      [theme.breakpoints.up("md")]: {
+        height: "490px",
+      },
+      [theme.breakpoints.up("lg")]: {
+        height: "590px",
+      },
+      [theme.breakpoints.up("xl")]: {
+        height: "620px",
+      },
+    },
+    showLang: {
+      display: "none",
+      [theme.breakpoints.up(370)]: {
+        display: "block",
+      },
+    },
+    // showShareBox:{
+    //   display:"none",
+    //   [theme.breakpoints.up("sm")]: {
+    //     height: "620px",
+    //   },
+    // },
+    hideLang: {
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "center",
+      [theme.breakpoints.up(370)]: {
+        display: "none",
+      },
+    },
     footerParent: {
       position: "absolute",
       bottom: 0,
@@ -61,6 +148,7 @@ function MainStyle() {
       left: "10px",
     },
     navLink: {
+      display: "none",
       textDecoration: "none",
       textAlign: "center",
       padding: "10px",
@@ -70,6 +158,15 @@ function MainStyle() {
       "&:hover": {
         background: "#90cd5d",
         color: "#fff",
+      },
+      [theme.breakpoints.up(1020)]: {
+        display: "inline-block",
+      },
+    },
+    socialLink: {
+      display: "none",
+      [theme.breakpoints.up(1020)]: {
+        display: "inline-block",
       },
     },
     textTheme: {
@@ -84,6 +181,12 @@ function MainStyle() {
           boxShadow: "10px 3px 20px 7px rgba(0, 0, 0, 0.11)",
           background: "#fff",
         },
+    appBarTrigger: {
+      position: "static",
+      [theme.breakpoints.up(1020)]: {
+        position: "fixed",
+      },
+    },
     papers: checked
       ? {
           boxShadow: "10px 3px 20px 7px rgba(180, 180, 180, 0.11)",
@@ -98,6 +201,12 @@ function MainStyle() {
       color: "#90CD5D",
       bottom: "10px",
       right: "10px",
+    },
+    mobileMenu: {
+      display: "block",
+      [theme.breakpoints.up(1020)]: {
+        display: "none",
+      },
     },
     tabs: {
       flexGrow: 1,

@@ -4,9 +4,10 @@ import AdvertiseBox from "./AdvertiseBox";
 import MainStyle from "../MainStyle";
 
 function HakkımızdaPage() {
-  const [, , stylesMain] = MainStyle();
+  const [useStyles, , stylesMain] = MainStyle();
+  const classes = useStyles();
   return (
-    <Box px="80px" mb="40px" height="100%">
+    <Box className={classes.respMainWrap} px="80px" mb="40px" height="100%">
       <Typography variant="subtitle2" style={stylesMain.textTheme}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio aspernatur
         aperiam vitae maxime explicabo voluptates eveniet reiciendis veritatis?

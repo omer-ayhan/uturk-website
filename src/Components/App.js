@@ -18,10 +18,13 @@ import { changeLink } from "../data/channelSlices";
 import { updateNotifyData } from "../data/notifySlices";
 import { db } from "../firebaseConf";
 import { updateNotify } from "../data/navSlices";
+import MainStyle from "./MainStyle";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
   const dispatch = useDispatch();
+  const [useStyles] = MainStyle();
+  const classes = useStyles();
 
   React.useEffect(() => {
     const unsubscribe = db
@@ -68,6 +71,15 @@ function App() {
   }, []);
 
   const themeMain = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 1255,
+        lg: 1460,
+        xl: 1920,
+      },
+    },
     overrides: {
       MuiSwitch: {
         colorSecondary: {
@@ -114,19 +126,35 @@ function App() {
             <AdvertiseBox id="back-to-top-anchor" />
             <Route exact path="/">
               <div className="container">
-                <Box px="80px" mb="40px">
+                <Box className={classes.respMainWrap} px="80px" mb="40px">
                   <Grid container direction={"row"} spacing={4} align={"start"}>
-                    <Grid item xs={12} sm={8}>
+                    <Grid item xs={12} sm={12} md={8} xl={6}>
                       <VideoBox />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid
+                      item
+                      className={classes.showAd}
+                      xs={12}
+                      sm={12}
+                      md={12}>
+                      <AdvertiseBox />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4} xl={3}>
                       <ChannelList />
                     </Grid>
-                    <Grid item xs={12} sm={8}>
+                    <Grid item className={classes.showBreak} xl={3}>
+                      <AdvertiseBox />
+                      <AdvertiseBox />
+                    </Grid>
+                    <Grid item xs={12} md={8} xl={6}>
                       <Description />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} md={4} xl={3}>
                       <TwitterBox />
+                    </Grid>
+                    <Grid item className={classes.showBreak} xl={3}>
+                      <AdvertiseBox />
+                      <AdvertiseBox />
                     </Grid>
                   </Grid>
                 </Box>
