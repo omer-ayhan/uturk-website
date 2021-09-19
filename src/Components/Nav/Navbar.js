@@ -43,13 +43,7 @@ function Navbar(props) {
   const [useStyles, StyledBadge, stylesMain] = MainStyle();
 
   const classes = useStyles();
-  const [notify_bell, arrow_down, logo, hamburger, chevron] = [
-    images.notify_bell,
-    images.arrow_down,
-    images.logo,
-    images.hamburger,
-    images.chevron_down,
-  ];
+  const [logo] = [images.logo];
 
   const [state, setState] = React.useState({
     right: false,
@@ -93,7 +87,7 @@ function Navbar(props) {
               </Box>
             ))}
             isButton={true}
-            start={<img src={arrow_down} alt="" />}
+            start={<ion-icon name="caret-down" size="large"></ion-icon>}
           />
         </ListItem>
         <ListItem
@@ -102,7 +96,12 @@ function Navbar(props) {
           className={classes.toolbar}
           style={{ width: "100%" }}>
           <ListItemIcon>
-            <img src={chevron} alt="" />
+            <ion-icon
+              name="chevron-forward"
+              style={{
+                ...stylesMain.textTheme,
+                fontSize: "2rem",
+              }}></ion-icon>
           </ListItemIcon>
         </ListItem>
         {nav_links.main_links.map(({ name, link }, index) => (
@@ -198,12 +197,13 @@ function Navbar(props) {
                         <StyledBadge
                           badgeContent={navDef.notify_num}
                           color="secondary">
-                          <img
+                          <ion-icon
                             onClick={() => dispatch(resetNotify())}
-                            className="notify-logo"
-                            src={notify_bell}
-                            alt=""
-                          />
+                            name="notifications"
+                            style={{
+                              ...stylesMain.textTheme,
+                              fontSize: "1.8rem",
+                            }}></ion-icon>
                         </StyledBadge>
                       }
                       out={<NotificationBox />}
@@ -230,12 +230,17 @@ function Navbar(props) {
                         </Box>
                       ))}
                       isButton={true}
-                      start={<img src={arrow_down} alt="" />}
+                      start={
+                        <ion-icon name="caret-down" size="large"></ion-icon>
+                      }
                     />
                   </Box>
                   <Box ml="8px" className={classes.mobileMenu}>
                     <IconButton onClick={toggleDrawer("right", true)}>
-                      <img src={hamburger} alt="" />
+                      <ion-icon
+                        style={stylesMain.textTheme}
+                        name="menu"
+                        size="large"></ion-icon>
                     </IconButton>
                   </Box>
                 </Box>

@@ -10,14 +10,13 @@ import {
 } from "@material-ui/core";
 import Popup from "./Buttons/Popup";
 import AdvertiseBox from "./Extra/AdvertiseBox";
-import MainStyle, { images, nav_links } from "./MainStyle";
+import MainStyle, { nav_links } from "./MainStyle";
 import { useSelector } from "react-redux";
 
 function Description() {
   const desc = useSelector((state) => state.channel);
   const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
-  const [share, mail] = [images.share, images.mail];
   return (
     <>
       <Grid container direction={"row"} spacing={2} alignItems="center">
@@ -31,7 +30,12 @@ function Description() {
           <Box display="flex" flexDirection="row-reverse" alignItems="center">
             <Box ml="9px">
               <Popup
-                btn={<img src={share} alt="" />}
+                btn={
+                  <ion-icon
+                    name="share-social"
+                    size="large"
+                    style={{ color: "#90CD5D" }}></ion-icon>
+                }
                 out={
                   <List component="nav" aria-label="secondary mailbox folders">
                     <ListItem>
@@ -85,7 +89,14 @@ function Description() {
               Sponsorluk, Şikayet, İstek:
             </Box>
             <Box fontWeight="fontWeightMedium">
-              <img src={mail} alt="mail" />{" "}
+              <ion-icon
+                name="mail"
+                style={{
+                  ...stylesMain.textTheme,
+                  fontSize: "1.7rem",
+                  marginBottom: "-5px",
+                }}></ion-icon>{" "}
+              {"   "}
               <span className={classes.textTheme}>uturknet@gmail.com</span>
             </Box>
           </Box>

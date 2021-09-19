@@ -15,16 +15,12 @@ import MainStyle, { images } from "../MainStyle";
 import "../../css/ChannelList.css";
 
 function ChannelList() {
-  const [useStyles] = MainStyle();
+  const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
   const [value, setValue] = useState("all");
   const [cat, setCat] = useState("football");
   const [title, setTitle] = useState("Futbol");
-  const [chevron_down, hamburger, filter] = [
-    images.chevron_down,
-    images.hamburger,
-    images.filter,
-  ];
+  const [hamburger] = [images.hamburger];
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -37,7 +33,11 @@ function ChannelList() {
           action={
             <div className="categoryMenu">
               <Popup
-                btn={<img src={filter} alt="" />}
+                btn={
+                  <ion-icon
+                    style={stylesMain.textTheme}
+                    name="filter"></ion-icon>
+                }
                 out={
                   <List component="nav" aria-label="Live category">
                     <RadioGroup
@@ -79,7 +79,12 @@ function ChannelList() {
                 isRadio={true}
               />
               <Popup
-                btn={<img src={chevron_down} alt="" />}
+                btn={
+                  <ion-icon
+                    style={stylesMain.textTheme}
+                    name="chevron-down"
+                    size="large"></ion-icon>
+                }
                 out={
                   <List component="nav" aria-label="secondary mailbox folders">
                     <ListItem

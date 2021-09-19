@@ -1,9 +1,11 @@
 import React from "react";
 import { Box, Typography, Link } from "@material-ui/core";
-import { nav_links } from "../MainStyle";
+import MainStyle, { nav_links } from "../MainStyle";
 import AdvertiseBox from "./AdvertiseBox";
 
 function IletisimPage() {
+  const [, , stylesMain] = MainStyle();
+
   return (
     <>
       <Box
@@ -23,7 +25,17 @@ function IletisimPage() {
             alignItems="center"
             style={{ gap: "10px" }}>
             <span>
-              <img src={img_link} alt="contact" />
+              {index === 0 ? (
+                <ion-icon
+                  name="mail"
+                  style={{
+                    ...stylesMain.textTheme,
+                    fontSize: "1.7rem",
+                    marginBottom: "-5px",
+                  }}></ion-icon>
+              ) : (
+                <img src={img_link} alt="contact" />
+              )}
             </span>
             <Link
               target="_blank"

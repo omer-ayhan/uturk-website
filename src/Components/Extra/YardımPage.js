@@ -3,18 +3,23 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
-import MainStyle, { images } from "../MainStyle";
+import MainStyle from "../MainStyle";
 import AdvertiseBox from "./AdvertiseBox";
 
 export default function YardımPage() {
-  const [useStyles] = MainStyle();
+  const [useStyles, , stylesMain] = MainStyle();
   const classes = useStyles();
 
   return (
     <Box className={classes.respMainWrap} px="80px" mb="40px" height="100%">
       <Accordion>
         <AccordionSummary
-          expandIcon={<img src={images.arrow_down} alt="accordion logo" />}
+          expandIcon={
+            <ion-icon
+              style={stylesMain.textTheme}
+              name="caret-down"
+              size="large"></ion-icon>
+          }
           aria-controls="panel1a-content"
           id="panel1a-header">
           <Typography variant="h6" component="h6">
@@ -30,7 +35,12 @@ export default function YardımPage() {
       </Accordion>
       <Accordion>
         <AccordionSummary
-          expandIcon={<img src={images.arrow_down} alt="accordion logo" />}
+          expandIcon={
+            <ion-icon
+              style={stylesMain.textTheme}
+              name="caret-down"
+              size="large"></ion-icon>
+          }
           aria-controls="panel2a-content"
           id="panel2a-header">
           <Typography variant="h6" component="h6">
@@ -46,7 +56,12 @@ export default function YardımPage() {
       </Accordion>
       <Accordion>
         <AccordionSummary
-          expandIcon={<img src={images.arrow_down} alt="accordion logo" />}
+          expandIcon={
+            <ion-icon
+              style={stylesMain.textTheme}
+              name="caret-down"
+              size="large"></ion-icon>
+          }
           aria-controls="panel3a-content"
           id="panel3a-header">
           <Typography variant="h6" component="h6">

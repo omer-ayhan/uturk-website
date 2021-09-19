@@ -19,7 +19,7 @@ function EventItem({
   const dispatch = useDispatch();
   const [, , stylesMain] = MainStyle();
 
-  const [locked, live] = [images.locked, images.live];
+  const [live] = [images.live];
 
   return (
     <Button
@@ -40,7 +40,13 @@ function EventItem({
           </div>
         ) : (
           <div className="disabledScreen">
-            <img style={stylesMain.lockedBtn} src={locked} alt="" />
+            <ion-icon
+              name="lock-closed"
+              size="large"
+              style={{
+                ...stylesMain.lockedBtn,
+                ...stylesMain.textTheme,
+              }}></ion-icon>
           </div>
         )}
         <div className="teamsBox">
