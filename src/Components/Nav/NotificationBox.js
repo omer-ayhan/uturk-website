@@ -1,12 +1,10 @@
 import React from "react";
 import { Box, Button, Typography } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import MainStyle from "../MainStyle";
-import { changeLink } from "../../data/channelSlices";
 
 function NotificationBox() {
   const notify = useSelector((state) => state.notify);
-  const dispatch = useDispatch();
   const [useStyles] = MainStyle();
   const classes = useStyles();
 
@@ -32,11 +30,19 @@ function NotificationBox() {
       width="350px"
       height="400px"
       style={{ gap: "20px", overflowX: "hidden", overflowY: "scroll" }}>
+      <Box style={{ borderBottom: "2.6px solid #96969677" }} width="100%">
+        <Typography
+          variant="body1"
+          style={{ fontSize: "1.15rem" }}
+          component="p">
+          Canlı Kanallar
+        </Typography>
+      </Box>
       {notify.notify_data !== null &&
         notify.notify_data?.map((item) => {
           if (item.cat === "permanent") {
             return (
-              <Box mb="3px" width="100%">
+              <Box key={item.id} mb="3px" width="100%">
                 <Box display="flex" justifyContent="space-between">
                   <Typography
                     style={{ fontSize: ".95rem", opacity: ".85" }}
@@ -107,7 +113,7 @@ function NotificationBox() {
             );
           } else {
             return (
-              <Box width="100%">
+              <Box key={item.id} width="100%">
                 <Box mb="3px" display="flex" justifyContent="space-between">
                   <Typography
                     style={{ fontSize: ".95rem", opacity: ".85" }}
