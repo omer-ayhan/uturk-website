@@ -15,10 +15,13 @@ import HakkımızdaPage from "./Extra/HakkımızdaPage";
 import IletisimPage from "./Extra/IletisimPage";
 import React from "react";
 import { changeLink } from "../data/channelSlices";
+import { updateNotifyData } from "../data/notifySlices";
 import { db } from "../firebaseConf";
+import { updateNotify } from "../data/navSlices";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
+  const notify = useSelector((state) => state.nav);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -36,7 +39,33 @@ function App() {
             })
           )
         );
-        console.log("mount");
+      });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const unsubscribe = db
+      ?.collection("notifications")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        let changes = [];
+        snapshot.docs.forEach((snapshot) => {
+          changes.push({ ...snapshot.data(), id: snapshot.id });
+        });
+        // console.log(snapshot.size);
+        // console.log(changes);
+        if (changes.length > 0) {
+          // delete changes[0].timestamp;
+          // console.log("changes", changes);
+          dispatch(
+            updateNotify({
+              size: snapshot.size,
+            })
+          );
+          dispatch(updateNotifyData({ data: changes }));
+        }
       });
     return () => {
       unsubscribe();

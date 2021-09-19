@@ -39,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ChannelTabs({ filter, cat }) {
+function ChannelTabs({ filter, cat }) {
   let snapshot = db.collection(cat);
   const checked = useSelector((state) => state.nav.theme);
   const [useStyles] = MainStyle();
@@ -48,14 +48,16 @@ export default function ChannelTabs({ filter, cat }) {
   const classes = useStyles();
 
   useEffect(() => {
-    const unsubscribe = snapshot.onSnapshot((snapshot) => {
-      let channels = [];
-      setData(null);
-      snapshot.docs.map((doc, index) =>
-        channels.push({ ...doc.data(), id: doc.id })
-      );
-      setData([...channels]);
-    });
+    const unsubscribe = snapshot
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        let channels = [];
+        setData(null);
+        snapshot.docs.map((doc, index) =>
+          channels.push({ ...doc.data(), id: doc.id })
+        );
+        setData([...channels]);
+      });
     return () => {
       unsubscribe();
     };
@@ -169,3 +171,9 @@ export default function ChannelTabs({ filter, cat }) {
     </>
   );
 }
+ChannelTabs.propTypes = {
+  filter: PropTypes.string.isRequired,
+  cat: PropTypes.string.isRequired,
+};
+
+export default ChannelTabs;

@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {
   persistReducer,
   FLUSH,
@@ -10,12 +10,14 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import navReducer from "./navSlices";
+import notifyReducer from "./notifySlices";
 import channelReducer from "./channelSlices";
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: [notifyReducer],
 };
 
 const persisted = persistReducer(persistConfig, navReducer);
@@ -24,6 +26,7 @@ export default configureStore({
   reducer: {
     nav: persisted,
     channel: channelReducer,
+    notify: notifyReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

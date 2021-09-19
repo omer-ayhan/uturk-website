@@ -12,6 +12,8 @@ export const navSlices = createSlice({
     flag: langs[0].flag,
     theme: true,
     reset: false,
+    notify_size: 0,
+    notify_num: 0,
   },
   reducers: {
     changeLang: (state, action) => {
@@ -20,14 +22,33 @@ export const navSlices = createSlice({
     changeTheme: (state) => {
       state.theme = !state.theme;
     },
-    updateNotify: (state) => {
+    resetNotify: (state) => {
       state.reset = true;
+      state.notify_num = 0;
+    },
+    updateNotify: (state, action) => {
+      if (state.notify_size !== action.payload.size) {
+        state.notify_size = action.payload.size;
+        state.notify_num += 1;
+        console.log("different");
+      } else {
+        console.log("same");
+      }
+    },
+    removeNotify: (state) => {
+      if (state.notify_size >= 0) state.notify_size -= 1;
     },
   },
 });
 
 export { langs };
 
-export const { changeTheme, changeLang, updateNotify } = navSlices.actions;
+export const {
+  changeTheme,
+  changeLang,
+  resetNotify,
+  updateNotify,
+  removeNotify,
+} = navSlices.actions;
 
 export default navSlices.reducer;

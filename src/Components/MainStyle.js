@@ -26,6 +26,19 @@ import { useSelector } from "react-redux";
 function MainStyle() {
   const checked = useSelector((state) => state.nav.theme);
   const useStyles = makeStyles((theme) => ({
+    notifyImgBox: {
+      padding: "4px",
+      marginBottom: "10px",
+      width: "50px",
+      height: "50px",
+      background: "#fff",
+      borderRadius: "50%",
+      boxShadow: "0 0 0 5px rgba(131, 131, 131, 0.3)",
+    },
+    notifyText: {
+      textAlign: "center",
+      fontSize: "1.1rem",
+    },
     popup: {
       color: "#454545",
       fontSize: "16px",
@@ -107,8 +120,9 @@ function MainStyle() {
       right: 0,
       top: 5,
       backgroundColor: "#EC1C24",
-      border: `2px solid ${checked ? "#1a1a1a" : "#fff"}`,
-      padding: "0 4px",
+      border: `3px solid ${checked ? "#1a1a1a" : "#fff"}`,
+      padding: "0 3px",
+      textAlign: "center",
     },
   }))(Badge);
   const stylesMain = {

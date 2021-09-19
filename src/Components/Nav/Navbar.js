@@ -13,8 +13,9 @@ import {
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
-import { langs,changeLang, updateNotify } from "../../data/navSlices";
+import { langs, changeLang, resetNotify } from "../../data/navSlices";
 import { useDispatch, useSelector } from "react-redux";
+import NotificationBox from "./NotificationBox";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -95,18 +96,19 @@ function Navbar(props) {
                   <Popup
                     btn={
                       <StyledBadge
-                        badgeContent={navDef.reset ? 0 : 1}
+                        badgeContent={navDef.notify_num}
                         color="secondary">
                         <img
-                          onClick={() => dispatch(updateNotify())}
+                          onClick={() => dispatch(resetNotify())}
                           className="notify-logo"
                           src={notify_bell}
                           alt=""
                         />
                       </StyledBadge>
                     }
-                    out={"something"}
+                    out={<NotificationBox />}
                     isButton={false}
+                    isRadio
                   />
                 </Box>
                 <Box ml="8px">

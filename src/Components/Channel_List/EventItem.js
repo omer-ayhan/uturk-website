@@ -80,6 +80,14 @@ function EventItem({
 
 EventItem.propTypes = {
   isLive: PropTypes.bool,
+  image_team1: PropTypes.string.isRequired,
+  image_team2: PropTypes.string.isRequired,
+  name_team1: PropTypes.string,
+  name_team2: PropTypes.string,
+  start: PropTypes.string,
+  link: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  tags: PropTypes.array,
 };
 
 export default EventItem;

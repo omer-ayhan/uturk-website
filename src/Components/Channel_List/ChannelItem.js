@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { changeLink } from "../../data/channelSlices";
+// import { removeNotify, updateNotify } from "../../data/navSlices";
 import { db } from "../../firebaseConf";
 
-function ChannelItem({ cat }) {
+function ChannelItem() {
   let snapshot = db.collection("permanent");
   const [data, setData] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = snapshot.onSnapshot((snapshot) => {
-      let channels = [];
-      setData(null);
-      snapshot.docs.map((doc, index) =>
-        channels.push({ ...doc.data(), id: doc.id })
-      );
-      console.log("mount");
-      setData([...channels]);
-    });
+    const unsubscribe = snapshot
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        let channels = [];
+        setData(null);
+        snapshot.docs.map((doc, index) =>
+          channels.push({ ...doc.data(), id: doc.id })
+        );
+        setData([...channels]);
+        // snapshot.docChanges().forEach((change) => {
+        //   if (change.type === "removed") {
+        //     dispatch(removeNotify());
+        //   }
+        // });
+      });
     return () => {
       unsubscribe();
     };
