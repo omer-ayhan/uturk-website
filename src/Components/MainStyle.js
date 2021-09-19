@@ -121,12 +121,6 @@ function MainStyle() {
         display: "block",
       },
     },
-    // showShareBox:{
-    //   display:"none",
-    //   [theme.breakpoints.up("sm")]: {
-    //     height: "620px",
-    //   },
-    // },
     hideLang: {
       display: "flex",
       justifyContent: "flex-end",
@@ -209,7 +203,7 @@ function MainStyle() {
       },
     },
     tabs: {
-      flexGrow: 1,
+      flexGrow: 2,
       background: checked ? "#1a1a1a" : "#fff",
       boxShadow: "none",
       borderTop: `3px solid ${checked ? "#6F6F6F" : "#e5e5e5"}`,

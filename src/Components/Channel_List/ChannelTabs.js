@@ -142,12 +142,13 @@ function ChannelTabs({ filter, cat }) {
           centered={true}
           value={value}
           onChange={handleChange}
-          aria-label="menu tabs">
+          aria-label="menu tabs"
+          variant="fullWidth">
           {["7/24", "Canlı Maç", "Sohbet"].map((e, index) => (
             <Tab
               key={index}
               style={{
-                minWidth: "95px",
+                minWidth: "100px",
                 fontSize: ".95rem",
                 fontWeight: "bold",
                 color:
