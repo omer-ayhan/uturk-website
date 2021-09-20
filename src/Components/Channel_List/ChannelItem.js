@@ -29,6 +29,7 @@ function ChannelItem() {
   return data !== null ? (
     data.map((item, index) => (
       <Button
+        aria-label="kanal butonu"
         key={index}
         fullWidth={true}
         onClick={() =>
@@ -51,6 +52,7 @@ function ChannelItem() {
               gap: "20px",
             }}>
             <div
+              aria-label="kanal logo"
               className="team-logo"
               style={{ width: "40px", height: "40px" }}>
               <img src={item.logo2} alt="channel logo" />
@@ -63,7 +65,7 @@ function ChannelItem() {
       </Button>
     ))
   ) : (
-    <div styles={{ width: "300px", marginTop: "10px" }}>
+    <div arial-label="loading" styles={{ width: "300px", marginTop: "10px" }}>
       <Grid container spacing={0} alignItems="center" justifyContent="center">
         <Grid item xs={2}>
           <Skeleton animation="wave" variant="circle" width={50} height={50} />

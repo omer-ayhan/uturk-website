@@ -8,7 +8,10 @@ function HakkımızdaPage() {
   const classes = useStyles();
   return (
     <Box className={classes.respMainWrap} px="80px" mb="40px" height="100%">
-      <Typography variant="subtitle2" style={stylesMain.textTheme}>
+      <Typography
+        aria-label="hakkımızda"
+        variant="subtitle2"
+        style={stylesMain.textTheme}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio aspernatur
         aperiam vitae maxime explicabo voluptates eveniet reiciendis veritatis?
         Quibusdam perferendis excepturi nemo quis reiciendis, pariatur, placeat

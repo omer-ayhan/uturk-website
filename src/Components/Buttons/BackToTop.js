@@ -1,5 +1,11 @@
 import React from "react";
-import { Zoom, Fab, useScrollTrigger } from "@material-ui/core";
+import {
+  Zoom,
+  Fab,
+  useScrollTrigger,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 import MainStyle from "../MainStyle";
 
 export default function BackToTop() {
@@ -20,12 +26,14 @@ export default function BackToTop() {
   return (
     <Zoom in={trigger}>
       <div onClick={handleClick} role="presentation" className={classes.topBtn}>
-        <Fab color="primary" size="small" aria-label="scroll back to top">
-          <ion-icon
-            name="caret-up"
-            size="large"
-            style={{ color: "#fff", marginBottom: "5px" }}></ion-icon>
-        </Fab>
+        <Tooltip title={<Typography variant="body2">Yukarı Çık</Typography>}>
+          <Fab color="primary" size="small" aria-label="scroll back to top">
+            <ion-icon
+              name="caret-up"
+              size="large"
+              style={{ color: "#fff", marginBottom: "5px" }}></ion-icon>
+          </Fab>
+        </Tooltip>
       </div>
     </Zoom>
   );

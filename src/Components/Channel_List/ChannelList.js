@@ -29,33 +29,40 @@ function ChannelList() {
     <Card className={`${classes.papers} ${classes.papersChannels}`}>
       <div style={{ display: "inline" }} id="channelCard">
         <CardHeader
+          role="heading"
           avatar={<img src={hamburger} alt="" />}
           action={
             <div className="categoryMenu">
               <Popup
                 btn={
                   <ion-icon
+                    aria-labelledby="filter"
                     style={stylesMain.textTheme}
                     name="filter"></ion-icon>
                 }
                 out={
-                  <List component="nav" aria-label="Live category">
+                  <List role="list" component="nav" aria-label="Live category">
                     <RadioGroup
+                      role="radiogroup"
                       aria-label="options"
                       name="streamFilter"
                       value={value}
                       onChange={handleChange}>
                       <ListItem button>
                         <FormControlLabel
+                          aria-label="tüm kanallar"
+                          role="form"
                           style={{ width: "100%" }}
                           color="primary"
                           value="all"
-                          control={<Radio color="primary" />}
+                          control={<Radio role="radio" color="primary" />}
                           label="Hepsi"
                         />
                       </ListItem>
                       <ListItem button>
                         <FormControlLabel
+                          aria-label="tüm kanallar"
+                          role="form"
                           style={{ width: "100%" }}
                           color="primary"
                           value="live"
@@ -77,6 +84,7 @@ function ChannelList() {
                 }
                 isButton={false}
                 isRadio={true}
+                titleText="Filtre"
               />
               <Popup
                 btn={
@@ -110,11 +118,16 @@ function ChannelList() {
                   </List>
                 }
                 isButton={false}
+                titleText="Kategori"
               />
             </div>
           }
           title={
-            <Typography gutterBottom variant="h6" component="h6">
+            <Typography
+              aria-label={title}
+              gutterBottom
+              variant="h6"
+              component="h6">
               {title}
             </Typography>
           }

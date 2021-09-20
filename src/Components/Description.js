@@ -41,13 +41,14 @@ function Description() {
                     <ListItem>
                       {nav_links.social_links.slice(1).map((e, index) => (
                         <IconButton key={index}>
-                          <img src={e.img_link} alt="" />
+                          <img src={e.img_link} alt={e.name} />
                         </IconButton>
                       ))}
                     </ListItem>
                   </List>
                 }
                 isButton={false}
+                titleText="Paylaş"
               />
             </Box>
             <Box
@@ -97,7 +98,9 @@ function Description() {
                   marginBottom: "-5px",
                 }}></ion-icon>{" "}
               {"   "}
-              <span className={classes.textTheme}>uturknet@gmail.com</span>
+              <span aria-label="email" className={classes.textTheme}>
+                uturknet@gmail.com
+              </span>
             </Box>
           </Box>
         </Grid>

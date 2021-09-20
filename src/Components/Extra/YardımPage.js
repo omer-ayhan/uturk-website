@@ -22,12 +22,12 @@ export default function YardımPage() {
           }
           aria-controls="panel1a-content"
           id="panel1a-header">
-          <Typography variant="h6" component="h6">
+          <Typography aria-label="yardım başlık" variant="h6" component="h6">
             Accordion 1
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography aria-label="yardım paragraf">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
@@ -43,12 +43,12 @@ export default function YardımPage() {
           }
           aria-controls="panel2a-content"
           id="panel2a-header">
-          <Typography variant="h6" component="h6">
+          <Typography aria-label="yardım başlık" variant="h6" component="h6">
             Accordion 2
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography aria-label="yardım paragraf">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
@@ -64,12 +64,12 @@ export default function YardımPage() {
           }
           aria-controls="panel3a-content"
           id="panel3a-header">
-          <Typography variant="h6" component="h6">
+          <Typography aria-label="yardım başlık" variant="h6" component="h6">
             Accordion 3
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography aria-label="yardım paragraf">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>

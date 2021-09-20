@@ -45,11 +45,14 @@ body {
 ::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 0px;
+  -webkit-box-shadow: inset 0px 0px 0px 0px #f0f0f0;
   box-shadow: inset 0px 0px 0px 0px #f0f0f0;
 }
 #logo-img {
   width: 100px;
   height: auto;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: 50% 50%;
   object-position: 50% 50%;
 }

@@ -11,6 +11,7 @@ function VideoBox() {
     <Card className={`${classes.papers}`}>
       <Box className={`${classes.papersVideo}`} p="10px" height="500px">
         <CardMedia
+          aria-label="video"
           component="iframe"
           image={channel.iframe}
           allowFullScreen="allowfullscreen"

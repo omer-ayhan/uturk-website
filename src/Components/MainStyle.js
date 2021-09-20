@@ -63,9 +63,6 @@ function MainStyle() {
       [theme.breakpoints.up("md")]: {
         padding: "0 50px 0 50px",
       },
-      // [theme.breakpoints.up("lg")]: {
-      //   padding: "0 60px 0 60px",
-      // },
     },
     papersVideo: {
       [theme.breakpoints.up("xs")]: {
@@ -88,9 +85,6 @@ function MainStyle() {
       [theme.breakpoints.up("xs")]: {
         height: "500px",
       },
-      // [theme.breakpoints.up("sm")]: {
-      //   height: "480px",
-      // },
       [theme.breakpoints.up("md")]: {
         height: "490px",
       },

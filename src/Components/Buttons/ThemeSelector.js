@@ -29,7 +29,14 @@ function ThemeSelector() {
           name="sunny"
           style={{ color: "#ffd233", fontSize: "1.45rem" }}></ion-icon>
       )}
-      <Switch size="small" checked={checked} onChange={toggleChecked} />
+      <Switch
+        role="switch"
+        aria-checked={checked}
+        color="primary"
+        size="small"
+        checked={checked}
+        onChange={toggleChecked}
+      />
     </Box>
   );
 }

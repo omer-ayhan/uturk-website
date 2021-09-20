@@ -17,6 +17,7 @@ import {
   Slide,
   SwipeableDrawer,
   Toolbar,
+  Tooltip,
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
@@ -67,30 +68,37 @@ function Navbar(props) {
       className={clsx(classes.list, {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
-      role="presentation"
+      role="listbox"
       onKeyDown={toggleDrawer(anchor, false)}>
-      <List>
+      <List role="list">
         <ListItem className={classes.hideLang}>
           <Popup
-            btn={<img src={navDef.flag} alt="" />}
+            btn={<img src={navDef.flag} alt="language flag" />}
             out={langs.map((lang, index) => (
               <Box key={index}>
                 <Button
+                  role="button"
+                  aria-labelledby="language text"
                   key={index}
                   className={classes.popup}
                   onClick={() => dispatch(changeLang(lang.flag))}
                   color="primary"
                   style={stylesMain.textTheme}
-                  endIcon={<img key={index} src={lang.flag} alt="" />}>
+                  endIcon={
+                    <img key={index} src={lang.flag} alt="language flag" />
+                  }>
                   {lang.label}
                 </Button>
               </Box>
             ))}
             isButton={true}
             start={<ion-icon name="caret-down" size="large"></ion-icon>}
+            titleText={"Dil"}
           />
         </ListItem>
         <ListItem
+          role="button"
+          arial-labelledby="close menu"
           onClick={toggleDrawer(anchor, false)}
           button
           className={classes.toolbar}
@@ -106,13 +114,16 @@ function Navbar(props) {
         </ListItem>
         {nav_links.main_links.map(({ name, link }, index) => (
           <Link
+            role="link"
+            aria-label={name}
             className={classes.links}
             key={index}
             to={link}
             component={RouterLink}
             underline="none">
-            <ListItem button>
+            <ListItem button role="button">
               <ListItemText
+                role="textbox"
                 primary={<Typography variant="h6">{name}</Typography>}
               />
             </ListItem>
@@ -123,17 +134,23 @@ function Navbar(props) {
           display="flex"
           alignItems="center"
           justifyContent="flex-end">
-          {nav_links.social_links.slice(1).map(({ img_link, link }, index) => (
-            <Link
-              key={index}
-              style={{ marginLeft: "13px" }}
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-              underline="none">
-              <img className="social-img" src={img_link} alt="social link" />
-            </Link>
-          ))}
+          {nav_links.social_links
+            .slice(1)
+            .map(({ img_link, link, name }, index) => (
+              <Tooltip title={<Typography variant="body2">{name}</Typography>}>
+                <Link
+                  role="link"
+                  aria-labelledby={name}
+                  key={index}
+                  style={{ marginLeft: "13px" }}
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer"
+                  underline="none">
+                  <img className="social-img" src={img_link} alt={name} />
+                </Link>
+              </Tooltip>
+            ))}
         </Box>
       </List>
     </div>
@@ -142,7 +159,9 @@ function Navbar(props) {
   return (
     <>
       <HideOnScroll {...props}>
-        <AppBar className={`${classes.appBar} ${classes.appBarTrigger}`}>
+        <AppBar
+          role="navigation"
+          className={`${classes.appBar} ${classes.appBarTrigger}`}>
           <Box p="15px">
             <Toolbar>
               <Box
@@ -150,13 +169,20 @@ function Navbar(props) {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between">
-                <Box display="flex" alignItems="center">
+                <Box role="link" display="flex" alignItems="center">
                   <RouterLink to="/">
-                    <img id="logo-img" src={logo} alt="logo" />
+                    <img
+                      id="logo-img"
+                      src={logo}
+                      aria-label="uturk logo"
+                      alt="uturk logo"
+                    />
                   </RouterLink>
                   <Box ml="30px">
                     {nav_links.main_links.map(({ name, link }, index) => (
                       <Link
+                        aria-label={name}
+                        role="link"
                         key={index}
                         component={RouterLink}
                         color="primary"
@@ -174,21 +200,28 @@ function Navbar(props) {
                   <Box>
                     {nav_links.social_links
                       .slice(1)
-                      .map(({ img_link, link }, index) => (
-                        <Link
-                          key={index}
-                          className={classes.socialLink}
-                          style={{ marginLeft: "13px" }}
-                          href={link}
-                          target="_blank"
-                          rel="noreferrer"
-                          underline="none">
-                          <img
-                            className="social-img"
-                            src={img_link}
-                            alt="social link"
-                          />
-                        </Link>
+                      .map(({ img_link, link, name }, index) => (
+                        <Tooltip
+                          title={
+                            <Typography variant="body2">{name}</Typography>
+                          }>
+                          <Link
+                            role="link"
+                            aria-labelledby={name}
+                            key={index}
+                            className={classes.socialLink}
+                            style={{ marginLeft: "13px" }}
+                            href={link}
+                            target="_blank"
+                            rel="noreferrer"
+                            underline="none">
+                            <img
+                              className="social-img"
+                              src={img_link}
+                              alt="social link"
+                            />
+                          </Link>
+                        </Tooltip>
                       ))}
                   </Box>
                   <Box ml="8px">
@@ -197,33 +230,44 @@ function Navbar(props) {
                         <StyledBadge
                           badgeContent={navDef.notify_num}
                           color="secondary">
-                          <ion-icon
-                            onClick={() => dispatch(resetNotify())}
-                            name="notifications"
-                            style={{
-                              ...stylesMain.textTheme,
-                              fontSize: "1.8rem",
-                            }}></ion-icon>
+                          <span
+                            role="button"
+                            aria-labelledby="bildirim"
+                            onClick={() => dispatch(resetNotify())}>
+                            <ion-icon
+                              name="notifications"
+                              style={{
+                                ...stylesMain.textTheme,
+                                fontSize: "1.8rem",
+                              }}></ion-icon>
+                          </span>
                         </StyledBadge>
                       }
                       out={<NotificationBox />}
                       isButton={false}
                       isRadio
+                      titleText="Bildirim"
                     />
                   </Box>
                   <Box className={classes.showLang} ml="8px">
                     <Popup
-                      btn={<img src={navDef.flag} alt="" />}
+                      btn={<img src={navDef.flag} alt="language flag" />}
                       out={langs.map((lang, index) => (
                         <Box key={index}>
                           <Button
+                            role="button"
+                            aria-labelledby="language text"
                             key={index}
                             className={classes.popup}
                             onClick={() => dispatch(changeLang(lang.flag))}
                             color="primary"
                             style={stylesMain.textTheme}
                             endIcon={
-                              <img key={index} src={lang.flag} alt="" />
+                              <img
+                                key={index}
+                                src={lang.flag}
+                                alt="language flag"
+                              />
                             }>
                             {lang.label}
                           </Button>
@@ -233,15 +277,21 @@ function Navbar(props) {
                       start={
                         <ion-icon name="caret-down" size="large"></ion-icon>
                       }
+                      titleText="Dil"
                     />
                   </Box>
                   <Box ml="8px" className={classes.mobileMenu}>
-                    <IconButton onClick={toggleDrawer("right", true)}>
-                      <ion-icon
-                        style={stylesMain.textTheme}
-                        name="menu"
-                        size="large"></ion-icon>
-                    </IconButton>
+                    <Tooltip title="Menu">
+                      <IconButton
+                        role="button"
+                        aria-labelledby="mobile menu"
+                        onClick={toggleDrawer("right", true)}>
+                        <ion-icon
+                          style={stylesMain.textTheme}
+                          name="menu"
+                          size="large"></ion-icon>
+                      </IconButton>
+                    </Tooltip>
                   </Box>
                 </Box>
               </Box>

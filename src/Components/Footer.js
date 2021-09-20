@@ -25,6 +25,8 @@ function Footer() {
           <Box mb="50px">
             {nav_links.main_links.slice(1).map(({ name, link }, index) => (
               <Link
+                role="link"
+                aria-label={name}
                 key={index}
                 component={RouterLink}
                 className={classes.textTheme}
@@ -40,7 +42,7 @@ function Footer() {
         </Grid>
         <Grid item xs={12} sm={8}>
           <Link component={RouterLink} to="/">
-            <img id="logo-img" src={logo} alt="logo" />
+            <img id="logo-img" src={logo} alt="uturk logo" />
           </Link>
         </Grid>
       </Grid>

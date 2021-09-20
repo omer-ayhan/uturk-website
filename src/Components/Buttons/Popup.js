@@ -1,10 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, Tooltip, Typography } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
 
-export default function Popup({ btn, out, isButton, start, isRadio }) {
+export default function Popup({
+  btn,
+  out,
+  isButton,
+  start,
+  isRadio,
+  titleText,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -19,18 +26,22 @@ export default function Popup({ btn, out, isButton, start, isRadio }) {
   const handleButton = () => {
     if (isButton) {
       return (
-        <Button aria-describedby={id} onClick={handleClick} startIcon={start}>
-          {btn}
-        </Button>
+        <Tooltip title={<Typography variant="body2">{titleText}</Typography>}>
+          <Button aria-describedby={id} onClick={handleClick} startIcon={start}>
+            {btn}
+          </Button>
+        </Tooltip>
       );
     } else {
       return (
-        <IconButton
-          aria-label="icon"
-          aria-describedby={id}
-          onClick={handleClick}>
-          {btn}
-        </IconButton>
+        <Tooltip title={<Typography variant="body2">{titleText}</Typography>}>
+          <IconButton
+            aria-label="icon"
+            aria-describedby={id}
+            onClick={handleClick}>
+            {btn}
+          </IconButton>
+        </Tooltip>
       );
     }
   };
@@ -63,4 +74,5 @@ Popup.propTypes = {
   isButton: PropTypes.bool,
   isRadio: PropTypes.bool,
   start: PropTypes.node,
+  titleText: PropTypes.string,
 };

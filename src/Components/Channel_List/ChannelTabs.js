@@ -135,61 +135,83 @@ function ChannelTabs({ filter, cat }) {
       return (
         <div styles={{ width: "300px", marginTop: "10px" }}>
           <Grid
+            role="grid"
             container
             spacing={0}
             alignItems="center"
             justifyContent="center">
-            <Grid item xs={2}>
+            <Grid role="gridcell" item xs={2}>
               <Skeleton
+                aria-label="yükleniyor"
                 animation="wave"
                 variant="circle"
                 width={50}
                 height={50}
               />
             </Grid>
-            <Grid item xs={8}>
-              <Skeleton animation="wave" width="95%" height={75} />
-            </Grid>
-            <Grid item xs={2}>
+            <Grid role="gridcell" item xs={8}>
               <Skeleton
+                aria-label="yükleniyor"
+                animation="wave"
+                width="95%"
+                height={75}
+              />
+            </Grid>
+            <Grid role="gridcell" item xs={2}>
+              <Skeleton
+                aria-label="yükleniyor"
                 animation="wave"
                 variant="circle"
                 width={50}
                 height={50}
               />
             </Grid>
-            <Grid item xs={2}>
+            <Grid role="gridcell" item xs={2}>
               <Skeleton
+                aria-label="yükleniyor"
                 animation="wave"
                 variant="circle"
                 width={50}
                 height={50}
               />
             </Grid>
-            <Grid item xs={8}>
-              <Skeleton animation="wave" width="95%" height={75} />
-            </Grid>
-            <Grid item xs={2}>
+            <Grid role="gridcell" item xs={8}>
               <Skeleton
+                aria-label="yükleniyor"
+                animation="wave"
+                width="95%"
+                height={75}
+              />
+            </Grid>
+            <Grid role="gridcell" item xs={2}>
+              <Skeleton
+                aria-label="yükleniyor"
                 animation="wave"
                 variant="circle"
                 width={50}
                 height={50}
               />
             </Grid>
-            <Grid item xs={2}>
+            <Grid role="gridcell" item xs={2}>
               <Skeleton
+                aria-label="yükleniyor"
                 animation="wave"
                 variant="circle"
                 width={50}
                 height={50}
               />
             </Grid>
-            <Grid item xs={8}>
-              <Skeleton animation="wave" width="95%" height={75} />
-            </Grid>
-            <Grid item xs={2}>
+            <Grid role="gridcell" item xs={8}>
               <Skeleton
+                aria-label="yükleniyor"
+                animation="wave"
+                width="95%"
+                height={75}
+              />
+            </Grid>
+            <Grid role="gridcell" item xs={2}>
+              <Skeleton
+                aria-label="yükleniyor"
                 animation="wave"
                 variant="circle"
                 width={50}
@@ -203,7 +225,7 @@ function ChannelTabs({ filter, cat }) {
 
   return (
     <>
-      <AppBar className={classes.tabs} position="static">
+      <AppBar role="heading" className={classes.tabs} position="static">
         <Tabs
           TabIndicatorProps={{
             style: { background: "#90CD5D" },
@@ -238,13 +260,14 @@ function ChannelTabs({ filter, cat }) {
       <TabPanel value={value} index={2}>
         <Box width="100%" height="520px">
           <CardMedia
+            aria-label="chat"
             src="https://www5.cbox.ws/box/?boxid=928574&boxtag=xClQ8a"
             width="100%"
             height="100%"
             allow="autoplay"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
             component="iframe"
             allowFullScreen="allowfullscreen"
             title="ChannelChat"

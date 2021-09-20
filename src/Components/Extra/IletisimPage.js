@@ -38,6 +38,8 @@ function IletisimPage() {
               )}
             </span>
             <Link
+              role="link"
+              aria-label={name}
               target="_blank"
               href={link}
               rel="noopener noreferrer"
