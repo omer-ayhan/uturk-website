@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { useDispatch } from "react-redux";
 import { changeLink } from "../../data/channelSlices";
 import { db } from "../../firebaseConf";
@@ -25,8 +26,7 @@ function ChannelItem() {
     };
   }, []);
 
-  return (
-    data !== null &&
+  return data !== null ? (
     data.map((item, index) => (
       <Button
         key={index}
@@ -62,6 +62,29 @@ function ChannelItem() {
         </div>
       </Button>
     ))
+  ) : (
+    <div styles={{ width: "300px", marginTop: "10px" }}>
+      <Grid container spacing={0} alignItems="center" justifyContent="center">
+        <Grid item xs={2}>
+          <Skeleton animation="wave" variant="circle" width={50} height={50} />
+        </Grid>
+        <Grid item xs={10}>
+          <Skeleton animation="wave" width={300} height={75} />
+        </Grid>
+        <Grid item xs={2}>
+          <Skeleton animation="wave" variant="circle" width={50} height={50} />
+        </Grid>
+        <Grid item xs={10}>
+          <Skeleton animation="wave" width={300} height={75} />
+        </Grid>
+        <Grid item xs={2}>
+          <Skeleton animation="wave" variant="circle" width={50} height={50} />
+        </Grid>
+        <Grid item xs={10}>
+          <Skeleton animation="wave" width={300} height={75} />
+        </Grid>
+      </Grid>
+    </div>
   );
 }
 

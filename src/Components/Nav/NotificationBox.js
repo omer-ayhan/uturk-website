@@ -29,7 +29,7 @@ function NotificationBox() {
       alignItems="center"
       width="350px"
       height="400px"
-      style={{ gap: "20px", overflowX: "hidden", overflowY: "scroll" }}>
+      style={{ gap: "20px" }}>
       <Box style={{ borderBottom: "2.6px solid #96969677" }} width="100%">
         <Typography
           variant="body1"

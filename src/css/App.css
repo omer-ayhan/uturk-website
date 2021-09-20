@@ -12,6 +12,9 @@
   margin: 0;
   overflow-x: hidden;
 }
+ion-icon {
+  pointer-events: none;
+}
 
 html,
 body {

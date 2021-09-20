@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import EventItem from "./EventItem";
 import ChannelItem from "./ChannelItem";
-import { Tabs, Tab, AppBar, Typography, Box } from "@material-ui/core";
+import {
+  Tabs,
+  Tab,
+  AppBar,
+  Typography,
+  Box,
+  CardMedia,
+  Grid,
+} from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
 import { db } from "../../firebaseConf";
@@ -124,11 +133,71 @@ function ChannelTabs({ filter, cat }) {
       }
     } else
       return (
-        <Box fontWeight="fontWeightBold" textAlign="center">
-          <Typography variant="h5" component="div">
-            No Data
-          </Typography>
-        </Box>
+        <div styles={{ width: "300px", marginTop: "10px" }}>
+          <Grid
+            container
+            spacing={0}
+            alignItems="center"
+            justifyContent="center">
+            <Grid item xs={2}>
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={50}
+                height={50}
+              />
+            </Grid>
+            <Grid item xs={8}>
+              <Skeleton animation="wave" width="95%" height={75} />
+            </Grid>
+            <Grid item xs={2}>
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={50}
+                height={50}
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={50}
+                height={50}
+              />
+            </Grid>
+            <Grid item xs={8}>
+              <Skeleton animation="wave" width="95%" height={75} />
+            </Grid>
+            <Grid item xs={2}>
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={50}
+                height={50}
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={50}
+                height={50}
+              />
+            </Grid>
+            <Grid item xs={8}>
+              <Skeleton animation="wave" width="95%" height={75} />
+            </Grid>
+            <Grid item xs={2}>
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={50}
+                height={50}
+              />
+            </Grid>
+          </Grid>
+        </div>
       );
   };
 
@@ -167,7 +236,32 @@ function ChannelTabs({ filter, cat }) {
         {filterChannels()}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Box width="100%" height="520px">
+          <CardMedia
+            src="https://www5.cbox.ws/box/?boxid=928574&boxtag=xClQ8a"
+            width="100%"
+            height="100%"
+            allow="autoplay"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            component="iframe"
+            allowFullScreen="allowfullscreen"
+            title="ChannelChat"
+          />
+          {/* <CardMedia
+            src="http://chatuturk.chatango.com/"
+            width="100%"
+            height="100%"
+            allow="autoplay"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            component="iframe"
+            allowFullScreen="allowfullscreen"
+            title="ChannelChat"
+          /> */}
+        </Box>
       </TabPanel>
     </>
   );
