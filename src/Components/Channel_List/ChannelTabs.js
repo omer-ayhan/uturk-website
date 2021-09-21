@@ -77,7 +77,8 @@ function ChannelTabs({ filter, cat }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const filterChannels = () => {
+
+  const filterChannels = React.useCallback(() => {
     if (data !== null) {
       if (cat !== "permanent") {
         if (filter === "live") {
@@ -130,8 +131,6 @@ function ChannelTabs({ filter, cat }) {
             />
           ));
         }
-      } else {
-        return "hello";
       }
     } else
       return (
@@ -223,7 +222,7 @@ function ChannelTabs({ filter, cat }) {
           </Grid>
         </div>
       );
-  };
+  }, [cat, filter, data]);
 
   return (
     <>
@@ -274,18 +273,6 @@ function ChannelTabs({ filter, cat }) {
             allowFullScreen="allowfullscreen"
             title="ChannelChat"
           />
-          {/* <CardMedia
-            src="http://chatuturk.chatango.com/"
-            width="100%"
-            height="100%"
-            allow="autoplay"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            component="iframe"
-            allowFullScreen="allowfullscreen"
-            title="ChannelChat"
-          /> */}
         </Box>
       </TabPanel>
     </>
@@ -296,4 +283,4 @@ ChannelTabs.propTypes = {
   cat: PropTypes.string.isRequired,
 };
 
-export default ChannelTabs;
+export default React.memo(ChannelTabs);

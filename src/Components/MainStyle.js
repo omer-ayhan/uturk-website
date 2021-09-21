@@ -9,6 +9,7 @@ import US_flag from "../images/US.png";
 import live from "../images/live.svg";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 
 function MainStyle() {
   const checked = useSelector((state) => state.nav.theme);
@@ -68,19 +69,19 @@ function MainStyle() {
     },
     papersVideo: {
       [theme.breakpoints.up("xs")]: {
-        height: "250px",
+        height: "260px",
       },
       [theme.breakpoints.up("sm")]: {
-        height: "440px",
+        height: "450px",
       },
       [theme.breakpoints.up("md")]: {
-        height: "460px",
+        height: "470px",
       },
       [theme.breakpoints.up("lg")]: {
-        height: "560px",
+        height: "570px",
       },
       [theme.breakpoints.up("xl")]: {
-        height: "590px",
+        height: "600px",
       },
     },
     papersChannels: {
@@ -242,24 +243,26 @@ function MainStyle() {
 
   const nav_links = {
     main_links: [
-      { name: t(`main_links.0.name`), link: "/" },
-      { name: t("main_links.1.name"), link: "/yardım" },
-      { name: t("main_links.2.name"), link: "/hakkımızda" },
-      { name: t("main_links.3.name"), link: "/iletisim" },
+      { name: t(`main_links.0.name`), link: "/", id: uuidv4() },
+      { name: t("main_links.1.name"), link: "/yardım", id: uuidv4() },
+      { name: t("main_links.2.name"), link: "/hakkımızda", id: uuidv4() },
+      { name: t("main_links.3.name"), link: "/iletisim", id: uuidv4() },
     ],
     social_links: [
       {
         img_link: "mail",
         link: "mailto:uturknet@gmail.com",
         name: "uturknet@gmail.com",
+        id: uuidv4(),
       },
-      { img_link: facebook, link: "d", name: "Facebook" },
+      { img_link: facebook, link: "d", name: "Facebook", id: uuidv4() },
       {
         img_link: twitter,
         link: "https://twitter.com/uturknet",
         name: "Twitter",
+        id: uuidv4(),
       },
-      { img_link: telegram, link: "f", name: "Telegram" },
+      { img_link: telegram, link: "f", name: "Telegram", id: uuidv4() },
     ],
   };
 

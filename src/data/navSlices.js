@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { images } from "../Components/MainStyle";
+import { v4 as uuidv4 } from "uuid";
 
 const langs = [
-  { label: "tr", flag: images.TR_flag },
-  { label: "en", flag: images.US_flag },
+  { label: "tr", flag: images.TR_flag, id: uuidv4() },
+  { label: "en", flag: images.US_flag, id: uuidv4() },
 ];
 
 export const navSlices = createSlice({

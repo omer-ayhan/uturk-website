@@ -64,108 +64,99 @@ function Navbar(props) {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-    <div
-      style={{ width: "70vw" }}
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
-      })}
-      role="listbox"
-      onKeyDown={toggleDrawer(anchor, false)}>
-      <List role="list">
-        <ListItem className={classes.hideLang}>
-          <Popup
-            btn={<img src={navDef.flag} alt="language flag" />}
-            out={langs.map((lang, index) => (
-              <Box key={index}>
-                <Button
-                  role="button"
-                  aria-labelledby="language text"
-                  key={index}
-                  className={classes.popup}
-                  onClick={() => dispatch(changeLang(lang))}
-                  color="primary"
-                  style={stylesMain.textTheme}
-                  endIcon={
-                    <img key={index} src={lang.flag} alt="language flag" />
-                  }>
-                  {lang.label}
-                </Button>
-              </Box>
-            ))}
-            isButton={true}
-            start={<ion-icon name="caret-down" size="large"></ion-icon>}
-            titleText={t("Tooltips.1.name")}
-          />
-        </ListItem>
-        <ListItem
-          role="button"
-          arial-labelledby="close menu"
-          onClick={toggleDrawer(anchor, false)}
-          button
-          className={classes.toolbar}
-          style={{ width: "100%" }}>
-          <ListItemIcon>
-            <ion-icon
-              name="chevron-forward"
-              style={{
-                ...stylesMain.textTheme,
-                fontSize: "2rem",
-              }}></ion-icon>
-          </ListItemIcon>
-        </ListItem>
-        {nav_links.main_links.map(({ name, link }, index) => (
-          <Link
-            role="link"
-            aria-label={name}
-            className={classes.links}
-            key={index}
-            to={link}
-            component={RouterLink}
-            underline="none">
-            <ListItem key={index} button role="button">
-              <ListItemText
-                key={index}
-                role="textbox"
-                primary={
-                  <Typography key={index} variant="h6">
-                    {name}
-                  </Typography>
-                }
-              />
-            </ListItem>
-          </Link>
-        ))}
-        <Box
-          px="10px"
-          display="flex"
-          alignItems="center"
-          justifyContent="flex-end">
-          {nav_links.social_links
-            .slice(1)
-            .map(({ img_link, link, name }, index) => (
-              <Tooltip title={<Typography variant="body2">{name}</Typography>}>
-                <Link
-                  role="link"
-                  aria-labelledby={name}
-                  key={index}
-                  style={{ marginLeft: "13px" }}
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer"
-                  underline="none">
-                  <img
-                    className="social-img"
-                    key={index}
-                    src={img_link}
-                    alt={name}
-                  />
-                </Link>
-              </Tooltip>
-            ))}
-        </Box>
-      </List>
-    </div>
+  const list = React.useCallback(
+    (anchor) => (
+      <div
+        style={{ width: "70vw" }}
+        className={clsx(classes.list, {
+          [classes.fullList]: anchor === "top" || anchor === "bottom",
+        })}
+        role="listbox"
+        onKeyDown={toggleDrawer(anchor, false)}>
+        <List role="list">
+          <ListItem className={classes.hideLang}>
+            <Popup
+              btn={<img src={navDef.flag} alt="language flag" />}
+              out={langs.map((lang, index) => (
+                <Box key={lang.id}>
+                  <Button
+                    role="button"
+                    aria-labelledby="language text"
+                    className={classes.popup}
+                    onClick={() => dispatch(changeLang(lang))}
+                    color="primary"
+                    style={stylesMain.textTheme}
+                    endIcon={<img src={lang.flag} alt="language flag" />}>
+                    {lang.label}
+                  </Button>
+                </Box>
+              ))}
+              isButton={true}
+              start={<ion-icon name="caret-down" size="large"></ion-icon>}
+              titleText={t("Tooltips.1.name")}
+            />
+          </ListItem>
+          <ListItem
+            role="button"
+            arial-labelledby="close menu"
+            onClick={toggleDrawer(anchor, false)}
+            button
+            className={classes.toolbar}
+            style={{ width: "100%" }}>
+            <ListItemIcon>
+              <ion-icon
+                name="chevron-forward"
+                style={{
+                  ...stylesMain.textTheme,
+                  fontSize: "2rem",
+                }}></ion-icon>
+            </ListItemIcon>
+          </ListItem>
+          {nav_links.main_links.map(({ name, link, id }, index) => (
+            <Link
+              role="link"
+              aria-label={name}
+              className={classes.links}
+              key={id}
+              to={link}
+              component={RouterLink}
+              underline="none">
+              <ListItem button role="button">
+                <ListItemText
+                  role="textbox"
+                  primary={<Typography variant="h6">{name}</Typography>}
+                />
+              </ListItem>
+            </Link>
+          ))}
+          <Box
+            px="10px"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-end">
+            {nav_links.social_links
+              .slice(1)
+              .map(({ img_link, link, name, id }, index) => (
+                <Tooltip
+                  key={id}
+                  title={<Typography variant="body2">{name}</Typography>}>
+                  <Link
+                    role="link"
+                    aria-labelledby={name}
+                    style={{ marginLeft: "13px" }}
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer"
+                    underline="none">
+                    <img className="social-img" src={img_link} alt={name} />
+                  </Link>
+                </Tooltip>
+              ))}
+          </Box>
+        </List>
+      </div>
+    ),
+    [state]
   );
 
   return (
@@ -191,17 +182,17 @@ function Navbar(props) {
                     />
                   </RouterLink>
                   <Box ml="30px">
-                    {nav_links.main_links.map(({ name, link }, index) => (
+                    {nav_links.main_links.map(({ name, link, id }, index) => (
                       <Link
                         aria-label={name}
                         role="link"
-                        key={index + 5}
+                        key={id}
                         component={RouterLink}
                         color="primary"
                         className={classes.navLink}
                         to={link}
                         underline="none">
-                        <Typography key={name} variant="h6" component="span">
+                        <Typography variant="h6" component="span">
                           {name}
                         </Typography>
                       </Link>
@@ -212,18 +203,15 @@ function Navbar(props) {
                   <Box>
                     {nav_links.social_links
                       .slice(1)
-                      .map(({ img_link, link, name }, index) => (
+                      .map(({ img_link, link, name, id }, index) => (
                         <Tooltip
-                          key={name}
+                          key={id}
                           title={
-                            <Typography key={name} variant="body2">
-                              {name}
-                            </Typography>
+                            <Typography variant="body2">{name}</Typography>
                           }>
                           <Link
                             role="link"
                             aria-labelledby={name}
-                            key={name}
                             className={classes.socialLink}
                             style={{ marginLeft: "13px" }}
                             href={link}
@@ -231,7 +219,6 @@ function Navbar(props) {
                             rel="noreferrer"
                             underline="none">
                             <img
-                              key={name}
                               className="social-img"
                               src={img_link}
                               alt="social link"
@@ -269,21 +256,16 @@ function Navbar(props) {
                     <Popup
                       btn={<img src={navDef.flag} alt="language flag" />}
                       out={langs.map((lang, index) => (
-                        <Box key={index}>
+                        <Box key={lang.id}>
                           <Button
                             role="button"
                             aria-labelledby="language text"
-                            key={index}
                             className={classes.popup}
                             onClick={() => dispatch(changeLang(lang))}
                             color="primary"
                             style={stylesMain.textTheme}
                             endIcon={
-                              <img
-                                key={index}
-                                src={lang.flag}
-                                alt="language flag"
-                              />
+                              <img src={lang.flag} alt="language flag" />
                             }>
                             {lang.label}
                           </Button>
@@ -332,4 +314,4 @@ function Navbar(props) {
     </>
   );
 }
-export default Navbar;
+export default React.memo(Navbar);

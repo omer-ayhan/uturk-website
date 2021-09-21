@@ -4,14 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { Box, Button, Tooltip, Typography } from "@material-ui/core";
 import Popover from "@material-ui/core/Popover";
 
-export default function Popup({
-  btn,
-  out,
-  isButton,
-  start,
-  isRadio,
-  titleText,
-}) {
+function Popup({ btn, out, isButton, start, isRadio, titleText }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -76,3 +69,5 @@ Popup.propTypes = {
   start: PropTypes.node,
   titleText: PropTypes.string,
 };
+
+export default React.memo(Popup);

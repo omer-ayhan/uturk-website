@@ -1,7 +1,27 @@
-import React from "react";
-import { Box, Card, CardMedia } from "@material-ui/core";
+import React, { lazy, Suspense } from "react";
+import { Box, Card } from "@material-ui/core";
 import MainStyle from "./MainStyle";
 import { useSelector } from "react-redux";
+import { Skeleton } from "@material-ui/lab";
+const VideoFrame = lazy(() => import("./VideoFrame"));
+
+export const Loading = () => {
+  return (
+    <Box
+      m="0"
+      p="30px"
+      width="90%"
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      justify-content="center"
+      alignItems="center"
+      style={{ gap: 0 }}>
+      <Skeleton style={{ marginTop: "40px" }} width="100%" height={50} />
+      <Skeleton style={{ marginTop: "-40px" }} width="100%" height={400} />
+    </Box>
+  );
+};
 
 function VideoBox() {
   const channel = useSelector((state) => state.channel);
@@ -10,13 +30,9 @@ function VideoBox() {
   return (
     <Card className={`${classes.papers}`}>
       <Box className={`${classes.papersVideo}`} p="10px" height="500px">
-        <CardMedia
-          aria-label="video"
-          component="iframe"
-          image={channel.iframe}
-          allowFullScreen="allowfullscreen"
-          height="100%"
-        />
+        <Suspense fallback={<Loading />}>
+          <VideoFrame channel={channel} />
+        </Suspense>
       </Box>
     </Card>
   );

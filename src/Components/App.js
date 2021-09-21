@@ -82,52 +82,55 @@ function App() {
     };
   }, [langVal]);
 
-  const themeMain = createTheme({
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 1255,
-        lg: 1460,
-        xl: 1920,
-      },
-    },
-    overrides: {
-      MuiSwitch: {
-        colorSecondary: {
-          "&$checked": {
-            // Controls checked color for the thumb
-            color: "#90CD5D",
-          },
-        },
-        track: {
-          // Controls default (unchecked) color for the track
-          "$checked$checked + &": {
-            // Controls checked color for the track
-            opacity: 0.7,
-            backgroundColor: "#90CD5D",
-          },
+  const themeMain = React.useCallback(
+    createTheme({
+      breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 1255,
+          lg: 1460,
+          xl: 1920,
         },
       },
-    },
-    palette: {
-      primary: {
-        main: "#90CD5D",
+      overrides: {
+        MuiSwitch: {
+          colorSecondary: {
+            "&$checked": {
+              // Controls checked color for the thumb
+              color: "#90CD5D",
+            },
+          },
+          track: {
+            // Controls default (unchecked) color for the track
+            "$checked$checked + &": {
+              // Controls checked color for the track
+              opacity: 0.7,
+              backgroundColor: "#90CD5D",
+            },
+          },
+        },
       },
-      type: checked ? "dark" : "light",
-    },
-    typography: {
-      body1: {
-        fontWeight: 500,
+      palette: {
+        primary: {
+          main: "#90CD5D",
+        },
+        type: checked ? "dark" : "light",
       },
-      h5: {
-        fontWeight: 500,
+      typography: {
+        body1: {
+          fontWeight: 500,
+        },
+        h5: {
+          fontWeight: 500,
+        },
+        subtitle2: {
+          fontSize: "1.1rem",
+        },
       },
-      subtitle2: {
-        fontSize: "1.1rem",
-      },
-    },
-  });
+    }),
+    [checked]
+  );
 
   return (
     <div className="app">
