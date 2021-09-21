@@ -4,6 +4,7 @@ import { Button, Typography } from "@material-ui/core";
 import MainStyle, { images } from "../MainStyle";
 import { useDispatch } from "react-redux";
 import { changeLink } from "../../data/channelSlices";
+import { useTranslation } from "react-i18next";
 
 function EventItem({
   isLive,
@@ -18,6 +19,7 @@ function EventItem({
 }) {
   const dispatch = useDispatch();
   const [, , stylesMain] = MainStyle();
+  const { t } = useTranslation();
 
   const [live] = [images.live];
 
@@ -35,7 +37,7 @@ function EventItem({
               svg-animation
             </object>
             <Typography variant="button" align="center">
-              Canlı
+              {t("channel_live")}
             </Typography>
           </div>
         ) : (

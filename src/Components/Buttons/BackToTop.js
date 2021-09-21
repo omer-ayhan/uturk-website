@@ -7,9 +7,11 @@ import {
   Typography,
 } from "@material-ui/core";
 import MainStyle from "../MainStyle";
+import { useTranslation } from "react-i18next";
 
 export default function BackToTop() {
   const [useStyles] = MainStyle();
+  const { t } = useTranslation();
   const classes = useStyles();
   const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
@@ -26,7 +28,10 @@ export default function BackToTop() {
   return (
     <Zoom in={trigger}>
       <div onClick={handleClick} role="presentation" className={classes.topBtn}>
-        <Tooltip title={<Typography variant="body2">Yukarı Çık</Typography>}>
+        <Tooltip
+          title={
+            <Typography variant="body2">{t("Tooltips.6.name")}</Typography>
+          }>
           <Fab color="primary" size="small" aria-label="scroll back to top">
             <ion-icon
               name="caret-up"

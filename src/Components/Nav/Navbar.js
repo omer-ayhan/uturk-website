@@ -2,7 +2,7 @@ import React from "react";
 import Popup from "../Buttons/Popup";
 import clsx from "clsx";
 import ThemeSelector from "../Buttons/ThemeSelector";
-import MainStyle, { nav_links, images } from "../MainStyle";
+import MainStyle, { images } from "../MainStyle";
 import { Link as RouterLink } from "react-router-dom";
 import {
   AppBar,
@@ -24,6 +24,7 @@ import {
 import { langs, changeLang, resetNotify } from "../../data/navSlices";
 import { useDispatch, useSelector } from "react-redux";
 import NotificationBox from "./NotificationBox";
+import { useTranslation } from "react-i18next";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -40,8 +41,9 @@ function HideOnScroll(props) {
 
 function Navbar(props) {
   const navDef = useSelector((state) => state.nav);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [useStyles, StyledBadge, stylesMain] = MainStyle();
+  const [useStyles, StyledBadge, stylesMain, nav_links] = MainStyle();
 
   const classes = useStyles();
   const [logo] = [images.logo];
@@ -81,7 +83,7 @@ function Navbar(props) {
                   aria-labelledby="language text"
                   key={index}
                   className={classes.popup}
-                  onClick={() => dispatch(changeLang(lang.flag))}
+                  onClick={() => dispatch(changeLang(lang))}
                   color="primary"
                   style={stylesMain.textTheme}
                   endIcon={
@@ -93,7 +95,7 @@ function Navbar(props) {
             ))}
             isButton={true}
             start={<ion-icon name="caret-down" size="large"></ion-icon>}
-            titleText={"Dil"}
+            titleText={t("Tooltips.1.name")}
           />
         </ListItem>
         <ListItem
@@ -246,7 +248,7 @@ function Navbar(props) {
                       out={<NotificationBox />}
                       isButton={false}
                       isRadio
-                      titleText="Bildirim"
+                      titleText={t("Tooltips.0.name")}
                     />
                   </Box>
                   <Box className={classes.showLang} ml="8px">
@@ -259,7 +261,7 @@ function Navbar(props) {
                             aria-labelledby="language text"
                             key={index}
                             className={classes.popup}
-                            onClick={() => dispatch(changeLang(lang.flag))}
+                            onClick={() => dispatch(changeLang(lang))}
                             color="primary"
                             style={stylesMain.textTheme}
                             endIcon={
@@ -277,11 +279,16 @@ function Navbar(props) {
                       start={
                         <ion-icon name="caret-down" size="large"></ion-icon>
                       }
-                      titleText="Dil"
+                      titleText={t("Tooltips.1.name")}
                     />
                   </Box>
                   <Box ml="8px" className={classes.mobileMenu}>
-                    <Tooltip title="Menu">
+                    <Tooltip
+                      title={
+                        <Typography variant="body2">
+                          {t("Tooltips.2.name")}
+                        </Typography>
+                      }>
                       <IconButton
                         role="button"
                         aria-labelledby="mobile menu"

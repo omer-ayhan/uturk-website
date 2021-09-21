@@ -15,6 +15,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
 import { db } from "../../firebaseConf";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,6 +52,7 @@ function a11yProps(index) {
 function ChannelTabs({ filter, cat }) {
   let snapshot = db.collection(cat);
   const checked = useSelector((state) => state.nav.theme);
+  const { t } = useTranslation();
   const [useStyles] = MainStyle();
   const [data, setData] = useState(null);
   const [value, setValue] = React.useState(0);
@@ -235,7 +237,7 @@ function ChannelTabs({ filter, cat }) {
           onChange={handleChange}
           aria-label="menu tabs"
           variant="fullWidth">
-          {["7/24", "Canlı Maç", "Sohbet"].map((e, index) => (
+          {t("channel_tabs").map((e, index) => (
             <Tab
               key={index}
               style={{

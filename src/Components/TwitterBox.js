@@ -1,9 +1,11 @@
 import React from "react";
 import { Box, Card, CardHeader, Typography } from "@material-ui/core";
 import MainStyle, { images } from "./MainStyle";
+import { useTranslation } from "react-i18next";
 
 function TwitterBox() {
   const [useStyles] = MainStyle();
+  const { t } = useTranslation();
   const classes = useStyles();
   const hamburger = images.hamburger;
   return (
@@ -13,7 +15,7 @@ function TwitterBox() {
         avatar={<img src={hamburger} alt="" />}
         title={
           <Typography gutterBottom variant="h6" component="h6">
-            Twitter Akışı
+            {t("twitter")}
           </Typography>
         }
       />

@@ -13,15 +13,16 @@ import Popup from "../Buttons/Popup";
 import ChannelTabs from "./ChannelTabs";
 import MainStyle, { images } from "../MainStyle";
 import "../../css/ChannelList.css";
+import { useTranslation } from "react-i18next";
 
 function ChannelList() {
   const [useStyles, , stylesMain] = MainStyle();
+  const { t } = useTranslation();
   const classes = useStyles();
   const [value, setValue] = useState("all");
   const [cat, setCat] = useState("football");
-  const [title, setTitle] = useState("Futbol");
+  const [title, setTitle] = useState(1);
   const [hamburger] = [images.hamburger];
-
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -56,7 +57,7 @@ function ChannelList() {
                           color="primary"
                           value="all"
                           control={<Radio role="radio" color="primary" />}
-                          label="Hepsi"
+                          label={t("filter.0.name")}
                         />
                       </ListItem>
                       <ListItem button>
@@ -67,7 +68,7 @@ function ChannelList() {
                           color="primary"
                           value="live"
                           control={<Radio color="primary" />}
-                          label="Başlayan Yayınlar"
+                          label={t("filter.1.name")}
                         />
                       </ListItem>
                       <ListItem button>
@@ -76,7 +77,7 @@ function ChannelList() {
                           color="primary"
                           value="offline"
                           control={<Radio color="primary" />}
-                          label="Bekleyen Yayınlar"
+                          label={t("filter.2.name")}
                         />
                       </ListItem>
                     </RadioGroup>
@@ -84,7 +85,7 @@ function ChannelList() {
                 }
                 isButton={false}
                 isRadio={true}
-                titleText="Filtre"
+                titleText={t("Tooltips.3.name")}
               />
               <Popup
                 btn={
@@ -98,27 +99,27 @@ function ChannelList() {
                     <ListItem
                       onClick={() => {
                         setCat("football");
-                        setTitle("Futbol");
+                        setTitle(1);
                       }}
                       button>
                       <Typography variant="h6" component="h6">
-                        Futbol
+                        {t("categories.1.name")}
                       </Typography>
                     </ListItem>
                     <ListItem
                       onClick={() => {
                         setCat("basketball");
-                        setTitle("Basketbol");
+                        setTitle(2);
                       }}
                       button>
                       <Typography variant="h6" component="h6">
-                        Basketbol
+                        {t("categories.2.name")}
                       </Typography>
                     </ListItem>
                   </List>
                 }
                 isButton={false}
-                titleText="Kategori"
+                titleText={t("Tooltips.4.name")}
               />
             </div>
           }
@@ -128,7 +129,7 @@ function ChannelList() {
               gutterBottom
               variant="h6"
               component="h6">
-              {title}
+              {t(`categories.${title}.name`)}
             </Typography>
           }
         />

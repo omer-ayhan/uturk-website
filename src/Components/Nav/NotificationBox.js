@@ -2,20 +2,23 @@ import React from "react";
 import { Box, Button, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import MainStyle from "../MainStyle";
+import { useTranslation } from "react-i18next";
 
 function NotificationBox() {
   const notify = useSelector((state) => state.notify);
+  const { t } = useTranslation();
+
   const [useStyles] = MainStyle();
   const classes = useStyles();
 
   const setCatName = (cat) => {
     switch (cat) {
       case "permanent":
-        return "7/24 kanal";
+        return t("categories.0.name");
       case "football":
-        return "Futbol";
+        return t("categories.1.name");
       case "basketball":
-        return "Basketbol";
+        return t("categories.2.name");
       default:
         return "";
     }
@@ -35,7 +38,7 @@ function NotificationBox() {
           variant="body1"
           style={{ fontSize: "1.15rem" }}
           component="p">
-          Canlı Kanallar
+          {t("notification_header")}
         </Typography>
       </Box>
       {notify.notify_data !== null &&

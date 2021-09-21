@@ -14,10 +14,14 @@ export const navSlices = createSlice({
     reset: false,
     notify_size: 0,
     notify_num: 0,
+    lang: "tr",
   },
   reducers: {
     changeLang: (state, action) => {
-      if (state.flag !== action.payload) state.flag = action.payload;
+      if (state.flag !== action.payload.flag) {
+        state.flag = action.payload.flag;
+        state.lang = action.payload.label;
+      }
     },
     changeTheme: (state) => {
       state.theme = !state.theme;

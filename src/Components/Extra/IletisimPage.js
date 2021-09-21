@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography, Link } from "@material-ui/core";
-import MainStyle, { nav_links } from "../MainStyle";
+import MainStyle from "../MainStyle";
 import AdvertiseBox from "./AdvertiseBox";
 
 function IletisimPage() {
-  const [, , stylesMain] = MainStyle();
+  const [, , stylesMain, nav_links] = MainStyle();
 
   return (
     <>

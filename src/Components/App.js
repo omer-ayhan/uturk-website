@@ -18,10 +18,12 @@ import { changeLink } from "../data/channelSlices";
 import { updateNotifyData } from "../data/notifySlices";
 import { db } from "../firebaseConf";
 import { updateNotify } from "../data/navSlices";
+import i18n from "i18next";
 import MainStyle from "./MainStyle";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
+  const langVal = useSelector((state) => state.nav.lang);
   const dispatch = useDispatch();
   const [useStyles] = MainStyle();
   const classes = useStyles();
@@ -69,6 +71,16 @@ function App() {
       unsubscribe();
     };
   }, []);
+
+  React.useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      i18n.changeLanguage(langVal);
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [langVal]);
 
   const themeMain = createTheme({
     breakpoints: {

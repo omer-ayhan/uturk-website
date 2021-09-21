@@ -8,9 +8,11 @@ import TR_flag from "../images/TR.png";
 import US_flag from "../images/US.png";
 import live from "../images/live.svg";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function MainStyle() {
   const checked = useSelector((state) => state.nav.theme);
+  const { t } = useTranslation();
   const useStyles = makeStyles((theme) => ({
     notifyImgBox: {
       padding: "4px",
@@ -238,7 +240,30 @@ function MainStyle() {
     lockedBtn: { position: "absolute", top: "10px", left: "10px" },
   };
 
-  return [useStyles, StyledBadge, stylesMain];
+  const nav_links = {
+    main_links: [
+      { name: t(`main_links.0.name`), link: "/" },
+      { name: t("main_links.1.name"), link: "/yardım" },
+      { name: t("main_links.2.name"), link: "/hakkımızda" },
+      { name: t("main_links.3.name"), link: "/iletisim" },
+    ],
+    social_links: [
+      {
+        img_link: "mail",
+        link: "mailto:uturknet@gmail.com",
+        name: "uturknet@gmail.com",
+      },
+      { img_link: facebook, link: "d", name: "Facebook" },
+      {
+        img_link: twitter,
+        link: "https://twitter.com/uturknet",
+        name: "Twitter",
+      },
+      { img_link: telegram, link: "f", name: "Telegram" },
+    ],
+  };
+
+  return [useStyles, StyledBadge, stylesMain, nav_links];
 }
 export default MainStyle;
 
@@ -253,27 +278,4 @@ const images = {
   live: live,
 };
 
-const nav_links = {
-  main_links: [
-    { name: "Ana Sayfa", link: "/" },
-    { name: "Yardım", link: "/yardım" },
-    { name: "Hakkımızda", link: "/hakkımızda" },
-    { name: "İletişim", link: "/iletisim" },
-  ],
-  social_links: [
-    {
-      img_link: "mail",
-      link: "mailto:uturknet@gmail.com",
-      name: "uturknet@gmail.com",
-    },
-    { img_link: facebook, link: "d", name: "Facebook" },
-    {
-      img_link: twitter,
-      link: "https://twitter.com/uturknet",
-      name: "Twitter",
-    },
-    { img_link: telegram, link: "f", name: "Telegram" },
-  ],
-};
-
-export { nav_links, MainStyle, images };
+export { MainStyle, images };

@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Grid, Link, Typography } from "@material-ui/core";
-import MainStyle, { images, nav_links } from "./MainStyle";
+import MainStyle, { images } from "./MainStyle";
 import { Link as RouterLink } from "react-router-dom";
 
 function Footer() {
-  const [useStyles, stylesMain] = MainStyle();
+  const [useStyles, , stylesMain, nav_links] = MainStyle();
 
   const classes = useStyles();
   const logo = images.logo;

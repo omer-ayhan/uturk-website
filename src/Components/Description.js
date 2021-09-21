@@ -7,15 +7,18 @@ import {
   List,
   ListItem,
   Typography,
+  Link,
 } from "@material-ui/core";
 import Popup from "./Buttons/Popup";
 import AdvertiseBox from "./Extra/AdvertiseBox";
-import MainStyle, { nav_links } from "./MainStyle";
+import MainStyle from "./MainStyle";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 function Description() {
   const desc = useSelector((state) => state.channel);
-  const [useStyles, , stylesMain] = MainStyle();
+  const [useStyles, , stylesMain, nav_links] = MainStyle();
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <>
@@ -37,18 +40,33 @@ function Description() {
                     style={{ color: "#90CD5D" }}></ion-icon>
                 }
                 out={
-                  <List component="nav" aria-label="secondary mailbox folders">
+                  <List aria-label="secondary mailbox folders">
                     <ListItem>
-                      {nav_links.social_links.slice(1).map((e, index) => (
-                        <IconButton key={index}>
-                          <img src={e.img_link} alt={e.name} />
-                        </IconButton>
-                      ))}
+                      {nav_links.social_links
+                        .slice(1)
+                        .map(({ img_link, link, name }, index) => (
+                          <IconButton key={index}>
+                            <Link
+                              role="link"
+                              aria-labelledby={name}
+                              key={index}
+                              href={link}
+                              target="_blank"
+                              rel="noreferrer"
+                              underline="none">
+                              <img
+                                className="social-img"
+                                src={img_link}
+                                alt={name}
+                              />
+                            </Link>
+                          </IconButton>
+                        ))}
                     </ListItem>
                   </List>
                 }
                 isButton={false}
-                titleText="Paylaş"
+                titleText={t("Tooltips.5.name")}
               />
             </Box>
             <Box
@@ -58,7 +76,7 @@ function Description() {
               bgcolor="rgba(119, 190, 60, 1)"
               borderRadius="30px">
               <Typography variant="button" style={stylesMain.linkWhite}>
-                Paylaş Bize Destek Ol
+                {t("desc_extra.0.name")}
               </Typography>
             </Box>
           </Box>
@@ -87,7 +105,7 @@ function Description() {
               className={classes.textTheme}
               mb="10px"
               fontWeight="fontWeightMedium">
-              Sponsorluk, Şikayet, İstek:
+              {t("desc_extra.1.name")}
             </Box>
             <Box fontWeight="fontWeightMedium">
               <ion-icon
