@@ -123,10 +123,15 @@ function Navbar(props) {
             to={link}
             component={RouterLink}
             underline="none">
-            <ListItem button role="button">
+            <ListItem key={index} button role="button">
               <ListItemText
+                key={index}
                 role="textbox"
-                primary={<Typography variant="h6">{name}</Typography>}
+                primary={
+                  <Typography key={index} variant="h6">
+                    {name}
+                  </Typography>
+                }
               />
             </ListItem>
           </Link>
@@ -149,7 +154,12 @@ function Navbar(props) {
                   target="_blank"
                   rel="noreferrer"
                   underline="none">
-                  <img className="social-img" src={img_link} alt={name} />
+                  <img
+                    className="social-img"
+                    key={index}
+                    src={img_link}
+                    alt={name}
+                  />
                 </Link>
               </Tooltip>
             ))}
@@ -185,13 +195,13 @@ function Navbar(props) {
                       <Link
                         aria-label={name}
                         role="link"
-                        key={index}
+                        key={index + 5}
                         component={RouterLink}
                         color="primary"
                         className={classes.navLink}
                         to={link}
                         underline="none">
-                        <Typography variant="h6" component="span">
+                        <Typography key={name} variant="h6" component="span">
                           {name}
                         </Typography>
                       </Link>
@@ -204,13 +214,16 @@ function Navbar(props) {
                       .slice(1)
                       .map(({ img_link, link, name }, index) => (
                         <Tooltip
+                          key={name}
                           title={
-                            <Typography variant="body2">{name}</Typography>
+                            <Typography key={name} variant="body2">
+                              {name}
+                            </Typography>
                           }>
                           <Link
                             role="link"
                             aria-labelledby={name}
-                            key={index}
+                            key={name}
                             className={classes.socialLink}
                             style={{ marginLeft: "13px" }}
                             href={link}
@@ -218,6 +231,7 @@ function Navbar(props) {
                             rel="noreferrer"
                             underline="none">
                             <img
+                              key={name}
                               className="social-img"
                               src={img_link}
                               alt="social link"

@@ -10,6 +10,10 @@
     "channel_live": "CANLI",
     "channel_tabs": ["7/24", "Canlı Maç", "Sohbet"],
     "twitter": "Twitter Akışı",
+    "about_us": "Utürk ekibi olarak kesintisiz ve maksimum kalitede yayın vermeyi önemsiyoruz. Altyapımıza güvendiğimiz için ücretsiz yayın vermeyi hedefliyoruz. Bize destek olmanız için sizlerden ricamız reklamlara tiklamanız yeterli olur. uTurk ekibi olarak şimdiden sizlere iyi seyirler diliyoruz.",
+    "faq": [
+      { "title": "Yapım Aşamasında", "text": "Yapım Aşamasında Paragraf" }
+    ],
     "desc_extra": [
       { "name": "Paylaş Bize Destek Ol" },
       { "name": "Sponsorluk, Şikayet ve İstek İçin:" }

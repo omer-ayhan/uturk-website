@@ -5,9 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
 import MainStyle from "../MainStyle";
 import AdvertiseBox from "./AdvertiseBox";
+import { useTranslation } from "react-i18next";
 
 export default function YardımPage() {
   const [useStyles, , stylesMain] = MainStyle();
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -23,13 +25,12 @@ export default function YardımPage() {
           aria-controls="panel1a-content"
           id="panel1a-header">
           <Typography aria-label="yardım başlık" variant="h6" component="h6">
-            Accordion 1
+            {t("faq.0.title")}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography aria-label="yardım paragraf">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            {t("faq.0.text")}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -41,16 +42,15 @@ export default function YardımPage() {
               name="caret-down"
               size="large"></ion-icon>
           }
-          aria-controls="panel2a-content"
-          id="panel2a-header">
+          aria-controls="panel1a-content"
+          id="panel1a-header">
           <Typography aria-label="yardım başlık" variant="h6" component="h6">
-            Accordion 2
+            {t("faq.0.title")}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography aria-label="yardım paragraf">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            {t("faq.0.text")}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -62,16 +62,15 @@ export default function YardımPage() {
               name="caret-down"
               size="large"></ion-icon>
           }
-          aria-controls="panel3a-content"
-          id="panel3a-header">
+          aria-controls="panel1a-content"
+          id="panel1a-header">
           <Typography aria-label="yardım başlık" variant="h6" component="h6">
-            Accordion 3
+            {t("faq.0.title")}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography aria-label="yardım paragraf">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            {t("faq.0.text")}
           </Typography>
         </AccordionDetails>
       </Accordion>

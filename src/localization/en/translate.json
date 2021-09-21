@@ -10,6 +10,9 @@
     "channel_live": "LIVE",
     "channel_tabs": ["7/24", "Live Events", "Chat"],
     "twitter": "Twitter Feed",
+    "about_us": "As Utürk team our goal is to stream without interruptions and giving maximum quality. The reason we stream for free is because we trust our infrastructure can handle high user traffic. To support us all you can do is to click ads on our site. We wish you good time already as Utürk team.",
+    "faq": [{ "title": "In Development", "text": "In Development Paragraph" }],
+
     "desc_extra": [
       { "name": "Support us by sharing" },
       { "name": "For Sponsorship, Complaint and Feedback:" }
