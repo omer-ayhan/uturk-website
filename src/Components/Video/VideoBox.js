@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Box, Card } from "@material-ui/core";
-import MainStyle from "./MainStyle";
+import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
 import { Skeleton } from "@material-ui/lab";
 const VideoFrame = lazy(() => import("./VideoFrame"));

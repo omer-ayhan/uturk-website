@@ -12,7 +12,7 @@ import {
 import Popup from "../Buttons/Popup";
 import ChannelTabs from "./ChannelTabs";
 import MainStyle, { images } from "../MainStyle";
-import "../../css/ChannelList.css";
+import "../../css/ChannelList.min.css";
 import { useTranslation } from "react-i18next";
 
 function ChannelList() {

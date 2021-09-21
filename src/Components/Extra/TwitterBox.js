@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Card, CardHeader, Typography } from "@material-ui/core";
-import MainStyle, { images } from "./MainStyle";
+import MainStyle, { images } from "../MainStyle";
 import { useTranslation } from "react-i18next";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 

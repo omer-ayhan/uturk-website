@@ -9,9 +9,9 @@ import {
   Typography,
   Link,
 } from "@material-ui/core";
-import Popup from "./Buttons/Popup";
-import AdvertiseBox from "./Extra/AdvertiseBox";
-import MainStyle from "./MainStyle";
+import Popup from "../Buttons/Popup";
+import AdvertiseBox from "./AdvertiseBox";
+import MainStyle from "../MainStyle";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 

@@ -1,11 +1,11 @@
-import "../css/App.css";
+import "../css/App.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AdvertiseBox from "./Extra/AdvertiseBox";
 import ChannelList from "./Channel_List/ChannelList";
 import Navbar from "./Nav/Navbar";
-import VideoBox from "./VideoBox";
-import Description from "./Description";
-import TwitterBox from "./TwitterBox";
+import VideoBox from "./Video/VideoBox";
+import Description from "./Extra/Description";
+import TwitterBox from "./Extra/TwitterBox";
 import { Box, createTheme, Grid, ThemeProvider } from "@material-ui/core";
 import Footer from "./Footer";
 import BackToTop from "./Buttons/BackToTop";

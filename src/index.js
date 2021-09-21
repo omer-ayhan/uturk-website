@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import "./css/index.css";
+import "./css/index.min.css";
 import App from "./Components/App";
 import { Provider } from "react-redux";
 import { I18nextProvider } from "react-i18next";
