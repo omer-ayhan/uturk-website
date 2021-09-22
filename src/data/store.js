@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistReducer,
   FLUSH,
@@ -17,7 +17,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: [notifyReducer],
+  blacklist: [notifyReducer, channelReducer],
 };
 
 const persisted = persistReducer(persistConfig, navReducer);

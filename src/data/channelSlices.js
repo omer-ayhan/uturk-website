@@ -6,6 +6,7 @@ export const channelSlices = createSlice({
     iframe: "",
     title: "",
     tags: [],
+    user: null,
   },
   reducers: {
     changeLink: (state, action) => {
@@ -17,9 +18,12 @@ export const channelSlices = createSlice({
         state.tags = action.payload.tags;
       }
     },
+    logUser: (state, action) => {
+      if (state.user === null) state.user = action.payload.user;
+    },
   },
 });
 
-export const { changeLink } = channelSlices.actions;
+export const { changeLink, logUser } = channelSlices.actions;
 
 export default channelSlices.reducer;

@@ -25,8 +25,7 @@ function ChannelItem() {
       unsubscribe();
     };
   }, []);
-
-  return data !== null ? (
+  return data?.length > 0 && data !== null ? (
     data.map((item, index) => (
       <Button
         aria-label="kanal butonu"

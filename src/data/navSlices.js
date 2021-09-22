@@ -35,9 +35,6 @@ export const navSlices = createSlice({
       if (state.notify_size !== action.payload.size) {
         state.notify_size = action.payload.size;
         state.notify_num += 1;
-        console.log("different");
-      } else {
-        console.log("same");
       }
     },
     removeNotify: (state) => {

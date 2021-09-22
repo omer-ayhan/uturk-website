@@ -40,6 +40,9 @@ function HideOnScroll(props) {
 }
 
 function Navbar(props) {
+  document.body.style.cssText = `
+  overflow: auto;
+  `;
   const navDef = useSelector((state) => state.nav);
   const { t } = useTranslation();
   const dispatch = useDispatch();

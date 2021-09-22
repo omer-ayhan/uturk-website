@@ -1,4 +1,4 @@
-import "../css/App.min.css";
+import "../css/App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AdvertiseBox from "./Extra/AdvertiseBox";
 import ChannelList from "./Channel_List/ChannelList";
@@ -13,22 +13,25 @@ import { useDispatch, useSelector } from "react-redux";
 import YardımPage from "./Extra/YardımPage";
 import HakkımızdaPage from "./Extra/HakkımızdaPage";
 import IletisimPage from "./Extra/IletisimPage";
-import React from "react";
+import React, { useEffect } from "react";
 import { changeLink } from "../data/channelSlices";
 import { updateNotifyData } from "../data/notifySlices";
 import { db } from "../firebaseConf";
 import { removeNotify, updateNotify } from "../data/navSlices";
 import i18n from "i18next";
 import MainStyle from "./MainStyle";
+import SignIn from "./SignIn";
+import { AuthProvider } from "./ChannelContext";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
   const langVal = useSelector((state) => state.nav.lang);
+  const user = useSelector((state) => state.channel.user);
   const dispatch = useDispatch();
   const [useStyles] = MainStyle();
   const classes = useStyles();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsubscribe = db
       .collection("permanent")
       .orderBy("timestamp", "desc")
@@ -48,9 +51,9 @@ function App() {
       unsubscribe();
     };
     // remove if any error occurres
-  }, [dispatch]);
+  }, [user]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsubscribe = db
       ?.collection("notifications")
       .orderBy("timestamp", "desc")
@@ -77,9 +80,9 @@ function App() {
       unsubscribe();
     };
     // remove if any error occurres
-  }, [dispatch]);
+  }, [user]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let isMounted = true;
     if (isMounted) {
       i18n.changeLanguage(langVal);
@@ -145,49 +148,79 @@ function App() {
       <Router>
         <Switch>
           <ThemeProvider theme={themeMain}>
-            <Navbar />
-            <AdvertiseBox id="back-to-top-anchor" />
-            <Route exact path="/">
-              <div className="container">
-                <Box className={classes.respMainWrap} px="80px" mb="40px">
-                  <Grid container direction={"row"} spacing={4} align={"start"}>
-                    <Grid item xs={12} sm={12} md={8} xl={6}>
-                      <VideoBox />
-                    </Grid>
-                    <Grid
-                      item
-                      className={classes.showAd}
-                      xs={12}
-                      sm={12}
-                      md={12}>
-                      <AdvertiseBox />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={4} xl={3}>
-                      <ChannelList />
-                    </Grid>
-                    <Grid item className={classes.showBreak} xl={3}>
-                      <AdvertiseBox />
-                      <AdvertiseBox />
-                    </Grid>
-                    <Grid item xs={12} md={8} xl={6}>
-                      <Description />
-                    </Grid>
-                    <Grid item xs={12} md={4} xl={3}>
-                      <TwitterBox />
-                    </Grid>
-                    <Grid item className={classes.showBreak} xl={3}>
-                      <AdvertiseBox />
-                      <AdvertiseBox />
-                    </Grid>
-                  </Grid>
-                </Box>
-              </div>
-            </Route>
-            <Route exact path="/yardım" component={YardımPage}></Route>
-            <Route exact path="/hakkımızda" component={HakkımızdaPage}></Route>
-            <Route exact path="/iletisim" component={IletisimPage}></Route>
-            <Footer />
-            <BackToTop />
+            <AuthProvider>
+              <Route exact path="/login" component={SignIn} />
+              <Route
+                exact
+                path={["/", "/yardım", "/hakkımızda", "/iletisim"]}
+                component={user && Navbar}
+              />
+              <Route exact path={["/", "/yardım", "/hakkımızda", "/iletisim"]}>
+                <AdvertiseBox id="back-to-top-anchor" />
+              </Route>
+              <Route exact path="/">
+                {user && (
+                  <div className="container">
+                    <Box className={classes.respMainWrap} px="80px" mb="40px">
+                      <Grid
+                        container
+                        direction={"row"}
+                        spacing={4}
+                        align={"start"}>
+                        <Grid item xs={12} sm={12} md={8} xl={6}>
+                          <VideoBox />
+                        </Grid>
+                        <Grid
+                          item
+                          className={classes.showAd}
+                          xs={12}
+                          sm={12}
+                          md={12}>
+                          <AdvertiseBox />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={4} xl={3}>
+                          <ChannelList />
+                        </Grid>
+                        <Grid item className={classes.showBreak} xl={3}>
+                          <AdvertiseBox />
+                          <AdvertiseBox />
+                        </Grid>
+                        <Grid item xs={12} md={8} xl={6}>
+                          <Description />
+                        </Grid>
+                        <Grid item xs={12} md={4} xl={3}>
+                          <TwitterBox />
+                        </Grid>
+                        <Grid item className={classes.showBreak} xl={3}>
+                          <AdvertiseBox />
+                          <AdvertiseBox />
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </div>
+                )}
+              </Route>
+              <Route
+                exact
+                path="/yardım"
+                component={user && YardımPage}></Route>
+              <Route
+                exact
+                path="/hakkımızda"
+                component={user && HakkımızdaPage}></Route>
+              <Route
+                exact
+                path="/iletisim"
+                component={user && IletisimPage}></Route>
+              <Route exact path={["/", "/yardım", "/hakkımızda", "/iletisim"]}>
+                {user && (
+                  <>
+                    <Footer />
+                    <BackToTop />
+                  </>
+                )}
+              </Route>
+            </AuthProvider>
           </ThemeProvider>
         </Switch>
       </Router>

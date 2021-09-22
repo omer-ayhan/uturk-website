@@ -215,7 +215,7 @@ function ChannelTabs({ filter, cat }) {
   };
 
   const filterChannels = React.useCallback(() => {
-    if (data !== null) {
+    if (data?.length > 0 && data !== null) {
       if (cat !== "permanent") {
         if (filter === "live") {
           return data
@@ -268,7 +268,7 @@ function ChannelTabs({ filter, cat }) {
           ));
         }
       }
-    } else <LoadingChannel />;
+    } else return <LoadingChannel loadingEvent />;
   }, [cat, filter, data]);
 
   return (
