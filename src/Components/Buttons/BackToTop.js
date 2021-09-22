@@ -9,16 +9,17 @@ import {
 import MainStyle from "../MainStyle";
 import { useTranslation } from "react-i18next";
 
-export default function BackToTop() {
+function BackToTop() {
   const [useStyles] = MainStyle();
   const { t } = useTranslation();
   const classes = useStyles();
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
-    );
-    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
+  const anchor = document.querySelector("#back-to-top-anchor");
+  const handleClick = React.useCallback(
+    (event) => {
+      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+    },
+    [anchor]
+  );
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -43,3 +44,5 @@ export default function BackToTop() {
     </Zoom>
   );
 }
+
+export default React.memo(BackToTop);

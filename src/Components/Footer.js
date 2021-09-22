@@ -23,17 +23,17 @@ function Footer() {
         justifyContent="center">
         <Grid className={classes.footerLinkResp} item sm={8}>
           <Box mb="50px">
-            {nav_links.main_links.slice(1).map(({ name, link }, index) => (
+            {nav_links.main_links.slice(1).map(({ name, link, id }, index) => (
               <Link
                 role="link"
                 aria-label={name}
-                key={index}
+                key={id}
                 component={RouterLink}
                 className={classes.textTheme}
                 style={{ ...stylesMain.linkMain, margin: "0 10px" }}
                 to={link}
                 rel="noopener">
-                <Typography key={index} variant="h6" component="span">
+                <Typography variant="h6" component="span">
                   {name}
                 </Typography>
               </Link>

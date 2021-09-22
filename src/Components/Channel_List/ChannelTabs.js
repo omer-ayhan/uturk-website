@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import EventItem from "./EventItem";
-import ChannelItem from "./ChannelItem";
+// import EventItem from "./EventItem";
+// import ChannelItem from "./ChannelItem";
 import {
   Tabs,
   Tab,
@@ -16,6 +16,8 @@ import MainStyle from "../MainStyle";
 import { useSelector } from "react-redux";
 import { db } from "../../firebaseConf";
 import { useTranslation } from "react-i18next";
+const EventItem = lazy(() => import("./EventItem"));
+const ChannelItem = lazy(() => import("./ChannelItem"));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,6 +50,140 @@ function a11yProps(index) {
     "aria-controls": `tabpanel-${index}`,
   };
 }
+
+export const LoadingChannel = ({ loadingEvent }) => {
+  if (loadingEvent) {
+    return (
+      <div styles={{ width: "300px", marginTop: "10px" }}>
+        <Grid
+          role="grid"
+          container
+          spacing={0}
+          alignItems="center"
+          justifyContent="center">
+          <Grid role="gridcell" item xs={2}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={8}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              width="95%"
+              height={75}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={2}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={2}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={8}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              width="95%"
+              height={75}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={2}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={2}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={8}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              width="95%"
+              height={75}
+            />
+          </Grid>
+          <Grid role="gridcell" item xs={2}>
+            <Skeleton
+              aria-label="yükleniyor"
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+        </Grid>
+      </div>
+    );
+  } else {
+    return (
+      <div arial-label="loading" styles={{ width: "300px", marginTop: "10px" }}>
+        <Grid container spacing={0} alignItems="center" justifyContent="center">
+          <Grid item xs={2}>
+            <Skeleton
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Skeleton animation="wave" width={300} height={75} />
+          </Grid>
+          <Grid item xs={2}>
+            <Skeleton
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Skeleton animation="wave" width={300} height={75} />
+          </Grid>
+          <Grid item xs={2}>
+            <Skeleton
+              animation="wave"
+              variant="circle"
+              width={50}
+              height={50}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Skeleton animation="wave" width={300} height={75} />
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
+};
 
 function ChannelTabs({ filter, cat }) {
   let snapshot = db.collection(cat);
@@ -132,96 +268,7 @@ function ChannelTabs({ filter, cat }) {
           ));
         }
       }
-    } else
-      return (
-        <div styles={{ width: "300px", marginTop: "10px" }}>
-          <Grid
-            role="grid"
-            container
-            spacing={0}
-            alignItems="center"
-            justifyContent="center">
-            <Grid role="gridcell" item xs={2}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                variant="circle"
-                width={50}
-                height={50}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={8}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                width="95%"
-                height={75}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={2}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                variant="circle"
-                width={50}
-                height={50}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={2}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                variant="circle"
-                width={50}
-                height={50}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={8}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                width="95%"
-                height={75}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={2}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                variant="circle"
-                width={50}
-                height={50}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={2}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                variant="circle"
-                width={50}
-                height={50}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={8}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                width="95%"
-                height={75}
-              />
-            </Grid>
-            <Grid role="gridcell" item xs={2}>
-              <Skeleton
-                aria-label="yükleniyor"
-                animation="wave"
-                variant="circle"
-                width={50}
-                height={50}
-              />
-            </Grid>
-          </Grid>
-        </div>
-      );
+    } else <LoadingChannel />;
   }, [cat, filter, data]);
 
   return (
@@ -253,10 +300,14 @@ function ChannelTabs({ filter, cat }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <ChannelItem cat={cat} />
+        <Suspense fallback={<LoadingChannel loadingEvent={false} />}>
+          <ChannelItem cat={cat} />
+        </Suspense>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {filterChannels()}
+        <Suspense fallback={<LoadingChannel loadingEvent />}>
+          {filterChannels()}
+        </Suspense>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Box width="100%" height="520px">

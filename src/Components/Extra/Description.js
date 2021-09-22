@@ -44,12 +44,11 @@ function Description() {
                     <ListItem>
                       {nav_links.social_links
                         .slice(1)
-                        .map(({ img_link, link, name }, index) => (
-                          <IconButton key={index}>
+                        .map(({ img_link, link, name, id }, index) => (
+                          <IconButton key={id}>
                             <Link
                               role="link"
                               aria-labelledby={name}
-                              key={index}
                               href={link}
                               target="_blank"
                               rel="noreferrer"
@@ -85,11 +84,11 @@ function Description() {
         <Grid item xs={6} sm={5}>
           {desc.tags.map((e, index) => (
             <Box
-              key={index}
+              key={e}
               m="0 9px 9px 0"
               display="inline-block"
               fontWeight="fontWeightBold">
-              <Chip label={e} key={index} />
+              <Chip label={e} />
             </Box>
           ))}
         </Grid>
