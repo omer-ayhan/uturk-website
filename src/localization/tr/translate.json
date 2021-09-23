@@ -14,6 +14,13 @@
     "faq": [
       { "title": "Yapım Aşamasında", "text": "Yapım Aşamasında Paragraf" }
     ],
+    "login_box": {
+      "title": "Lütfen Güvenliğiniz İçin Kutucuğu Doğrulayınız",
+      "button": "Siteye Giriş",
+      "checkbox": "* Lütfen Kutucuğu Doğrulayınız",
+      "error": "* Bir Hata Oluştu"
+    },
+
     "desc_extra": [
       { "name": "Paylaş Bize Destek Ol" },
       { "name": "Sponsorluk, Şikayet ve İstek İçin:" }

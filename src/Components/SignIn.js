@@ -31,10 +31,10 @@ function SignIn() {
         dispatch(logUser({ user: auth.currentUser.uid, isMatched: true }));
         history.push("/");
       } else {
-        setErr("* Please confirm the checkbox");
+        setErr("checkbox");
       }
-    } catch (err) {
-      setErr(err);
+    } catch {
+      setErr("error");
     }
   };
   return (
@@ -109,7 +109,7 @@ function SignIn() {
               alignItems="center"
               style={{ gap: "15px" }}>
               <Typography variant="h6" style={{ color: "#333" }}>
-                Please Confirm For Your Safety
+                {t("login_box.title")}
               </Typography>
               <ReCAPTCHA
                 style={{ marginTop: "10px" }}
@@ -122,14 +122,14 @@ function SignIn() {
                 color="primary"
                 type="submit">
                 <Typography className={classes.textTheme} variant="subtitle2">
-                  Enter Site
+                  {t("login_box.button")}
                 </Typography>
               </Button>
               <Typography
                 gutterBottom
                 variant="body2"
                 style={{ color: "#EB3915" }}>
-                {err}
+                {err && t(`login_box.${err}`)}
               </Typography>
             </Box>
           </Box>
