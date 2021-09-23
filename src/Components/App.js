@@ -21,12 +21,12 @@ import { removeNotify, updateNotify } from "../data/navSlices";
 import i18n from "i18next";
 import MainStyle from "./MainStyle";
 import SignIn from "./SignIn";
-import { AuthProvider } from "./ChannelContext";
+import { AuthProvider } from "./AuthContext";
 
 function App() {
   const checked = useSelector((state) => state.nav.theme);
   const langVal = useSelector((state) => state.nav.lang);
-  const user = useSelector((state) => state.channel.user);
+  const anon = useSelector((state) => state.nav);
   const dispatch = useDispatch();
   const [useStyles] = MainStyle();
   const classes = useStyles();
@@ -51,7 +51,7 @@ function App() {
       unsubscribe();
     };
     // remove if any error occurres
-  }, [user]);
+  }, [anon.user]);
 
   useEffect(() => {
     const unsubscribe = db
@@ -80,7 +80,7 @@ function App() {
       unsubscribe();
     };
     // remove if any error occurres
-  }, [user]);
+  }, [anon.user]);
 
   useEffect(() => {
     let isMounted = true;
@@ -149,17 +149,21 @@ function App() {
         <Switch>
           <ThemeProvider theme={themeMain}>
             <AuthProvider>
-              <Route exact path="/login" component={SignIn} />
+              <Route
+                exact
+                path="/login"
+                component={!anon.isMatched && SignIn}
+              />
               <Route
                 exact
                 path={["/", "/yardım", "/hakkımızda", "/iletisim"]}
-                component={user && Navbar}
+                component={anon.isMatched && Navbar}
               />
               <Route exact path={["/", "/yardım", "/hakkımızda", "/iletisim"]}>
                 <AdvertiseBox id="back-to-top-anchor" />
               </Route>
               <Route exact path="/">
-                {user && (
+                {anon.isMatched && (
                   <div className="container">
                     <Box className={classes.respMainWrap} px="80px" mb="40px">
                       <Grid
@@ -203,17 +207,17 @@ function App() {
               <Route
                 exact
                 path="/yardım"
-                component={user && YardımPage}></Route>
+                component={anon.isMatched && YardımPage}></Route>
               <Route
                 exact
                 path="/hakkımızda"
-                component={user && HakkımızdaPage}></Route>
+                component={anon.isMatched && HakkımızdaPage}></Route>
               <Route
                 exact
                 path="/iletisim"
-                component={user && IletisimPage}></Route>
+                component={anon.isMatched && IletisimPage}></Route>
               <Route exact path={["/", "/yardım", "/hakkımızda", "/iletisim"]}>
-                {user && (
+                {anon.isMatched && (
                   <>
                     <Footer />
                     <BackToTop />

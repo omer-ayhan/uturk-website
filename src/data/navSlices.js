@@ -16,6 +16,8 @@ export const navSlices = createSlice({
     notify_size: 0,
     notify_num: 0,
     lang: "tr",
+    user: null,
+    isMatched: false,
   },
   reducers: {
     changeLang: (state, action) => {
@@ -40,6 +42,10 @@ export const navSlices = createSlice({
     removeNotify: (state) => {
       if (state.notify_size >= 0) state.notify_size -= 1;
     },
+    logUser: (state, action) => {
+      state.user = action.payload.user;
+      state.isMatched = action.payload.isMatched;
+    },
   },
 });
 
@@ -51,6 +57,7 @@ export const {
   resetNotify,
   updateNotify,
   removeNotify,
+  logUser,
 } = navSlices.actions;
 
 export default navSlices.reducer;

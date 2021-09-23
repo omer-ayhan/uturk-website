@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect } from "react";
 import { auth } from "../firebaseConf";
 import { useHistory } from "react-router-dom";
-import { logUser } from "../data/channelSlices";
-import { useDispatch } from "react-redux";
+import { logUser } from "../data/navSlices";
+import { useDispatch, useSelector } from "react-redux";
 
 export const AuthContext = createContext();
 
@@ -11,6 +11,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  const user = useSelector((state) => state.nav.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -18,26 +19,22 @@ export function AuthProvider({ children }) {
     return auth.signInAnonymously();
   };
 
-  const signOut = () => {
-    return auth.signOut();
-  };
-
   useEffect(() => {
     const unsubscribe = () =>
       auth.onAuthStateChanged(() => {
-        if (auth.currentUser) {
-          dispatch(logUser({ user: auth.currentUser.uid }));
+        if (auth.currentUser?.isAnonymous && auth.currentUser?.uid === user) {
+          // dispatch(logUser({ user: auth.currentUser.uid, isMatched: true }));
           history.push("/");
         } else {
+          dispatch(logUser({ user: "", isMatched: false }));
           history.push("/login");
         }
       });
     return unsubscribe();
-  }, [history]);
+  }, [history, user]);
 
   const logVal = {
     signIn,
-    signOut,
   };
 
   return (
