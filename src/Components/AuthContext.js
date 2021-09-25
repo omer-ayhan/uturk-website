@@ -3,6 +3,7 @@ import { auth } from "../firebaseConf";
 import { useHistory } from "react-router-dom";
 import { logUser } from "../data/navSlices";
 import { useDispatch, useSelector } from "react-redux";
+import firebase from "firebase/compat/app";
 
 export const AuthContext = createContext();
 
@@ -15,7 +16,8 @@ export function AuthProvider({ children }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const signIn = () => {
+  const signIn = async () => {
+    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     return auth.signInAnonymously();
   };
 

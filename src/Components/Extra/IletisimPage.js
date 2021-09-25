@@ -30,7 +30,7 @@ function IletisimPage() {
                   name="mail"
                   style={{
                     ...stylesMain.textTheme,
-                    fontSize: "1.7rem",
+                    fontSize: "2rem",
                     marginBottom: "-5px",
                   }}></ion-icon>
               ) : (
