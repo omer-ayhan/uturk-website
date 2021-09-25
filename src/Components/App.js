@@ -1,4 +1,4 @@
-import "../css/App.css";
+import "../css/App.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AdvertiseBox from "./Extra/AdvertiseBox";
 import ChannelList from "./Channel_List/ChannelList";
@@ -156,10 +156,10 @@ function App() {
               />
               <Route
                 exact
-                path={["/", "/yardım", "/hakkımızda", "/iletisim"]}
+                path={["/", "/yardim", "/hakkimizda", "/iletisim"]}
                 component={anon.isMatched && Navbar}
               />
-              <Route exact path={["/", "/yardım", "/hakkımızda", "/iletisim"]}>
+              <Route exact path={["/", "/yardim", "/hakkimizda", "/iletisim"]}>
                 <AdvertiseBox id="back-to-top-anchor" />
               </Route>
               <Route exact path="/">
@@ -206,17 +206,17 @@ function App() {
               </Route>
               <Route
                 exact
-                path="/yardım"
+                path="/yardim"
                 component={anon.isMatched && YardımPage}></Route>
               <Route
                 exact
-                path="/hakkımızda"
+                path="/hakkimizda"
                 component={anon.isMatched && HakkımızdaPage}></Route>
               <Route
                 exact
                 path="/iletisim"
                 component={anon.isMatched && IletisimPage}></Route>
-              <Route exact path={["/", "/yardım", "/hakkımızda", "/iletisim"]}>
+              <Route exact path={["/", "/yardim", "/hakkimizda", "/iletisim"]}>
                 {anon.isMatched && (
                   <>
                     <Footer />

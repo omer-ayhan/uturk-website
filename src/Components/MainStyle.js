@@ -250,8 +250,8 @@ function MainStyle() {
   const nav_links = {
     main_links: [
       { name: t(`main_links.0.name`), link: "/", id: uuidv4() },
-      { name: t("main_links.1.name"), link: "/yardım", id: uuidv4() },
-      { name: t("main_links.2.name"), link: "/hakkımızda", id: uuidv4() },
+      { name: t("main_links.1.name"), link: "/yardim", id: uuidv4() },
+      { name: t("main_links.2.name"), link: "/hakkimizda", id: uuidv4() },
       { name: t("main_links.3.name"), link: "/iletisim", id: uuidv4() },
     ],
     social_links: [
