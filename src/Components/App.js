@@ -182,23 +182,25 @@ function App() {
                           md={12}>
                           <AdvertiseBox />
                         </Grid>
-                        <Grid item xs={12} sm={12} md={4} xl={3}>
+                        <Grid item xs={12} sm={12} md={4} xl={6}>
                           <ChannelList />
                         </Grid>
-                        <Grid item className={classes.showBreak} xl={3}>
+                        {/* advertise large */}
+                        {/* <Grid item className={classes.showBreak} xl={3}>
                           <AdvertiseBox />
                           <AdvertiseBox />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12} md={8} xl={6}>
                           <Description />
                         </Grid>
-                        <Grid item xs={12} md={4} xl={3}>
+                        <Grid item xs={12} md={4} xl={6}>
                           <TwitterBox />
                         </Grid>
-                        <Grid item className={classes.showBreak} xl={3}>
+                        {/* advertise large */}
+                        {/* <Grid item className={classes.showBreak} xl={3}>
                           <AdvertiseBox />
                           <AdvertiseBox />
-                        </Grid>
+                        </Grid> */}
                       </Grid>
                     </Box>
                   </div>

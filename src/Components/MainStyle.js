@@ -67,6 +67,10 @@ function MainStyle() {
         [theme.breakpoints.up("md")]: {
           padding: "0 50px 0 50px",
         },
+        // large padding
+        [theme.breakpoints.up("xl")]: {
+          padding: "0 120px 0 120px",
+        },
       },
       papersVideo: {
         [theme.breakpoints.up("xs")]: {
